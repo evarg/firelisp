@@ -1,3 +1,5 @@
+
+![logo](https://user-images.githubusercontent.com/15337292/112994033-1af8b580-916a-11eb-8f68-e1457cb30e47.jpg)
 # Zestaw funkcji do uproszczenia pracy podczas projektowania sytemów p.poż.
 
 ## 2021-02-22
