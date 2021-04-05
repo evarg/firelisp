@@ -1,4 +1,4 @@
-(defun fg:app:dlg_about (/ dclID) 
+(defun fl:app:dlg_about (/ dclID) 
   (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\appAbout.dcl")))
   (new_dialog "DCL_appAbout" dclID)
 

@@ -52,7 +52,7 @@ DCLfireNew : dialog {
 		label = "Lista elementow";
 
 		:edit_box {
-			key = "listaElementow";
+			key = "eListObjectS";
 			value = "";
 			edit_limit = 100;
 			edit_width = 100;
@@ -60,10 +60,10 @@ DCLfireNew : dialog {
 	}
  
 	: row {
-		label = "Lista elementow petlowych";
+		label = "Lista elementow adresowalnych";
 
 		:edit_box {
-			key = "listaElementowPetlowych";
+			key = "eListObjectA";
 			value = "";
 			edit_limit = 100;
 			edit_width = 100;
@@ -74,7 +74,7 @@ DCLfireNew : dialog {
 		label = "Nazwa systemu";
 
 		:edit_box {
-			key = "nazwaSystemu";
+			key = "eSystemName";
 			value = "";
 			edit_limit = 100;
 			edit_width = 100;

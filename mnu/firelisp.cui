@@ -1,123 +1,110 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <CustSection xml:lang="en-US">
 
-  <MenuGroup Name="FIREGRAVE">
+  <MenuGroup Name="FIRELISP">
     
-    <MacroGroup Name="FireGrave">
-      <MenuMacro UID="wczytajpozarlisp">
-        <Macro>
-          <Name>Wczytaj FireGrave</Name>
-          <Command>(load "c:\\firegrave\\firegrave.lsp")</Command>
-          <HelpString/>
-          <Image ID=""/>
-        </Macro>
-      </MenuMacro>
-      <MenuMacro UID="about">
-        <Macro>
-          <Name>About</Name>
-          <Command>(fg:app:dlg_about)</Command>
-          <HelpString/>
-          <Image ID=""/>
-        </Macro>
-      </MenuMacro>
-      <MenuMacro UID="costam">
-        <Macro>
-          <Name>cos tam</Name>
-          <Command>(pl:about)</Command>
-          <HelpString/>
-        </Macro>
-      </MenuMacro>
-      <MenuMacro UID="about_1">
-        <Macro>
-          <Name>about</Name>
-          <Command>(pl:about)</Command>
-          <HelpString/>
-        </Macro>
-      </MenuMacro>
-      <MenuMacro UID="afasf">
-        <Macro>
-          <Name>afasf</Name>
-          <Command>(print (ssget))</Command>
-          <HelpString/>
-        </Macro>
-      </MenuMacro>
+    <MacroGroup Name="Pozycjonowanie atrybutu">
       <MenuMacro UID="lewo">
         <Macro>
           <Name>Lewo</Name>
           <Command>(pl:AtrybutPozycjonowanieM "UL")</Command>
           <HelpString/>
         </Macro>
-      </MenuMacro>
-      <MenuMacro UID="góra-środek">
+      </MenuMacro><MenuMacro UID="góra-środek">
         <Macro>
           <Name>Góra-Środek</Name>
           <Command>(pl:AtrybutPozycjonowanieM "UC")</Command>
           <HelpString/>
         </Macro>
-      </MenuMacro>
-      <MenuMacro UID="góra">
+      </MenuMacro><MenuMacro UID="góra">
         <Macro>
           <Name>Góra</Name>
           <Command>(pl:AtrybutPozycjonowanieM "UC")</Command>
           <HelpString/>
         </Macro>
-      </MenuMacro>
-      <MenuMacro UID="prawo">
+      </MenuMacro><MenuMacro UID="prawo">
         <Macro>
           <Name>Prawo</Name>
           <Command>(pl:AtrybutPozycjonowanieM "MR")</Command>
           <HelpString/>
         </Macro>
-      </MenuMacro>
-      <MenuMacro UID="dół">
+      </MenuMacro><MenuMacro UID="dół">
         <Macro>
           <Name>Dół</Name>
           <Command>(pl:AtrybutPozycjonowanieM "DC")</Command>
           <HelpString/>
         </Macro>
-      </MenuMacro>
-      <MenuMacro UID="lewo_1">
+      </MenuMacro><MenuMacro UID="lewo_1">
         <Macro>
           <Name>Lewo</Name>
           <Command>(pl:AtrybutPozycjonowanieM "ML")</Command>
           <HelpString/>
         </Macro>
-      </MenuMacro>
-      <MenuMacro UID="lewo+wz">
+      </MenuMacro><MenuMacro UID="lewo+wz">
         <Macro>
           <Name>Lewo + WZ</Name>
           <Command>(pl:AtrybutPozycjonowanieM "MLW")</Command>
           <HelpString/>
         </Macro>
-      </MenuMacro>
-      <MenuMacro UID="wpionie">
+      </MenuMacro><MenuMacro UID="wpionie">
         <Macro>
           <Name>W pionie</Name>
           <Command>(pl:ElementParujPionM)</Command>
           <HelpString/>
         </Macro>
-      </MenuMacro>
-      <MenuMacro UID="wpoziomie">
+      </MenuMacro><MenuMacro UID="wpoziomie">
         <Macro>
           <Name>W poziomie</Name>
           <Command>(pl:ElementParujPoziomM)</Command>
           <HelpString/>
         </Macro>
-      </MenuMacro>
-      <MenuMacro UID="wpionie_1">
+      </MenuMacro><MenuMacro UID="wpionie_1">
         <Macro>
           <Name>W pionie</Name>
           <Command>(pl:ElementWyrownajPion)</Command>
           <HelpString/>
         </Macro>
-      </MenuMacro>
-      <MenuMacro UID="wpoziomie_1">
+      </MenuMacro><MenuMacro UID="wpoziomie_1">
         <Macro>
           <Name>W poziomie</Name>
           <Command>(pl:ElementWyrownajPoziom)</Command>
           <HelpString/>
         </Macro>
+      </MenuMacro></MacroGroup>
+    <MacroGroup Name="FireLisp">
+      
+      <MenuMacro UID="uruchomfirelisp">
+        <Macro>
+          <Name>Uruchom FireLisp</Name>
+          <Command>(load "c:\\firelisp\\firelisp.lsp")</Command>
+          <HelpString/>
+          <SmallImage Name="C:\FireLisp\mnu\icons\logo (16).png"/>
+          <LargeImage Name="C:\FireLisp\mnu\icons\logo (32).png"/>
+        </Macro>
+      </MenuMacro><MenuMacro UID="about">
+        <Macro>
+          <Name>About</Name>
+          <Command>(fl:app:dlg_about)</Command>
+          <HelpString/>
+          
+          
+          
+          <Image ID="about"/></Macro>
       </MenuMacro>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       <MenuMacro UID="usun">
@@ -131,7 +118,7 @@
       <MenuMacro UID="utwórzsystempożarowy">
         <Macro>
           <Name>Nowy system pożarowy</Name>
-          <Command>(fg:fire:dlg_new)</Command>
+          <Command>(fl:fire:dlg_new)</Command>
           <HelpString/>
         </Macro>
       </MenuMacro>
@@ -143,6 +130,7 @@
           <Image ID=""/>
         </Macro>
       </MenuMacro>
+      
     </MacroGroup>
     
     
@@ -154,8 +142,8 @@
           <Command>(pl:WstawElement "ESSER" "ESSER_O")</Command>
           <HelpString/>
           
-          <SmallImage Name="c:\firegrave\mnu\icons\czujka_opt (16x16).png"/>
-          <LargeImage Name="c:\firegrave\mnu\icons\czujka_opt (32x32).png"/>
+          <SmallImage Name="C:\FireLisp\mnu\icons\czujka_opt (16).png"/>
+          <LargeImage Name="C:\FireLisp\mnu\icons\czujka_opt (32).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkaciepła">
@@ -163,7 +151,11 @@
           <Name>Czujka ciepła</Name>
           <Command>(pl:WstawElement "ESSER" "ESSER_TD")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_term (16x16).png"/>
+          
+          
+          
+          <SmallImage Name="C:\FireLisp\mnu\icons\czujka_term (16).png"/>
+          <LargeImage Name="C:\FireLisp\mnu\icons\czujka_term (32).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkadymuiciepła">
@@ -172,7 +164,7 @@
           <Command>(pl:WstawElement "ESSER" "ESSER_OT")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\czujka_mul (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\czujka_mul (16).png"/></Macro>
       </MenuMacro>
       <MenuMacro UID="ręcznyostrzegaczpożarowy">
         <Macro>
@@ -180,14 +172,14 @@
           <Command>(pl:WstawElement "ESSER" "ESSER_MCP")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\rop (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\rop (16).png"/></Macro>
       </MenuMacro>
       <MenuMacro UID="czujkadymudualnaiciepła">
         <Macro>
           <Name>Czujka dymu dualna i ciepła</Name>
           <Command>(pl:WstawElement "ESSER" "ESSER_O2T")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\esser_o2t (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\esser_o2t (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkadymuiciepłaradiowa">
@@ -195,7 +187,7 @@
           <Name>Czujka dymu i ciepła radiowa</Name>
           <Command>(pl:WstawElement "ESSER" "ESSER_O2TW")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\esser_o2tw (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\esser_o2tw (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułtal">
@@ -203,7 +195,7 @@
           <Name>Moduł TAL</Name>
           <Command>(pl:WstawElement "ESSER" "ESSER_TAL")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\esser_tal (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\esser_tal (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułfct">
@@ -211,7 +203,7 @@
           <Name>Moduł FCT</Name>
           <Command>(pl:WstawElement "ESSER" "ESSER_FCT")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\esser_fct (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\esser_fct (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="moduł12r">
@@ -219,7 +211,7 @@
           <Name>Moduł 12R</Name>
           <Command>(pl:WstawElement "ESSER" "ESSER_12R")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\esser_12r (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\esser_12r (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="esser_moduł4g2r">
@@ -227,7 +219,7 @@
           <Name>Moduł 4G2R</Name>
           <Command>(pl:WstawElement "ESSER" "ESSER_4G2R")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\esser_4g2r (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\esser_4g2r (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="nadajnikczujekradiowych">
@@ -235,7 +227,7 @@
           <Name>Nadajnik czujek radiowych</Name>
           <Command>(pl:WstawElement "ESSER" "ESSER_WIRELESS")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\esser_wireless (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\esser_wireless (16).png"/>
         </Macro>
       </MenuMacro>
     </MacroGroup>
@@ -245,7 +237,9 @@
           <Name>Czujka dymu</Name>
           <Command>(pl:WstawElement "EST3" "EST3_PS")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_opt (16x16).png"/>
+          
+          <SmallImage Name="C:\FireLisp\mnu\icons\czujka_opt (16).png"/>
+          <LargeImage Name="C:\FireLisp\mnu\icons\czujka_opt (32).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkaciepła_1">
@@ -253,7 +247,7 @@
           <Name>Czujka ciepła</Name>
           <Command>(pl:WstawElement "EST3" "EST3_H")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_term (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\czujka_term (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkadymuiciepła_1">
@@ -262,7 +256,7 @@
           <Command>(pl:WstawElement "EST3" "EST3_PHS")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\czujka_mul (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\czujka_mul (16).png"/></Macro>
       </MenuMacro>
       <MenuMacro UID="ręcznyostrzegaczpożarowy_1">
         <Macro>
@@ -270,14 +264,14 @@
           <Command>(pl:WstawElement "EST3" "EST3_271")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\rop (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\rop (16).png"/></Macro>
       </MenuMacro>
       <MenuMacro UID="modułcr">
         <Macro>
           <Name>Moduł CR</Name>
           <Command>(pl:WstawElement "EST3" "EST3_CR")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\est3_cr (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\est3_cr (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułct1">
@@ -285,7 +279,7 @@
           <Name>Moduł CT1</Name>
           <Command>(pl:WstawElement "EST3" "EST3_CT1")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\est3_ct1 (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\est3_ct1 (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułct2">
@@ -293,7 +287,7 @@
           <Name>Moduł CT2</Name>
           <Command>(pl:WstawElement "EST3" "EST3_CT2")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\est3_ct2 (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\est3_ct2 (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="izolatorzwarć">
@@ -301,7 +295,7 @@
           <Name>Izolator zwarć</Name>
           <Command>(pl:WstawElement "EST3" "EST3_IZ")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\est3_iz (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\est3_iz (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułio">
@@ -309,7 +303,7 @@
           <Name>Moduł IO</Name>
           <Command>(pl:WstawElement "EST3" "EST3_IO")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\est3_io (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\est3_io (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułcc1">
@@ -317,7 +311,7 @@
           <Name>Moduł CC1</Name>
           <Command>(pl:WstawElement "EST3" "EST3_CC1")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\est3_cc1 (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\est3_cc1 (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułcc2">
@@ -325,7 +319,7 @@
           <Name>Moduł CC2</Name>
           <Command>(pl:WstawElement "EST3" "EST3_CC2")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\est3_cc2 (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\est3_cc2 (16).png"/>
         </Macro>
       </MenuMacro>
     </MacroGroup>
@@ -335,7 +329,9 @@
           <Name>Czujka dymu</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_DOR")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_opt (16x16).png"/>
+          
+          <SmallImage Name="C:\FireLisp\mnu\icons\czujka_opt (16).png"/>
+          <LargeImage Name="C:\FireLisp\mnu\icons\czujka_opt (32).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkaciepła_2">
@@ -343,7 +339,7 @@
           <Name>Czujka ciepła</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_TUN")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_term (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\czujka_term (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkadymuiciepła_2">
@@ -352,14 +348,14 @@
           <Command>(pl:WstawElement "POLON4000" "POLON4000_DOT")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\czujka_mul (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\czujka_mul (16).png"/></Macro>
       </MenuMacro><MenuMacro UID="ręcznyostrzegaczpożarowy_2">
         <Macro>
           <Name>Ręczny ostrzegacz pożarowy</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_ROP")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\rop (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\rop (16).png"/></Macro>
       </MenuMacro>
       
       <MenuMacro UID="czujkadymuuniwersalna">
@@ -367,7 +363,7 @@
           <Name>Czujka dymu uniwersalna</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_DUR")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\polon_dur (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\polon_dur (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkadymujonizacyjna">
@@ -375,7 +371,7 @@
           <Name>Czujka dymu jonizacyjna</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_DIO")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\polon_dio (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\polon_dio (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="adapterczujekradiowych">
@@ -383,7 +379,7 @@
           <Name>Adapter czujek radiowych</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_ACR")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\polon_acr (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\polon_acr (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="eks">
@@ -391,7 +387,7 @@
           <Name>EKS</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_EKS")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\polon_eks (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\polon_eks (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="ewk">
@@ -399,7 +395,7 @@
           <Name>EWK</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_EWK")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\polon_ewk (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\polon_ewk (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="ews">
@@ -407,7 +403,7 @@
           <Name>EWS</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_EWS")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\polon_ews (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\polon_ews (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="ucs">
@@ -415,7 +411,7 @@
           <Name>UCS</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_UCS")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\polon_ucs (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\polon_ucs (16).png"/>
         </Macro>
       </MenuMacro>
       
@@ -424,7 +420,7 @@
           <Name>Sygnalizator</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_SAL")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\polon_sal (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\polon_sal (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkaradiowa">
@@ -432,7 +428,7 @@
           <Name>Czujka radiowa</Name>
           <Command>(pl:WstawElement "POLON4000" "POLON4000_RADIO")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\polon_radio (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\polon_radio (16).png"/>
         </Macro>
       </MenuMacro>
     </MacroGroup>
@@ -442,7 +438,9 @@
           <Name>Czujka dymu</Name>
           <Command>(pl:WstawElement "FP2000" "FP2000_OPT")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_opt (16x16).png"/>
+          
+          <SmallImage Name="C:\FireLisp\mnu\icons\czujka_opt (16).png"/>
+          <LargeImage Name="C:\FireLisp\mnu\icons\czujka_opt (32).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkaciepła_3">
@@ -450,7 +448,7 @@
           <Name>Czujka ciepła</Name>
           <Command>(pl:WstawElement "FP2000" "FP2000_TERM")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_term (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\czujka_term (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkadymuiciepła_3">
@@ -459,7 +457,7 @@
           <Command>(pl:WstawElement "FP2000" "FP2000_MUL")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\czujka_mul (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\czujka_mul (16).png"/></Macro>
       </MenuMacro>
       <MenuMacro UID="ręcznyostrzegaczpożarowy_3">
         <Macro>
@@ -467,14 +465,14 @@
           <Command>(pl:WstawElement "FP2000" "FP2000_ROP")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\rop (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\rop (16).png"/></Macro>
       </MenuMacro>
       <MenuMacro UID="moduł40">
         <Macro>
           <Name>Moduł 4/0</Name>
           <Command>(pl:WstawElement "FP2000" "FP2000_IO2014C")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\fp2000_io2014c (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\fp2000_io2014c (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="moduł21">
@@ -482,7 +480,7 @@
           <Name>Moduł 2/1</Name>
           <Command>(pl:WstawElement "FP2000" "FP2000_IO2031C")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\fp2000_io2031c (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\fp2000_io2031c (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="moduł22">
@@ -490,7 +488,7 @@
           <Name>Moduł 2/2</Name>
           <Command>(pl:WstawElement "FP2000" "FP2000_IO2032C")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\fp2000_io2032c (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\fp2000_io2032c (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="moduł44">
@@ -498,7 +496,7 @@
           <Name>Moduł 4/4</Name>
           <Command>(pl:WstawElement "FP2000" "FP2000_IO2034C")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\fp2000_io2034c (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\fp2000_io2034c (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułsygnalizatorów">
@@ -506,7 +504,7 @@
           <Name>Moduł sygnalizatorów</Name>
           <Command>(pl:WstawElement "FP2000" "FP2000_ICC")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\fp2000_icc (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\fp2000_icc (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułliniibocznej">
@@ -514,7 +512,7 @@
           <Name>Moduł linii bocznej</Name>
           <Command>(pl:WstawElement "FP2000" "FP2000_IU2055C")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\fp2000_ui2055c (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\fp2000_ui2055c (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="sygnalizatorakustycznypętlowy">
@@ -522,7 +520,7 @@
           <Name>Sygnalizator akustyczny pętlowy</Name>
           <Command>(pl:WstawElement "FP2000" "FP2000_AS2363")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\fp2000_as2363 (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\fp2000_as2363 (16).png"/>
         </Macro>
       </MenuMacro>
     </MacroGroup>
@@ -532,7 +530,9 @@
           <Name>Czujka dymu</Name>
           <Command>(pl:WstawElement "AWEX" "AWEX_OPT")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_opt (16x16).png"/>
+          
+          <SmallImage Name="C:\FireLisp\mnu\icons\czujka_opt (16).png"/>
+          <LargeImage Name="C:\FireLisp\mnu\icons\czujka_opt (32).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkaciepła_4">
@@ -540,7 +540,7 @@
           <Name>Czujka ciepła</Name>
           <Command>(pl:WstawElement "AWEX" "AWEX_TERM")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_term (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\czujka_term (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkadymuiciepła_4">
@@ -549,7 +549,7 @@
           <Command>(pl:WstawElement "AWEX" "AWEX_MUL")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\czujka_mul (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\czujka_mul (16).png"/></Macro>
       </MenuMacro>
       <MenuMacro UID="ręcznyostrzegaczpożarowy_4">
         <Macro>
@@ -557,15 +557,15 @@
           <Command>(pl:WstawElement "AWEX" "AWEX_ROP")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\rop (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\rop (16).png"/></Macro>
       </MenuMacro>
       <MenuMacro UID="moduł022">
         <Macro>
           <Name>Moduł 022</Name>
           <Command>(pl:WstawElement "AWEX" "AWEX_022")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\awex_022.png|"/>
-        </Macro>
+          
+          <Image ID="C:\FireLisp\mnu\icons\awex_022 (16).png"/></Macro>
       </MenuMacro>
     </MacroGroup>
     <MacroGroup Name="SystemBOSCH">
@@ -574,7 +574,9 @@
           <Name>Czujka dymu</Name>
           <Command>(pl:WstawElement "BOSCH" "BOSCH_DO")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_opt (16x16).png"/>
+          
+          <SmallImage Name="C:\FireLisp\mnu\icons\czujka_opt (16).png"/>
+          <LargeImage Name="C:\FireLisp\mnu\icons\czujka_opt (32).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkaciepła_5">
@@ -582,7 +584,7 @@
           <Name>Czujka ciepła</Name>
           <Command>(pl:WstawElement "BOSCH" "BOSCH_DT")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\czujka_term (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\czujka_term (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="czujkadymuiciepła_5">
@@ -591,7 +593,7 @@
           <Command>(pl:WstawElement "BOSCH" "BOSCH_DOT")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\czujka_mul (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\czujka_mul (16).png"/></Macro>
       </MenuMacro>
       <MenuMacro UID="ręcznyostrzegaczpożarowy_5">
         <Macro>
@@ -599,14 +601,14 @@
           <Command>(pl:WstawElement "BOSCH" "BOSCH_DM")</Command>
           <HelpString/>
           
-          <Image ID="c:\firegrave\mnu\icons\rop (16x16).png"/></Macro>
+          <Image ID="c:\firelisp\mnu\icons\rop (16).png"/></Macro>
       </MenuMacro>
       <MenuMacro UID="modułi8r1">
         <Macro>
           <Name>Moduł I8R1</Name>
           <Command>(pl:WstawElement "BOSCH" "BOSCH_I8R1")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\bosch_i8r1 (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\bosch_i8r1 (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="moduł4-con-s">
@@ -614,7 +616,7 @@
           <Name>Moduł 4-CON-S</Name>
           <Command>(pl:WstawElement "BOSCH" "BOSCH_CON")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\bosch_con (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\bosch_con (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułi2">
@@ -622,7 +624,7 @@
           <Name>Moduł I2</Name>
           <Command>(pl:WstawElement "BOSCH" "BOSCH_I2")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\bosch_i2 (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\bosch_i2 (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułnac">
@@ -630,7 +632,7 @@
           <Name>Moduł NAC</Name>
           <Command>(pl:WstawElement "BOSCH" "BOSCH_NAC")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\bosch_nac (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\bosch_nac (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułrhv">
@@ -638,7 +640,7 @@
           <Name>Moduł RHV</Name>
           <Command>(pl:WstawElement "BOSCH" "BOSCH_RHV")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\bosch_rhv (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\bosch_rhv (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułrlv1">
@@ -646,7 +648,7 @@
           <Name>Moduł RLV1</Name>
           <Command>(pl:WstawElement "BOSCH" "BOSCH_RLV1")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\bosch_rlv1 (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\bosch_rlv1 (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="modułrlv8">
@@ -654,7 +656,7 @@
           <Name>Moduł RLV8</Name>
           <Command>(pl:WstawElement "BOSCH" "BOSCH_RLV8")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\bosch_rlv8 (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\bosch_rlv8 (16).png"/>
         </Macro>
       </MenuMacro>
       <MenuMacro UID="sygnalizatorgłosowypętlowy">
@@ -662,52 +664,13 @@
           <Name>Sygnalizator głosowy pętlowy</Name>
           <Command>(pl:WstawElement "BOSCH" "BOSCH_AF")</Command>
           <HelpString/>
-          <Image ID="c:\firegrave\mnu\icons\bosch_af (16x16).png"/>
+          <Image ID="c:\firelisp\mnu\icons\bosch_af (16).png"/>
         </Macro>
       </MenuMacro>
     </MacroGroup>
     <MenuRoot>
       <PopMenuRoot>
-        <PopMenu UID="mnPozarLisp">
-          
-          <Name>FireGrave</Name>
-          <PopMenuItem>
-            <NameRef>&amp;Wczytaj PozarLisp</NameRef>
-            <MenuItem>
-              <MacroRef MenuMacroID="wczytajpozarlisp"/>
-            </MenuItem>
-          </PopMenuItem><PopMenuItem IsSeparator="true"/>
-          <PopMenuItem>
-            <NameRef>&amp;About</NameRef>
-            <MenuItem>
-              <MacroRef MenuMacroID="about"/>
-            </MenuItem>
-          </PopMenuItem>
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          <PopMenuRef pUID="mnPOLON4000"/>
-          <PopMenuItem>
-            <NameRef>&amp;Utwórz system pożarowy</NameRef>
-            <MenuItem>
-              <MacroRef MenuMacroID="utwórzsystempożarowy"/>
-            </MenuItem>
-          </PopMenuItem>
-          <PopMenuItem>
-            <NameRef>Wstaw centrale</NameRef>
-            <MenuItem>
-              <MacroRef MenuMacroID="wstawcentrale"/>
-            </MenuItem>
-          </PopMenuItem>
-          <Alias>FIREGRAVE</Alias></PopMenu>
+        
         
         
         
@@ -883,6 +846,30 @@
             <NameRef>Czujka radiowa</NameRef>
             <MenuItem>
               <MacroRef MenuMacroID="czujkaradiowa"/>
+            </MenuItem>
+          </PopMenuItem>
+        </PopMenu>
+        
+        <PopMenu UID="mnFire">
+          <Alias>FIRE</Alias>
+          <Name>&amp;Fire Lisp</Name>
+          <PopMenuItem>
+            <NameRef>Uruchom FireLisp</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="uruchomfirelisp"/>
+            </MenuItem>
+          </PopMenuItem><PopMenuItem IsSeparator="true"/>
+          <PopMenuItem>
+            <NameRef>Nowy system pożarowy</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="utwórzsystempożarowy"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem IsSeparator="true"/>
+          <PopMenuItem>
+            <NameRef>About</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="about"/>
             </MenuItem>
           </PopMenuItem>
         </PopMenu>
@@ -1349,6 +1336,18 @@
       </ToolbarRoot>
     </MenuRoot>
   </MenuGroup>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

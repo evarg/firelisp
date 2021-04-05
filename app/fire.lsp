@@ -1,4 +1,33 @@
-(defun fg:fire:dlg_new (/ nazwaPliku dclID nazwaSystemu) 
+(defun fl:fire:new (systemName listObjectS listObjectA / fileName osval position) 
+  (setq osval (getvar "OSMODE"))
+  (setvar "OSMODE" 0)
+
+  (setq fileName (strcat PATH_SYSTEM "\\SYSTEM_POZAROWY.dwg"))
+
+  (fl:layout:new LAYOUT_FIRE_NAME)
+  (fl:layout:setActive LAYOUT_FIRE_NAME)
+
+  ; usuniecie rzutni z layoutu
+  (entdel (ssname (ssget "_X" '((0 . "VIEWPORT") (410 . "SP"))) 0))
+
+  (setq position (list 18 180))
+
+  (fl:block:insert "FIRE" "SYSTEM_POZAROWY" position 0.01 0)
+  
+  ;(command "_insert" fileName position 0.01 0.01 0)
+  ;(command "._move" (entlast) "" "P" '(18 180))
+
+  (fl:attrib:content:set (entlast) "LISTA_ELEMENTOW" listObjectS)
+  (fl:attrib:content:set (entlast) "LISTA_ELEMENTOW_PETLOWYCH" listObjectA)
+  (fl:attrib:content:set (entlast) "NAZWA" systemName)
+  (fl:attrib:content:set (entlast) "CENTRALA" systemName)
+  (fl:attrib:content:set (entlast) "FID" (fl:uuid))
+  (fl:attrib:location:set (entlast) "CENTRALA" "UC")
+  (setvar "OSMODE" osval)
+)
+
+
+(defun fl:fire:dlg_new (/ dclID) 
   (setq dclID (load_dialog 
                 (strcat PATH_SCRIPT "app\\views\\fireNew.dcl")
               )
@@ -8,11 +37,11 @@
 
   (action_tile "bSave" 
                "
-                (setq KONF_LISTA_ELEMENTOW (get_tile \"listaElementow\"))
-                (setq KONF_LISTA_ELEMENTOW_PETLOWYCH (get_tile \"listaElementowPetlowych\"))
-                (setq KONF_NAZWA_SYSTEMU (get_tile \"nazwaSystemu\"))
+                (setq FIRE_LIST_OBJECT_S (get_tile \"eListObjectS\"))
+                (setq FIRE_LIST_OBJECT_A (get_tile \"eListObjectA\"))
+                (setq FIRE_NAME (get_tile \"eSystemName\"))
                 (done_dialog 2)
-                (pl:UtworzSystemPozarowy KONF_NAZWA_SYSTEMU KONF_LISTA_ELEMENTOW KONF_LISTA_ELEMENTOW_PETLOWYCH)
+                (fl:fire:new FIRE_NAME FIRE_LIST_OBJECT_S FIRE_LIST_OBJECT_A)
                "
   )
 
@@ -22,53 +51,52 @@
 			"
   )
 
-  (action_tile "utworzSystemAwex" 
+  (action_tile "bSystemAWEX" 
                "
-               (set_tile \"listaElementow\" (pl:list2string LISTA_ELEMENTOW_AWEX \";\"))
-               (set_tile \"listaElementowPetlowych\" (pl:list2string LISTA_ELEMENTOW_PETLOWYCH_AWEX \";\"))
-               (set_tile \"nazwaSystemu\" \"AWEX\")
+               (set_tile \"eListObjectS\" (fl:list2string LIST_OBJECT_S_AWEX \";\"))
+               (set_tile \"eListObjectA\" (fl:list2string LIST_OBJECT_A_AWEX \";\"))
+               (set_tile \"eSystemName\" \"AWEX\")
  			"
   )
 
-  (action_tile "utworzSystemBosch" 
+  (action_tile "bSystemBOSCH" 
                "
-               (set_tile \"listaElementow\" (pl:list2string LISTA_ELEMENTOW_BOSCH \";\"))
-               (set_tile \"listaElementowPetlowych\" (pl:list2string LISTA_ELEMENTOW_PETLOWYCH_BOSCH \";\"))
-               (set_tile \"nazwaSystemu\" \"BOSCH\")
+               (set_tile \"eListObjectS\" (fl:list2string LIST_OBJECT_S_BOSCH \";\"))
+               (set_tile \"eListObjectA\" (fl:list2string LIST_OBJECT_A_BOSCH \";\"))
+               (set_tile \"eSystemName\" \"BOSCH\")
  			"
   )
 
-  (action_tile "utworzSystemEsser" 
+  (action_tile "bSystemESSER" 
                "
-               (set_tile \"listaElementow\" (pl:list2string LISTA_ELEMENTOW_ESSER \";\"))
-               (set_tile \"listaElementowPetlowych\" (pl:list2string LISTA_ELEMENTOW_PETLOWYCH_ESSER \";\"))
-               (set_tile \"nazwaSystemu\" \"ESSER\")
+               (set_tile \"eListObjectS\" (fl:list2string LIST_OBJECT_S_ESSER \";\"))
+               (set_tile \"eListObjectA\" (fl:list2string LIST_OBJECT_A_ESSER \";\"))
+               (set_tile \"eSystemName\" \"ESSER\")
  			"
   )
-  (action_tile "utworzSystemEST3" 
+  (action_tile "bSystemEST3" 
                "
-               (set_tile \"listaElementow\" (pl:list2string LISTA_ELEMENTOW_EST3 \";\"))
-               (set_tile \"listaElementowPetlowych\" (pl:list2string LISTA_ELEMENTOW_PETLOWYCH_EST3 \";\"))
-               (set_tile \"nazwaSystemu\" \"EST3\")
- 			"
-  )
-
-  (action_tile "utworzSystemFP2000" 
-               "
-               (set_tile \"listaElementow\" (pl:list2string LISTA_ELEMENTOW_FP2000 \";\"))
-               (set_tile \"listaElementowPetlowych\" (pl:list2string LISTA_ELEMENTOW_PETLOWYCH_FP2000 \";\"))
-               (set_tile \"nazwaSystemu\" \"FP2000\")
+               (set_tile \"eListObjectS\" (fl:list2string LIST_OBJECT_S_EST3 \";\"))
+               (set_tile \"eListObjectA\" (fl:list2string LIST_OBJECT_A_EST3 \";\"))
+               (set_tile \"eSystemName\" \"EST3\")
  			"
   )
 
-  (action_tile "utworzSystemPOLON4000" 
+  (action_tile "bSystemFP2000" 
                "
-               (set_tile \"listaElementow\" (pl:list2string LISTA_ELEMENTOW_POLON4000 \";\"))
-               (set_tile \"listaElementowPetlowych\" (pl:list2string LISTA_ELEMENTOW_PETLOWYCH_POLON4000 \";\"))
-               (set_tile \"nazwaSystemu\" \"POLON4000\")
+               (set_tile \"eListObjectS\" (fl:list2string LIST_OBJECT_S_FP2000 \";\"))
+               (set_tile \"eListObjectA\" (fl:list2string LIST_OBJECT_A_FP2000 \";\"))
+               (set_tile \"eSystemName\" \"FP2000\")
  			"
   )
 
+  (action_tile "bSystemPOLON4000" 
+               "
+               (set_tile \"eListObjectS\" (fl:list2string LIST_OBJECT_S_POLON4000 \";\"))
+               (set_tile \"eListObjectA\" (fl:list2string LIST_OBJECT_A_POLON4000 \";\"))
+               (set_tile \"eSystemName\" \"POLON4000\")
+ 			"
+  )
 
   (start_dialog)
   (unload_dialog dclID)
