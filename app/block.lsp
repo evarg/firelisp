@@ -1,3 +1,6 @@
+
+
+
 (defun fl:block:position:get (entityName) 
   (cdr (assoc 10 (entget entityName)))
 )
