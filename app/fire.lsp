@@ -1,3 +1,8 @@
+(defun fl:fire:getAllPanels (fireFID)
+  (fl:block:searchByOwnerFID fireFID)
+)
+
+
 (defun fl:fire:new (systemName listObjectS listObjectA / fileName osval position) 
   (setq osval (getvar "OSMODE"))
   (setvar "OSMODE" 0)

@@ -1,74 +1,64 @@
-dclUtworzCentrale : dialog { 
-	label = "Utworz centrale";
+DCLpanelNew : dialog { 
+  label = "Nowa centrala";
 
-	: row {
-		label = "Nazwa centrali";
+  : row {
+      label = "Centrala pozarowa";
+      : row {
+        :edit_box {
+          label = "Nazwa centrali";
+          key = "ePanelName";
+          value = "";
+          edit_limit = 100;
+          edit_width = 30;
+        }
+      }
+  }
 
-		:edit_box {
-			key = "nazwaCentrali";
-			value = "";
-			edit_limit = 100;
-			edit_width = 10;
-      fixed_width = true;      
-		}
-	}
- 
-	: row {
-		label = "Numer centrali";
-
-		:edit_box {
-			key = "numerCentrali";
-			value = "";
-			edit_limit = 4;
-			edit_width = 4;
-      fixed_width = true;
-		}
-	}
-
-	: row {
-		label = "System pozarowy (NIE ZMIENIAC NIC!!!)";
-
-		:edit_box {
-			key = "spNazwa";
-			value = "";
-			edit_limit = 40;
-			edit_width = 20;
-      fixed_width = true;
-		}
-		:edit_box {
-			key = "spUUID";
-			value = "";
-			edit_limit = 40;
-			edit_width = 20;
-      fixed_width = true;
-		}
-    : button {
-      label = "Wybierz system pozarowy"; 
-      key = "wsp";	
-      mnemonic = "O";
-      alignment = centered; 
-      width = 12;
-      fixed_width = true;
+  : row {
+    label = "System pozarowy (nic nie zmieniac!!!)";
+    : row {
+      :edit_box {
+        label = "Nazwa systemu";
+        key = "eFireName";
+        value = "";
+        edit_limit = 20;
+        edit_width = 20;
+      }
+      :edit_box {
+        label = "System FID";
+        key = "eFireFID";
+        value = "";
+        edit_limit = 20;
+        edit_width = 20;
+      }
+      :edit_box {
+        label = "Numer centrali";
+        key = "ePanelNumber";
+        value = "";
+        edit_limit = 20;
+        edit_width = 5;
+      }
     }
-	}
-
+  }
+  		
   :row{
     : button {
       label = "Zapisz"; 
-      key = "zapisz";	
-      mnemonic = "O";
+      key = "bSave";	
       alignment = centered; 
       width = 12;
+      is_default = true;
       fixed_width = true;
+            
     }
     : button {
       label = "Anuluj"; 
-      key = "anuluj";	
-      mnemonic = "O";
+      key = "bCancel";	
       alignment = centered; 
       width = 12;
       fixed_width = true;
     }
   }
  
-}
+	}
+
