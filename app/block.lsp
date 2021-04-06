@@ -1,13 +1,37 @@
+(defun fl:block:is (entityName / rv) 
+  (setq rv nil)
+  (if entityName 
+    (progn 
+      (if (= (cdr (assoc 0 (entget entityName))) "INSERT") 
+        (setq rv T)
+      )
+    )
+  )
+  rv
+)
+
+
+(defun fl:block:name:get (entityName / rv) 
+  (setq rv nil)
+  (if (fl:block:is entityName) 
+    (progn 
+      (setq rv (cdr (assoc 2 (entget entityName))))
+    )
+  )
+  rv
+)
+
+
 (defun fl:block:searchByFID (fid / ssBlocks i blockFID returnValue) 
-  (setq ssBlocks (ssget "_X" '((0 . "INSERT") )))
+  (setq ssBlocks (ssget "_X" '((0 . "INSERT"))))
   (setq i 0)
-  
-  (repeat (sslength ssBlocks)
-    (progn
+
+  (repeat (sslength ssBlocks) 
+    (progn 
       (setq entityName (ssname ssBlocks i))
       (setq blockFID (fl:attrib:content:get entityName "FID"))
-      (if (= blockFID fid)
-        (progn
+      (if (= blockFID fid) 
+        (progn 
           (setq returnValue entityName)
         )
       )
@@ -18,21 +42,23 @@
 )
 
 
-(defun fl:block:searchByOwnerFID (fid / ssBlocks i blockFID blockOwnerFID returnValue entityName) 
+(defun fl:block:searchByOwnerFID (fid / ssBlocks i blockFID blockOwnerFID returnValue 
+                                  entityName
+                                 ) 
   ;(setq ssBlocks (ssget "_X" '((0 . "INSERT") (410 . "SP"))))
-  
+
   (setq returnValue (list))
-  
-  (setq ssBlocks (ssget "_X" '((0 . "INSERT") )))
+
+  (setq ssBlocks (ssget "_X" '((0 . "INSERT"))))
   (setq i 0)
-  
-  (repeat (sslength ssBlocks)
-    (progn
+
+  (repeat (sslength ssBlocks) 
+    (progn 
       (setq entityName (ssname ssBlocks i))
       (setq blockFID (fl:attrib:content:get entityName "FID"))
       (setq blockOwnerFID (fl:attrib:content:get entityName "OWNER_FID"))
-      (if (= blockOwnerFID fid)
-        (progn
+      (if (= blockOwnerFID fid) 
+        (progn 
           (setq returnValue (cons blockFID returnValue))
         )
       )
@@ -43,7 +69,7 @@
 )
 
 
-(defun fl:block:generateFID:ss ( / entityName ssActive i) 
+(defun fl:block:generateFID:ss (/ entityName ssActive i) 
   (setq ssActive (cadr (ssgetfirst)))
   (setq i 0)
   (if ssActive 
@@ -57,7 +83,6 @@
     (print "Nic nie wybrano")
   )
 )
-
 
 
 (defun fl:block:position:get (entityName) 
