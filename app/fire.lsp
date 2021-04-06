@@ -1,4 +1,28 @@
-(defun fl:fire:getAllPanels (fireFID)
+(defun fl:fire:name:get (entityName / rv) 
+  (setq rv nil)
+  (setq rv (fl:attrib:content:get entityName "CENTRALA"))
+  rv
+)
+
+(defun fl:fire:FID:get (entityName / rv) 
+  (setq rv nil)
+  (setq rv (fl:attrib:content:get entityName "FID"))
+  rv
+)
+
+
+(defun fl:fire:is (entityName / rv) 
+  (setq rv nil)
+  (if (= (fl:block:name:get entityName) "SYSTEM_POZAROWY") 
+    (progn 
+      (setq rv T)
+    )
+  )
+  rv
+)
+
+
+(defun fl:fire:getAllPanels (fireFID) 
   (fl:block:searchByOwnerFID fireFID)
 )
 
@@ -18,7 +42,7 @@
   (setq position (list 18 180))
 
   (fl:block:insert "FIRE" "SYSTEM_POZAROWY" position 0.01 0)
-  
+
   ;(command "_insert" fileName position 0.01 0.01 0)
   ;(command "._move" (entlast) "" "P" '(18 180))
 
@@ -106,8 +130,6 @@
   (start_dialog)
   (unload_dialog dclID)
 )
-
-
 
 
 (defun fg:fire:dlg_new2 (/ dclID nastepny blokSP cur_ss) 

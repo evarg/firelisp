@@ -16,91 +16,76 @@
 )
 
 
+(defun fl:panel:new:dlg (/ dclID entityName panelNumber panelName fireFID fireName 
+                          returnDialog
+                         ) 
 
-(defun fl:panel:new:dlg (/ dclID panelName fireFID entityName panelNumber) 
-  (print "Wybierz system pozarowy")
-  (setq entityName (car (entsel)))
-  (setq fireFID (fl:attrib:content:get entityName "FID"))
-  (setq panelNumber (+ 1 (length (fl:fire:getAllPanels fireFID))))
+  (setq fireFID "brak")
+  (setq fireName "brak")
+  (setq panelNumber "brak")
+  (setq panelName "brak")
 
-  (setq dclID (load_dialog 
-                (strcat PATH_SCRIPT "app\\views\\panelNew.dcl")
+  (setq returnDialog 2)
+  (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\panelNew.dcl")))
+
+  (while (> returnDialog 1) 
+    (progn 
+      (new_dialog "DCLpanelNew" dclID)
+
+      (set_tile "Text1" "asdasd")
+
+      (set_tile "tFireName" fireName)
+      (set_tile "tFireFID" fireFID)
+      (set_tile "ePanelNumber" panelNumber)
+      (set_tile "ePanelName" panelName)
+      ;  (set_tile "ePanelName" (strcat "Centrala " (itoa panelNumber)))
+
+      (action_tile "bSelectFire" "(done_dialog 2)")
+      (action_tile "accept" 
+                   "
+                   (setq fireName (get_tile \"tFireName\"))
+                   (setq fireFID (get_tile \"tFireFID\"))
+                   (setq panelNumber (get_tile \"ePanelNumber\"))
+                   (setq panelName (get_tile \"ePanelName\"))
+                   (done_dialog 1)
+        "
+      )
+
+      (setq returnDialog (start_dialog))
+
+      ; wcisniety button wyboru fire
+      (if (= returnDialog 2) 
+        (progn 
+          (setq entityName (car (entsel)))
+          (if (fl:fire:is entityName) 
+            (progn 
+              (setq fireName (fl:fire:name:get entityName))
+              (setq fireFID (fl:fire:FID:get entityName))
+              (setq panelNumber (itoa 
+                                  (+ 1 
+                                     (length 
+                                       (fl:fire:getAllPanels 
+                                         (fl:fire:FID:get entityName)
+                                       )
+                                     )
+                                  )
+                                )
               )
+              (setq panelName (strcat "Centrala " panelNumber))
+            )
+          )
+        )
+      )
+
+      ; wcisniety klawisz OK
+      (if (= returnDialog 1) 
+        (progn 
+          (fl:panel:new panelName (atoi panelNumber) fireFID)
+        )
+      )
+    )
   )
-
-  (new_dialog "DCLpanelNew" dclID)
-
-  (set_tile "eFireName" (fl:attrib:content:get entityName "CENTRALA"))
-  (set_tile "eFireFID" (fl:attrib:content:get entityName "FID"))
-  (set_tile "ePanelNumber" panelNumber)
-  (set_tile "ePanelName" (strcat "Centrala " (itoa panelNumber)))
-
-  (action_tile "bSave" 
-               "
-               (setq panelName (get_tile \"ePanelName\")) 
-               (setq fireFID (get_tile \"eFireFID\")) 
-               (done_dialog 2)
-               (fl:panel:new panelName panelNumber fireFID)
-               "
-  )
-
-  (action_tile "bCancel" 
-               "
-				(done_dialog 1)
-			"
-  )
-
-  (start_dialog)
   (unload_dialog dclID)
-)
 
-
-(defun fg:panel:dlg_new2 (/ dclID nastepny blokSP cur_ss) 
-  (setq dclID (load_dialog (strcat PATH_SCRIPT "App\\Views\\fireNew.dcl")))
-
-  (setq nastepny 1)
-  (setq cur_ss (cadr (ssgetfirst)))
-
-  (print cur_ss)
-
-  ;  (while (not (>= 0 nastepny))
-  (new_dialog "DCLfireNew" dclID)
-  ;    (setq blokSP (pl:czyZaznaczonyBlokWgNazwy cur_ss "SYSTEM_POZAROWY"))
-  ;    (if blokSP
-  ;      (progn
-  ;        (setq rawSP (pl:string2list (pl:AtrybutWartoscGet blokSP "RAW") ";"))
-  ;        (set_tile "spNazwa" (nth 0 rawSP))
-  ;        (set_tile "spUUID" (nth 1 rawSP))
-  ;
-  ;        (print rawSP)
-  ;      )
-  ;      (PRINT "NIE ZAZNACZONY SP")
-  ;    )
-
-  (action_tile "wsp" 
-               "
-				(setq nastepny 1)
-				(done_dialog 2)
-        (setq cur_ss (ssget))
-			"
-  )
-
-  (action_tile "bCancel" 
-               "
-				(setq nastepny 0)
-				(done_dialog 1)
-			"
-  )
-
-  (action_tile "bSave" 
-               "
-        (pl:UtworzCentrale (get_tile \"nazwaCentrali\") (get_tile \"numerCentrali\") (get_tile \"spUUID\")))
-				(setq nastepny 0)
-				(done_dialog 1)
-			"
-  )
-
-  (start_dialog)
-  ;)
-  (unload_dialog dclID)
+  (print returnDialog)
 )

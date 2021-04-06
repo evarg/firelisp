@@ -1,64 +1,60 @@
-DCLpanelNew : dialog { 
+DCLpanelNew : dialog {
+  key = "Title";
   label = "Nowa centrala";
-
-  : row {
-      label = "Centrala pozarowa";
-      : row {
-        :edit_box {
-          label = "Nazwa centrali";
-          key = "ePanelName";
-          value = "";
-          edit_limit = 100;
-          edit_width = 30;
+  spacer;
+  : boxed_row {
+    label = Centrala;
+    width = 60;
+    : edit_box {
+      label = "Nazwa centrali";
+      key = "ePanelName";
+      value = "";
+      edit_limit = 20;
+      edit_width = 20;
+      fixed_width = true;
+    }
+    : edit_box {
+      label = "Numer centrali";
+      key = "ePanelNumber";
+      value = "";
+      edit_limit = 20;
+      edit_width = 3;
+      fixed_width = true;
+    }
+  }
+  
+  : boxed_row {
+    label = "System pozarowy";
+    width = 60;
+    fixed_width = true;
+    : row {
+      : button {
+        label = "Wybierz"; 
+        key = "bSelectFire";	
+        alignment = centered; 
+        width = 12;
+        is_default = true;
+        fixed_width = true;
+      }          
+    }
+    : row {
+      : paragraph {
+        label = "Nazwa systemu:";
+        : text_part {
+          key = "tFireName";
+          label = "";//Text1$ from lsp file
         }
       }
-  }
-
-  : row {
-    label = "System pozarowy (nic nie zmieniac!!!)";
-    : row {
-      :edit_box {
-        label = "Nazwa systemu";
-        key = "eFireName";
-        value = "";
-        edit_limit = 20;
-        edit_width = 20;
-      }
-      :edit_box {
-        label = "System FID";
-        key = "eFireFID";
-        value = "";
-        edit_limit = 20;
-        edit_width = 20;
-      }
-      :edit_box {
-        label = "Numer centrali";
-        key = "ePanelNumber";
-        value = "";
-        edit_limit = 20;
-        edit_width = 5;
+      : paragraph {
+        label = "FID systemu:";
+        : text_part {
+          key = "tFireFID";
+          label = "";//Text2$ from lsp file
+          width = 30;
+        }
       }
     }
   }
-  		
-  :row{
-    : button {
-      label = "Zapisz"; 
-      key = "bSave";	
-      alignment = centered; 
-      width = 12;
-      is_default = true;
-      fixed_width = true;
-            
-    }
-    : button {
-      label = "Anuluj"; 
-      key = "bCancel";	
-      alignment = centered; 
-      width = 12;
-      fixed_width = true;
-    }
-  }
- 
-	}
-
+  spacer;
+  ok_cancel;
+}//MyPickButton
