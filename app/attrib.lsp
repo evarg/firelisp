@@ -73,6 +73,31 @@
 );defun
 
 
+(defun fl:attrib:location:setSS (location / block ActiveSel i) 
+  (setq ActiveSel (cadr (ssgetfirst)))
+  (setq i 0)
+  (if ActiveSel 
+    (progn 
+      (repeat (sslength ActiveSel) 
+        (setq block (ssname ActiveSel i))
+        (if (fl:block:is block)
+          (progn 
+            (setq skalaBloku (fl:block:scale:get block))
+            (fl:attrib:location:set
+              block
+              CONF_ATTRIB_OPERATION
+              location
+            )
+          )
+        )
+        (setq i (+ i 1))
+      )
+    )
+    (print "Nic nie wybrano")
+  )
+)
+
+
 ;
 ; pozycjonowanie atrybutu 
 ; location: UL UC UR ML MC MR DL DC DR MLW

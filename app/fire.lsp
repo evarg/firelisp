@@ -4,6 +4,7 @@
   rv
 )
 
+
 (defun fl:fire:FID:get (entityName / rv) 
   (setq rv nil)
   (setq rv (fl:attrib:content:get entityName "FID"))

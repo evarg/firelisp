@@ -2,9 +2,45 @@
 ; RAW = panelNumber
 ;
 
+(defun fl:panel:name:get (entityName / rv) 
+  (setq rv nil)
+  (setq rv (fl:attrib:content:get entityName "CENTRALA"))
+  rv
+)
+
+
+(defun fl:panel:FID:get (entityName / rv) 
+  (setq rv nil)
+  (setq rv (fl:attrib:content:get entityName "FID"))
+  rv
+)
+
+
+(defun fl:panel:is (entityName / rv) 
+  (setq rv nil)
+  (if (= (fl:block:name:get entityName) "SYSTEM_POZAROWY_CENTRALA") 
+    (progn 
+      (setq rv T)
+    )
+  )
+  rv
+)
+
+(defun fl:panel:number:get (entityName / rv raw) 
+  (setq rv nil)
+  (setq raw (fl:attrib:content:get entityName "RAW"))
+  (setq rv (atoi (nth 0 (fl:string2list raw ";"))))
+  rv
+)
+
+
+(defun fl:panel:getAllLoops (fireFID) 
+  (fl:block:searchByOwnerFID fireFID)
+)
+
 
 (defun fl:panel:new (panelName panelNumber fireFID / position) 
-  (setq position (list (+ 32 (* (- panelNumber 1) 50)) 174))
+  (setq position (list (+ 32 (* (- panelNumber 1) 40)) 174))
 
   (fl:block:insert "FIRE" "SYSTEM_POZAROWY_CENTRALA" position 0.01 0)
 
@@ -17,8 +53,8 @@
 
 
 (defun fl:panel:new:dlg (/ dclID entityName panelNumber panelName fireFID fireName 
-                          returnDialog
-                         ) 
+                         returnDialog
+                        ) 
 
   (setq fireFID "brak")
   (setq fireName "brak")

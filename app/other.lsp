@@ -8,7 +8,6 @@
 )
 
 
-
 (defun pl:Polylinia2 (x1 y1 x4 y4) 
   (setq p1 (list x1 y1))
   (setq p4 (list x2 y2))

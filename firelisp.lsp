@@ -17,3 +17,6 @@
 (load (strcat PATH_SCRIPT "app\\panel.lsp"))
 (load (strcat PATH_SCRIPT "app\\layout.lsp"))
 (load (strcat PATH_SCRIPT "app\\symbol.lsp"))
+(load (strcat PATH_SCRIPT "app\\loop.lsp"))
+(load (strcat PATH_SCRIPT "app\\element.lsp"))
+(load (strcat PATH_SCRIPT "app\\layer.lsp"))

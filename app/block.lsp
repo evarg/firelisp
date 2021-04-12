@@ -1,3 +1,10 @@
+(defun fl:block:FID:get (entityName / rv)
+  (setq rv nil)
+  (setq rv (fl:attrib:content:get entityName "FID"))
+  rv
+)
+
+
 (defun fl:block:is (entityName / rv) 
   (setq rv nil)
   (if entityName 

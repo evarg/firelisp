@@ -4,77 +4,79 @@
   <MenuGroup Name="FIRELISP">
     
     <MacroGroup Name="Pozycjonowanie atrybutu">
-      <MenuMacro UID="lewo">
-        <Macro>
-          <Name>Lewo</Name>
-          <Command>(pl:AtrybutPozycjonowanieM "UL")</Command>
-          <HelpString/>
-        </Macro>
-      </MenuMacro><MenuMacro UID="góra-środek">
-        <Macro>
-          <Name>Góra-Środek</Name>
-          <Command>(pl:AtrybutPozycjonowanieM "UC")</Command>
-          <HelpString/>
-        </Macro>
-      </MenuMacro><MenuMacro UID="góra">
+      <MenuMacro UID="góra">
         <Macro>
           <Name>Góra</Name>
-          <Command>(pl:AtrybutPozycjonowanieM "UC")</Command>
+          <Command>(fl:attrib:location:setSS "UC")</Command>
           <HelpString/>
         </Macro>
       </MenuMacro><MenuMacro UID="prawo">
         <Macro>
           <Name>Prawo</Name>
-          <Command>(pl:AtrybutPozycjonowanieM "MR")</Command>
+          <Command>(fl:attrib:location:setSS "MR")</Command>
           <HelpString/>
         </Macro>
       </MenuMacro><MenuMacro UID="dół">
         <Macro>
           <Name>Dół</Name>
-          <Command>(pl:AtrybutPozycjonowanieM "DC")</Command>
+          <Command>(fl:attrib:location:setSS "DC")</Command>
           <HelpString/>
         </Macro>
       </MenuMacro><MenuMacro UID="lewo_1">
         <Macro>
           <Name>Lewo</Name>
-          <Command>(pl:AtrybutPozycjonowanieM "ML")</Command>
+          <Command>(fl:attrib:location:setSS "ML")</Command>
           <HelpString/>
         </Macro>
       </MenuMacro><MenuMacro UID="lewo+wz">
         <Macro>
           <Name>Lewo + WZ</Name>
-          <Command>(pl:AtrybutPozycjonowanieM "MLW")</Command>
+          <Command>(fl:attrib:location:setSS "MLW")</Command>
           <HelpString/>
         </Macro>
       </MenuMacro><MenuMacro UID="wpionie">
         <Macro>
           <Name>W pionie</Name>
-          <Command>(pl:ElementParujPionM)</Command>
+          <Command>(fl:element:pair:vertical:SS)</Command>
           <HelpString/>
         </Macro>
       </MenuMacro><MenuMacro UID="wpoziomie">
         <Macro>
           <Name>W poziomie</Name>
-          <Command>(pl:ElementParujPoziomM)</Command>
+          <Command>(fl:element:pair:horizontal:SS)</Command>
           <HelpString/>
         </Macro>
       </MenuMacro><MenuMacro UID="wpionie_1">
         <Macro>
           <Name>W pionie</Name>
-          <Command>(pl:ElementWyrownajPion)</Command>
+          <Command>(fl:element:align:vertical:ss)</Command>
           <HelpString/>
         </Macro>
       </MenuMacro><MenuMacro UID="wpoziomie_1">
         <Macro>
           <Name>W poziomie</Name>
-          <Command>(pl:ElementWyrownajPoziom)</Command>
+          <Command>(fl:element:align:horizontal:ss)</Command>
           <HelpString/>
         </Macro>
       </MenuMacro><MenuMacro UID="nowacentrala">
         <Macro>
           <Name>Nowa centrala</Name>
           <Command>(fl:panel:new:dlg)</Command>
-          <HelpString></HelpString>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="nowapetla">
+        <Macro>
+          <Name>Nowa petla</Name>
+          <Command>(fl:loop:new:dlg)</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="połącz">
+        <Macro>
+          <Name>Połącz</Name>
+          <Command>(fl:element:connect)</Command>
+          <HelpString/>
         </Macro>
       </MenuMacro>
     </MacroGroup>
@@ -700,6 +702,12 @@
               <MacroRef MenuMacroID="usun"/>
             </MenuItem>
           </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Połącz</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="połącz"/>
+            </MenuItem>
+          </PopMenuItem>
         </PopMenu>
         
         
@@ -876,6 +884,11 @@
             <NameRef>&amp;Nowa centrala</NameRef>
             <MenuItem>
               <MacroRef MenuMacroID="nowacentrala"/>
+            </MenuItem>
+          </PopMenuItem><PopMenuItem>
+            <NameRef>&amp;Nowa petla</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="nowapetla"/>
             </MenuItem>
           </PopMenuItem>
           <PopMenuItem IsSeparator="true"/>
@@ -1349,6 +1362,8 @@
       </ToolbarRoot>
     </MenuRoot>
   </MenuGroup>
+
+
 
 
 

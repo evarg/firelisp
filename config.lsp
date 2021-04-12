@@ -21,12 +21,17 @@
 (defconstant J_MIDDLE 2)
 (defconstant J_DOWN 1)
 
+; domyslny atrybut do operacji
+(setq CONF_ATTRIB_OPERATION "CENTRALA")
+
 ; do pozycjonowania atrybutow
 (setq CONF_ATTRIB_POSITION_L -230)
 (setq CONF_ATTRIB_POSITION_R 220)
 (setq CONF_ATTRIB_POSITION_U 170)
 (setq CONF_ATTRIB_POSITION_D -240)
 (setq CONF_ATTRIB_POSITION_WZ -100)
+(setq CONF_ATTRIB_PAIR_HORIZONTAL 500)
+(setq CONF_ATTRIB_PAIR_VERTICAL -500)
 
 ; konfiguracja AWEX
 (setq LIST_OBJECT_S_AWEX '("AWEX_MUL" "AWEX_OPT" "AWEX_ROP" "AWEX_TERM" "AWEX_022"))
