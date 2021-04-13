@@ -38,6 +38,7 @@
                            anchor2 posStart posEnd
                           ) 
 
+  (setvar "OSMODE" 1)
   (fl:layer:on "__ELEMENT_UCHWYT")
 
   ; pobranie pierwszego uchwytu
@@ -297,6 +298,8 @@
     )
   )
 )
+
+
 (defun fl:element:align:horizontal:ss (/ osval activeSS baseBlock blockToAlign baseY 
                                        blockX blockY
                                       ) 

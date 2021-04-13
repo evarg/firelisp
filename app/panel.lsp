@@ -49,6 +49,9 @@
   (fl:attrib:content:set (entlast) "OWNER_FID" fireFID)
   (fl:attrib:content:set (entlast) "RAW" (itoa panelNumber))
   (fl:attrib:location:set (entlast) "CENTRALA" "MR")
+  
+  ;rysowanie polaczenia
+  (fl:polyline1H (list 20 180) (fl:element:calculateOffset (entlast) "UC"))
 )
 
 

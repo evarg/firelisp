@@ -24,6 +24,9 @@
 ; domyslny atrybut do operacji
 (setq CONF_ATTRIB_OPERATION "CENTRALA")
 
+; domyslny atrybut do operacji
+(setq CONF_SCALE_DEFAULT 1)
+
 ; do pozycjonowania atrybutow
 (setq CONF_ATTRIB_POSITION_L -230)
 (setq CONF_ATTRIB_POSITION_R 220)
