@@ -140,6 +140,14 @@
         </Macro>
       </MenuMacro>
       
+      <MenuMacro UID="połącz_1">
+        <Macro>
+          <Name>Połącz</Name>
+          <Command>(fl:element:connect)</Command>
+          <HelpString/>
+          <Image ID="C:\FireLisp\mnu\icons\polacz_czujki (16).png|C:\FireLisp\mnu\icons\polacz_czujki (32).png"/>
+        </Macro>
+      </MenuMacro>
     </MacroGroup>
     
     
@@ -1358,10 +1366,28 @@
               <MacroRef MenuMacroID="czujkadymujonizacyjna"/>
             </MenuItem>
           </ToolbarButton>
+          <ToolbarButton>
+            <Name>Połącz</Name>
+            <MenuItem>
+              <MacroRef MenuMacroID="połącz_1"/>
+            </MenuItem>
+          </ToolbarButton>
+        </Toolbar>
+        <Toolbar ToolbarOrient="floating" ToolbarVisible="hide" UID="tbSchematy" rows="1">
+          <Alias>TB_Schematy</Alias>
+          <Name>Schematy</Name>
+          <ToolbarButton>
+            <Name>Połącz</Name>
+            <MenuItem>
+              <MacroRef MenuMacroID="połącz_1"/>
+            </MenuItem>
+          </ToolbarButton>
         </Toolbar>
       </ToolbarRoot>
     </MenuRoot>
   </MenuGroup>
+
+
 
 
 
