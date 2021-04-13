@@ -140,6 +140,30 @@
         </Macro>
       </MenuMacro>
       
+      <MenuMacro UID="połącz_1">
+        <Macro>
+          <Name>Połącz</Name>
+          <Command>(fl:element:connect)</Command>
+          <HelpString/>
+          <Image ID="C:\FireLisp\mnu\icons\polacz_czujki (16).png|C:\FireLisp\mnu\icons\polacz_czujki (32).png"/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="wz">
+        <Macro>
+          <Name>WZ</Name>
+          <Command>(fl:block:insert "SSP" "WZ" nil CONF_SCALE_DEFAULT 0)</Command>
+          <HelpString/>
+          <Image ID="3dsnap_knot"/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="wartościdomyślne">
+        <Macro>
+          <Name>Wartości domyślne</Name>
+          <Command>(fl:app:dlg_defaultOptions)</Command>
+          <HelpString/>
+          <Image ID="dc_show_hide"/>
+        </Macro>
+      </MenuMacro>
     </MacroGroup>
     
     
@@ -148,7 +172,7 @@
       <MenuMacro UID="czujkadymu">
         <Macro>
           <Name>Czujka dymu</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_O")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_O" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           
           <SmallImage Name="C:\FireLisp\mnu\icons\czujka_opt (16).png"/>
@@ -158,7 +182,7 @@
       <MenuMacro UID="czujkaciepła">
         <Macro>
           <Name>Czujka ciepła</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_TD")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_TD" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           
           
@@ -170,7 +194,7 @@
       <MenuMacro UID="czujkadymuiciepła">
         <Macro>
           <Name>Czujka dymu i ciepła</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_OT")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_OT" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           
           <Image ID="c:\firelisp\mnu\icons\czujka_mul (16).png"/></Macro>
@@ -178,7 +202,7 @@
       <MenuMacro UID="ręcznyostrzegaczpożarowy">
         <Macro>
           <Name>Ręczny ostrzegacz pożarowy</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_MCP")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_MCP" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           
           <Image ID="c:\firelisp\mnu\icons\rop (16).png"/></Macro>
@@ -186,7 +210,7 @@
       <MenuMacro UID="czujkadymudualnaiciepła">
         <Macro>
           <Name>Czujka dymu dualna i ciepła</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_O2T")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_O2T" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\esser_o2t (16).png"/>
         </Macro>
@@ -194,7 +218,7 @@
       <MenuMacro UID="czujkadymuiciepłaradiowa">
         <Macro>
           <Name>Czujka dymu i ciepła radiowa</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_O2TW")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_O2TW" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\esser_o2tw (16).png"/>
         </Macro>
@@ -202,7 +226,7 @@
       <MenuMacro UID="modułtal">
         <Macro>
           <Name>Moduł TAL</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_TAL")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_TAL" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\esser_tal (16).png"/>
         </Macro>
@@ -210,7 +234,7 @@
       <MenuMacro UID="modułfct">
         <Macro>
           <Name>Moduł FCT</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_FCT")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_FCT" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\esser_fct (16).png"/>
         </Macro>
@@ -218,7 +242,7 @@
       <MenuMacro UID="moduł12r">
         <Macro>
           <Name>Moduł 12R</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_12R")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_12R" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\esser_12r (16).png"/>
         </Macro>
@@ -226,7 +250,7 @@
       <MenuMacro UID="esser_moduł4g2r">
         <Macro>
           <Name>Moduł 4G2R</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_4G2R")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_4G2R" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\esser_4g2r (16).png"/>
         </Macro>
@@ -234,7 +258,7 @@
       <MenuMacro UID="nadajnikczujekradiowych">
         <Macro>
           <Name>Nadajnik czujek radiowych</Name>
-          <Command>(pl:WstawElement "ESSER" "ESSER_WIRELESS")</Command>
+          <Command>(fl:block:insert "ESSER" "ESSER_WIRELESS" nil CONF_SCALE_DEFAULT 0)</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\esser_wireless (16).png"/>
         </Macro>
@@ -893,6 +917,13 @@
           </PopMenuItem>
           <PopMenuItem IsSeparator="true"/>
           <PopMenuItem>
+            <NameRef>&amp;Wartości domyślne</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="wartościdomyślne"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem IsSeparator="true"/>
+          <PopMenuItem>
             <NameRef>About</NameRef>
             <MenuItem>
               <MacroRef MenuMacroID="about"/>
@@ -979,6 +1010,13 @@
             <Name>Nadajnik czujek radiowych</Name>
             <MenuItem>
               <MacroRef MenuMacroID="nadajnikczujekradiowych"/>
+            </MenuItem>
+          </ToolbarButton>
+          <ToolbarButton IsSeparator="true"/>
+          <ToolbarButton>
+            <Name>WZ</Name>
+            <MenuItem>
+              <MacroRef MenuMacroID="wz"/>
             </MenuItem>
           </ToolbarButton>
         </Toolbar>
@@ -1318,7 +1356,7 @@
             </MenuItem>
           </ToolbarButton>
         </Toolbar>
-        <Toolbar ToolbarOrient="floating" ToolbarVisible="hide" UID="tbtest" rows="2">
+        <Toolbar ToolbarOrient="floating" ToolbarVisible="hide" UID="tbtest" rows="1">
           <Alias>TB_test</Alias>
           <Name>test</Name>
           <ToolbarButton>
@@ -1350,18 +1388,39 @@
               <MacroRef MenuMacroID="eks"/>
             </MenuItem>
           </ToolbarButton>
-          <ToolbarButton IsSeparator="true"/>
+          
           
           <ToolbarButton>
             <Name>Czujka dymu jonizacyjna</Name>
             <MenuItem>
               <MacroRef MenuMacroID="czujkadymujonizacyjna"/>
             </MenuItem>
+          </ToolbarButton><ToolbarButton IsSeparator="true"/>
+          <ToolbarButton>
+            <Name>Połącz</Name>
+            <MenuItem>
+              <MacroRef MenuMacroID="połącz_1"/>
+            </MenuItem>
+          </ToolbarButton>
+        </Toolbar>
+        <Toolbar ToolbarOrient="floating" ToolbarVisible="hide" UID="tbSchematy" rows="1">
+          <Alias>TB_Schematy</Alias>
+          <Name>Schematy</Name>
+          <ToolbarButton>
+            <Name>Połącz</Name>
+            <MenuItem>
+              <MacroRef MenuMacroID="połącz_1"/>
+            </MenuItem>
           </ToolbarButton>
         </Toolbar>
       </ToolbarRoot>
     </MenuRoot>
   </MenuGroup>
+
+
+
+
+
 
 
 

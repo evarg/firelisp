@@ -6,7 +6,10 @@
 (defun fl:loop:new (loopName loopNumber panelFID / position panelNumber) 
   (setq panelNumber (fl:panel:number:get (fl:block:searchByFID panelFID)))
 
-  (setq position (list (+ 37 (* (- panelNumber 1) 40)) (- 167 (* (- loopNumber 1) 5))))
+  (setq position (list (+ 37 (* (- panelNumber 1) 40)) 
+                       (- 167 (* (- loopNumber 1) 5))
+                 )
+  )
 
   (fl:block:insert "FIRE" "SYSTEM_POZAROWY_PETLA" position 0.01 0)
 
@@ -15,12 +18,20 @@
   (fl:attrib:content:set (entlast) "OWNER_FID" panelFID)
   (fl:attrib:content:set (entlast) "RAW" (itoa loopNumber))
   (fl:attrib:location:set (entlast) "CENTRALA" "MR")
+
+  ;rysowanie polaczenia
+  (setq startPoint (fl:element:calculateOffset 
+                     (fl:block:searchByFID panelFID)
+                     "DC"
+                   )
+  )
+  (fl:polyline1V startPoint (fl:element:calculateOffset (entlast) "LM"))
 )
 
 
 (defun fl:loop:new:dlg (/ dclID entityName panelName panelFID loopName loopNumber 
-                         returnDialog
-                        ) 
+                        returnDialog
+                       ) 
 
   (setq panelFID "brak")
   (setq panelName "brak")
@@ -63,14 +74,14 @@
               (setq panelName (fl:panel:name:get entityName))
               (setq panelFID (fl:panel:FID:get entityName))
               (setq loopNumber (itoa 
-                                  (+ 1 
-                                     (length 
-                                       (fl:panel:getAllLoops 
-                                         (fl:panel:FID:get entityName)
-                                       )
-                                     )
-                                  )
-                                )
+                                 (+ 1 
+                                    (length 
+                                      (fl:panel:getAllLoops 
+                                        (fl:panel:FID:get entityName)
+                                      )
+                                    )
+                                 )
+                               )
               )
               (setq loopName (strcat "Petla " loopNumber))
             )
