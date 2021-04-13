@@ -20,3 +20,4 @@
 (load (strcat PATH_SCRIPT "app\\loop.lsp"))
 (load (strcat PATH_SCRIPT "app\\element.lsp"))
 (load (strcat PATH_SCRIPT "app\\layer.lsp"))
+(load (strcat PATH_SCRIPT "app\\polyline.lsp"))

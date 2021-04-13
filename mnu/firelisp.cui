@@ -1326,7 +1326,7 @@
             </MenuItem>
           </ToolbarButton>
         </Toolbar>
-        <Toolbar ToolbarOrient="floating" ToolbarVisible="hide" UID="tbtest" rows="2">
+        <Toolbar ToolbarOrient="floating" ToolbarVisible="hide" UID="tbtest" rows="1">
           <Alias>TB_test</Alias>
           <Name>test</Name>
           <ToolbarButton>
@@ -1358,14 +1358,14 @@
               <MacroRef MenuMacroID="eks"/>
             </MenuItem>
           </ToolbarButton>
-          <ToolbarButton IsSeparator="true"/>
+          
           
           <ToolbarButton>
             <Name>Czujka dymu jonizacyjna</Name>
             <MenuItem>
               <MacroRef MenuMacroID="czujkadymujonizacyjna"/>
             </MenuItem>
-          </ToolbarButton>
+          </ToolbarButton><ToolbarButton IsSeparator="true"/>
           <ToolbarButton>
             <Name>Połącz</Name>
             <MenuItem>

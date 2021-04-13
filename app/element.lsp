@@ -1,80 +1,3 @@
-(defun fl:polyline1V (startPoint endPoint / osval midPoint1) 
-  (setq osval (getvar "OSMODE"))
-  (setvar "OSMODE" 0)
-
-  (setq midPoint1 (list 
-                    (car startPoint)
-                    (cadr endPoint)
-                  )
-  )
-
-  (command "_pline" startPoint midPoint1 endPoint "")
-
-  (setvar "OSMODE" osval)
-)
-
-
-(defun fl:polyline1H (startPoint endPoint / osval midPoint1) 
-  (setq osval (getvar "OSMODE"))
-  (setvar "OSMODE" 0)
-
-  (setq midPoint1 (list 
-                    (car endPoint)
-                    (cadr startPoint)
-                  )
-  )
-
-  (command "_pline" startPoint midPoint1 endPoint "")
-
-  (setvar "OSMODE" osval)
-)
-
-(defun fl:polyline2H (startPoint endPoint / osval midPoint1 midPoint2 x) 
-  (setq osval (getvar "OSMODE"))
-  (setvar "OSMODE" 0)
-
-  (setq x (+ (car startPoint) (/ (- (car endPoint) (car startPoint)) 2)))
-
-  (setq midPoint1 (list 
-                    x
-                    (cadr startPoint)
-                  )
-  )
-
-  (setq midPoint2 (list 
-                    x
-                    (cadr endPoint)
-                  )
-  )
-
-  (command "_pline" startPoint midPoint1 midPoint2 endPoint "")
-
-  (setvar "OSMODE" osval)
-)
-
-
-(defun fl:polyline2V (startPoint endPoint / osval midPoint1 midPoint2 y) 
-  (setq osval (getvar "OSMODE"))
-  (setvar "OSMODE" 0)
-
-  (setq y (+ (cadr startPoint) (/ (- (cadr endPoint) (cadr startPoint)) 2)))
-
-  (setq midPoint1 (list 
-                    (car startPoint)
-                    y
-                  )
-  )
-
-  (setq midPoint2 (list 
-                    (car endPoint)
-                    y
-                  )
-  )
-
-  (command "_pline" startPoint midPoint1 midPoint2 endPoint "")
-
-  (setvar "OSMODE" osval)
-)
 
 
 (defun fl:element:locateConnect (blockPoint connectPoint blockScale / location diffX 
@@ -111,8 +34,9 @@
 )
 
 
-(defun fl:element:connect (/ pt1 pt2) 
-  ;  (setq selectedBlock (car (nth 3 (nentselp pt))))
+(defun fl:element:connect (/ ee pt1 pt2 block1 block2 blockScale anchor1 startPoint endPoint
+                           anchor2 posStart posEnd
+                          ) 
 
   (fl:layer:on "__ELEMENT_UCHWYT")
 
@@ -138,13 +62,20 @@
 
   (fl:layer:off "__ELEMENT_UCHWYT")
 
-  (setq block1Point (fl:block:position:get block1))
-  (setq block2Point (fl:block:position:get block2))
-  (setq block1Scale (fl:block:scale:get block1))
-  (setq block2Scale (fl:block:scale:get block2))
+  (setq blockScale (fl:block:scale:get block1))
 
-  (setq anchor1 (fl:element:locateConnect block1Point pt1 block1Scale))
-  (setq anchor2 (fl:element:locateConnect block2Point pt2 block2Scale))
+  (setq anchor1 (fl:element:locateConnect 
+                  (fl:block:position:get block1)
+                  pt1
+                  blockScale
+                )
+  )
+  (setq anchor2 (fl:element:locateConnect 
+                  (fl:block:position:get block2)
+                  pt2
+                  blockScale
+                )
+  )
 
   (setq startPoint (fl:element:calculateOffset block1 anchor1))
   (setq endPoint (fl:element:calculateOffset block2 anchor2))
@@ -186,101 +117,102 @@
 )
 
 
-(defun fl:element:calculateOffset (entityName location) 
+(defun fl:element:calculateOffset (entityName location / point) 
   (setq blockPoint (fl:block:position:get entityName))
+  (setq blockScale (fl:block:scale:get entityName))
 
   (if (= location "LU") 
     (setq point (list 
-                  (+ (car blockPoint) -200)
-                  (+ (cadr blockPoint) 50)
+                  (+ (car blockPoint) (* -200 blockScale))
+                  (+ (cadr blockPoint) (* 50 blockScale))
                 )
     )
   )
 
   (if (= location "LM") 
     (setq point (list 
-                  (+ (car blockPoint) -200)
-                  (+ (cadr blockPoint) 0)
+                  (+ (car blockPoint) (* -200 blockScale))
+                  (+ (cadr blockPoint) (* 0 blockScale))
                 )
     )
   )
 
   (if (= location "LD") 
     (setq point (list 
-                  (+ (car blockPoint) -200)
-                  (+ (cadr blockPoint) -50)
+                  (+ (car blockPoint) (* -200 blockScale))
+                  (+ (cadr blockPoint) (* -50 blockScale))
                 )
     )
   )
 
   (if (= location "RU") 
     (setq point (list 
-                  (+ (car blockPoint) 200)
-                  (+ (cadr blockPoint) 50)
+                  (+ (car blockPoint) (* 200 blockScale))
+                  (+ (cadr blockPoint) (* 50 blockScale))
                 )
     )
   )
 
   (if (= location "RM") 
     (setq point (list 
-                  (+ (car blockPoint) 200)
-                  (+ (cadr blockPoint) 0)
+                  (+ (car blockPoint) (* 200 blockScale))
+                  (+ (cadr blockPoint) (* 0 blockScale))
                 )
     )
   )
 
   (if (= location "RD") 
     (setq point (list 
-                  (+ (car blockPoint) 200)
-                  (+ (cadr blockPoint) -50)
+                  (+ (car blockPoint) (* 200 blockScale))
+                  (+ (cadr blockPoint) (* -50 blockScale))
                 )
     )
   )
 
   (if (= location "UL") 
     (setq point (list 
-                  (+ (car blockPoint) -50)
-                  (+ (cadr blockPoint) 200)
+                  (+ (car blockPoint) (* -50 blockScale))
+                  (+ (cadr blockPoint) (* 200 blockScale))
                 )
     )
   )
 
   (if (= location "UC") 
     (setq point (list 
-                  (+ (car blockPoint) 0)
-                  (+ (cadr blockPoint) 200)
+                  (+ (car blockPoint) (* 0 blockScale))
+                  (+ (cadr blockPoint) (* 200 blockScale))
                 )
     )
   )
 
   (if (= location "UR") 
     (setq point (list 
-                  (+ (car blockPoint) 50)
-                  (+ (cadr blockPoint) 200)
+                  (+ (car blockPoint) (* 50 blockScale))
+                  (+ (cadr blockPoint) (* 200 blockScale))
                 )
     )
   )
 
   (if (= location "DL") 
     (setq point (list 
-                  (+ (car blockPoint) -50)
-                  (+ (cadr blockPoint) -200)
+                  (+ (car blockPoint) (* -50 blockScale))
+                  (+ (cadr blockPoint) (* -200 blockScale))
                 )
     )
   )
 
   (if (= location "DC") 
     (setq point (list 
-                  (+ (car blockPoint) 0)
-                  (+ (cadr blockPoint) -200)
+                  (+ (car blockPoint) (* 0 blockScale))
+                  (+ (cadr blockPoint) (* -200 blockScale))
                 )
     )
   )
 
   (if (= location "DR") 
     (setq point (list 
-                  (+ (car blockPoint) 50)
-                  (+ (cadr blockPoint) -200)
+                  (+ (car blockPoint) (* 50 blockScale))
+                  (+ (cadr blockPoint) (* -200 blockScale))
                 )
     )
   )
