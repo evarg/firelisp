@@ -37,6 +37,9 @@
   (fl:layout:new LAYOUT_FIRE_NAME)
   (fl:layout:setActive LAYOUT_FIRE_NAME)
 
+  (fl:layer:new LAYOUT_FIRE_NAME)
+  (fl:layer:setActive LAYOUT_FIRE_NAME)  
+    
   ; usuniecie rzutni z layoutu
   (entdel (ssname (ssget "_X" '((0 . "VIEWPORT") (410 . "SP"))) 0))
 

@@ -79,6 +79,48 @@
           <HelpString/>
         </Macro>
       </MenuMacro>
+      <MenuMacro UID="wczytaj">
+        <Macro>
+          <Name>Wczytaj</Name>
+          <Command>(LOAD "D:/Skrypty/Numerowanie v0.1/Numerowanie.lsp")</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="wczytaj_1">
+        <Macro>
+          <Name>Wczytaj</Name>
+          <Command>(LOAD "D:/Skrypty/Numerowanie v0.1/Numerowanie.lsp")</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="setup">
+        <Macro>
+          <Name>Setup</Name>
+          <Command>(NumerowanieSetup)</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="numerowanie">
+        <Macro>
+          <Name>Numerowanie</Name>
+          <Command>(Numerowanie2)</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="wczytaj_2">
+        <Macro>
+          <Name>Wczytaj</Name>
+          <Command></Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="wczytaj_3">
+        <Macro>
+          <Name>Wczytaj</Name>
+          <Command>(LOAD "D:/Skrypty/Helper/Helper.lsp")</Command>
+          <HelpString></HelpString>
+        </Macro>
+      </MenuMacro>
     </MacroGroup>
     <MacroGroup Name="FireLisp">
       
@@ -929,14 +971,82 @@
               <MacroRef MenuMacroID="about"/>
             </MenuItem>
           </PopMenuItem>
+          <PopMenuRef pUID="mnNumerowanie"/>
+          
+          <PopMenuRef pUID="mnHelper"/>
+        </PopMenu>
+        <PopMenu UID="cmblok">
+          <Name>blok</Name>
+          <Alias>OBJECT_INSERT</Alias>
+          <PopMenuItem>
+            <NameRef>&amp;About</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="about"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem IsSeparator="true"/></PopMenu>
+        
+        
+        <PopMenu UID="mnNumerowanie">
+          <Name>&amp;Numerowanie</Name>
+          <PopMenuItem>
+            <NameRef>&amp;Wczytaj</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="wczytaj_1"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Setup</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="setup"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Numerowanie</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="numerowanie"/>
+            </MenuItem>
+          </PopMenuItem>
+        </PopMenu>
+        <PopMenu UID="mnHelper">
+          <Name>&amp;Helper</Name>
+          <PopMenuItem>
+            <NameRef>&amp;Wczytaj</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="wczytaj_3"/>
+            </MenuItem>
+          </PopMenuItem>
         </PopMenu>
       </PopMenuRoot>
       <RibbonRoot>
         <RibbonTabSourceCollection/>
         <RibbonPanelSourceCollection/>
       </RibbonRoot>
-      <MouseButtonRoot/>
-      <DoubleClickRoot/>
+      <MouseButtonRoot>
+        <ButtonGroup>
+          <Alias>AUX1</Alias>
+          <ButtonGroup>
+            <Alias>AUX2</Alias>
+            <ButtonGroup>
+              <Alias>AUX3</Alias>
+              <ButtonGroup>
+                <Alias>AUX4</Alias>
+              </ButtonGroup>
+              
+            </ButtonGroup>
+            
+          </ButtonGroup>
+        </ButtonGroup>
+      </MouseButtonRoot>
+      <DoubleClickRoot>
+        
+        <DoubleClickAction DxfName="INSERT">
+          <Name>,kkkk</Name>
+          <MenuItem>
+            <MacroRef MenuMacroID="uruchomfirelisp"/>
+          </MenuItem>
+        </DoubleClickAction>
+      </DoubleClickRoot>
       <DigitizerButtonRoot/>
       <TabletMenuRoot/>
       <ToolbarRoot>
@@ -1416,6 +1526,18 @@
       </ToolbarRoot>
     </MenuRoot>
   </MenuGroup>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

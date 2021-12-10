@@ -52,7 +52,6 @@
 (defun fl:block:searchByOwnerFID (fid / ssBlocks i blockFID blockOwnerFID returnValue 
                                   entityName
                                  ) 
-  ;(setq ssBlocks (ssget "_X" '((0 . "INSERT") (410 . "SP"))))
 
   (setq returnValue (list))
 

@@ -40,6 +40,9 @@
 
 
 (defun fl:panel:new (panelName panelNumber fireFID / position) 
+  (fl:layout:setActive LAYOUT_FIRE_NAME)
+  (fl:layer:setActive LAYOUT_FIRE_NAME)
+  
   (setq position (list (+ 32 (* (- panelNumber 1) 40)) 174))
 
   (fl:block:insert "FIRE" "SYSTEM_POZAROWY_CENTRALA" position 0.01 0)
@@ -58,6 +61,8 @@
 (defun fl:panel:new:dlg (/ dclID entityName panelNumber panelName fireFID fireName 
                          returnDialog
                         ) 
+  (fl:layout:setActive LAYOUT_FIRE_NAME)
+  (fl:layer:setActive LAYOUT_FIRE_NAME)
 
   (setq fireFID "brak")
   (setq fireName "brak")

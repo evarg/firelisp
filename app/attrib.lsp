@@ -1,24 +1,55 @@
-(defun fl:attrib:content:get (entityName attribName / enx exitValue) 
-  (while 
-    (and 
-      (null end)
-      (= "ATTRIB" 
-         (cdr (assoc 0 (setq enx (entget (setq entityName (entnext entityName))))))
-      )
-    ) ;and
+(setq VIS_ON 0)
+(setq VIS_OFF 1)
 
-    (if (= (strcase attribName) (strcase (cdr (assoc 2 enx)))) 
-      (setq exitValue (cdr (assoc 1 enx)))
-    ) ;if
-  ) ;while
+; =============================================================================================================
+; | Funkcja       | fl:attrib:content:get                                                                     |
+; |============================================================================================================
+; | Atrybuty      | entityName - nazwa                                                                                           |
+; |               |                                                                                           |
+; |============================================================================================================
+; | Przeznaczenie | Funkcja wyświetla okno dialogowe About                                                    |
+; =============================================================================================================
+
+(defun fl:attrib:content:get (entityName attribName / enx exitValue) 
+  (if (entnext entityName) 
+    (while 
+      (and 
+        (null end)
+        (= "ATTRIB" 
+           (cdr 
+             (assoc 0 (setq enx (entget (setq entityName (entnext entityName)))))
+           )
+        )
+      ) ;and
+
+      (if (= (strcase attribName) (strcase (cdr (assoc 2 enx)))) 
+        (setq exitValue (cdr (assoc 1 enx)))
+      ) ;if
+    ) ;while
+    (setq exitValue nil)
+  )
   exitValue
 )
-
 
 (defun fl:attrib:content:set (entityName attribName value) 
   (fl:attrib:parametr:set entityName attribName 1 value)
 )
 
+(defun fl:attrib:visibility (entityName attribName visibility) 
+  (fl:attrib:parametr:set entityName attribName 70 visibility)
+)
+
+(defun fl:attrib:global:visibility (attribName visibility / i ssAllBlocks) 
+  (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
+
+  (setq i 0)
+  (repeat (sslength ssAllBlocks) 
+    (progn 
+      (fl:attrib:visibility (ssname ssAllBlocks i) attribName visibility)
+      (setq i (+ i 1))
+    )
+  )
+)
 
 (defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
                                entityDXFpopr
@@ -27,7 +58,9 @@
     (and 
       (null end)
       (= "ATTRIB" 
-         (cdr (assoc 0 (setq enx (entget (setq entityName (entnext entityName))))))
+         (cdr 
+           (assoc 0 (setq enx (entget (setq entityName (entnext entityName)))))
+         )
       )
     ) ;and
 
@@ -40,17 +73,16 @@
     ) ;if
   ) ;while
   (entmod entityDXFpopr)
-);defun
+) ;defun
 
 
-;
-; entityName - musi byc: (car (entsel))
-;
+  ;
+  ; entityName - musi byc: (car (entsel))
+  ;
 (defun fl:attrib:justify:set (entityName attribName horizontal vertical) 
   (fl:attrib:parametr:set entityName attribName 72 horizontal)
   (fl:attrib:parametr:set entityName attribName 74 vertical)
-);defun
-
+) ;defun
 
 (defun fl:attrib:position:set (entityName attribName diffX diffY / enx blockPosition 
                                blockScale attribPosition
@@ -70,8 +102,7 @@
     11
     attribPosition
   )
-);defun
-
+) ;defun
 
 (defun fl:attrib:location:setSS (location / block ActiveSel i) 
   (setq ActiveSel (cadr (ssgetfirst)))
@@ -80,10 +111,10 @@
     (progn 
       (repeat (sslength ActiveSel) 
         (setq block (ssname ActiveSel i))
-        (if (fl:block:is block)
+        (if (fl:block:is block) 
           (progn 
             (setq skalaBloku (fl:block:scale:get block))
-            (fl:attrib:location:set
+            (fl:attrib:location:set 
               block
               CONF_ATTRIB_OPERATION
               location
@@ -97,11 +128,10 @@
   )
 )
 
-
-;
-; pozycjonowanie atrybutu 
-; location: UL UC UR ML MC MR DL DC DR MLW
-;
+  ;
+  ; pozycjonowanie atrybutu
+  ; location: UL UC UR ML MC MR DL DC DR MLW
+  ;
 (defun fl:attrib:location:set (entityName attribName location / blockScale) 
   (setq blockScale (fl:block:scale:get entityName))
 
