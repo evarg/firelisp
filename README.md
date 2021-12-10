@@ -7,5 +7,5 @@
 ####	`(fl:attrib:global:visibility attribName visibility)`
 Funkcja włącza lyb wyłacza widoczność atrybutu dla wszystkich obiektów w rysunku.
 visibility = VIS_ON włącza widoczność atrybutu
-visibility = VIS_OFF włącza widoczność atrybutu
+visibility = VIS_OFF wyłącza widoczność atrybutu
 
