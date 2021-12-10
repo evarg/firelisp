@@ -1,0 +1,62 @@
+(defun fl:app:dlg_about (/ dclID) 
+(defun fl:app:dlg_defaultOptions (/ dclID) 
+)(defun fl:attrib:content:get (entityName attribName / enx exitValue) 
+(defun fl:attrib:content:set (entityName attribName value) 
+(defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
+);defun
+(defun fl:attrib:justify:set (entityName attribName horizontal vertical) 
+);defun
+(defun fl:attrib:position:set (entityName attribName diffX diffY / enx blockPosition 
+);defun
+(defun fl:attrib:location:setSS (location / block ActiveSel i) 
+(defun fl:attrib:location:set (entityName attribName location / blockScale) 
+(defun fl:block:FID:get (entityName / rv)
+(defun fl:block:is (entityName / rv) 
+(defun fl:block:name:get (entityName / rv) 
+(defun fl:block:searchByFID (fid / ssBlocks i blockFID returnValue) 
+(defun fl:block:searchByOwnerFID (fid / ssBlocks i blockFID blockOwnerFID returnValue 
+(defun fl:block:generateFID:ss (/ entityName ssActive i) 
+(defun fl:block:position:get (entityName) 
+(defun fl:block:position:set (entityName position / osval) 
+(defun fl:block:scale:get (entityName) 
+(defun fl:block:insert (blockGroup blockName position scale rotate / fileName osval) 
+(defun fl:element:locateConnect (blockPoint connectPoint blockScale / location diffX 
+(defun fl:element:connect (/ ee pt1 pt2 block1 block2 blockScale anchor1 startPoint endPoint
+(defun fl:element:calculateOffset (entityName location / point) 
+(defun fl:Polylinia1 (x1 y1 x3 y3 / osval) 
+(defun fl:Polylinia2 (x1 y1 x4 y4 / osval) 
+(defun fl:element:connect4 (startEntity endEntity) 
+(defun fl:element:locateAnchor () 
+(defun fl:element:connect2 () 
+(defun fl:element:align:horizontal:ss (/ osval activeSS baseBlock blockToAlign baseY 
+(defun fl:element:align:vertical:ss (/ osval activeSS baseBlock blockToAlign baseX 
+(defun fl:element:pair:vertical:SS (/ ActiveSel) 
+(defun fl:element:pair:horizontal:SS (/ ActiveSel) 
+)(defun fl:fire:name:get (entityName / rv) 
+(defun fl:fire:FID:get (entityName / rv) 
+(defun fl:fire:is (entityName / rv) 
+(defun fl:fire:getAllPanels (fireFID) 
+(defun fl:fire:new (systemName listObjectS listObjectA / fileName osval position) 
+(defun fl:fire:dlg_new (/ dclID) 
+(defun fg:fire:dlg_new2 (/ dclID nastepny blokSP cur_ss) 
+(defun fl:layer:off (layerName)
+(defun fl:layer:on (layerName)
+)(defun fl:layout:new (layoutName) 
+(defun fl:layout:setActive (layoutName) 
+(defun fl:loop:new (loopName loopNumber panelFID / position panelNumber) 
+(defun fl:loop:new:dlg (/ dclID entityName panelName panelFID loopName loopNumber 
+)(defun fl:string2list (str separator / pos len lst) 
+(defun fl:list2string (lst separator / str) 
+(defun fl:uuid (/ auuid) 
+(defun fl:random (/ a c m) 
+(defun fl:panel:name:get (entityName / rv) 
+(defun fl:panel:FID:get (entityName / rv) 
+(defun fl:panel:is (entityName / rv) 
+(defun fl:panel:number:get (entityName / rv raw) 
+(defun fl:panel:getAllLoops (fireFID) 
+(defun fl:panel:new (panelName panelNumber fireFID / position) 
+(defun fl:panel:new:dlg (/ dclID entityName panelNumber panelName fireFID fireName 
+)(defun fl:polyline1V (startPoint endPoint / osval midPoint1) 
+(defun fl:polyline1H (startPoint endPoint / osval midPoint1) 
+(defun fl:polyline2H (startPoint endPoint / osval midPoint1 midPoint2 x) 
+(defun fl:polyline2V (startPoint endPoint / osval midPoint1 midPoint2 y) 

@@ -1,306 +1,6 @@
 
 
-(defun fl:element:locateConnect (blockPoint connectPoint blockScale / location diffX 
-                                 diffY
-                                ) 
-  (setq diffX (atof (rtos (- (car connectPoint) (car blockPoint)) 2 4)))
-  (setq diffY (atof (rtos (- (cadr connectPoint) (cadr blockPoint)) 2 4)))
-  (print "diff from locateConnect")
-  (setq diffX (atoi (rtos (/ diffX blockScale) 2 0)))
-  (setq diffY (atoi (rtos (/ diffY blockScale) 2 0)))
-
-  (setq location "dupa")
-
-  (print diffX)
-  (print diffY)
-
-  (if (and (= diffX -250.0) (= diffY 50)) (setq location "LU"))
-  (if (and (= diffX -250.0) (= diffY 0)) (setq location "LM"))
-  (if (and (= diffX -250.0) (= diffY -50)) (setq location "LD"))
-
-  (if (and (= diffX 250.0) (= diffY 50)) (setq location "RU"))
-  (if (and (= diffX 250.0) (= diffY 0)) (setq location "RM"))
-  (if (and (= diffX 250.0) (= diffY -50)) (setq location "RD"))
-
-  (if (and (= diffX -50.0) (= diffY 250)) (setq location "UL"))
-  (if (and (= diffX 0.0) (= diffY 250)) (setq location "UC"))
-  (if (and (= diffX 50.0) (= diffY 250)) (setq location "UR"))
-
-  (if (and (= diffX -50.0) (= diffY -250)) (setq location "DL"))
-  (if (and (= diffX 0.0) (= diffY -250)) (setq location "DC"))
-  (if (and (= diffX 50.0) (= diffY -250)) (setq location "DR"))
-
-  location
-)
-
-
-(defun fl:element:connect (/ ee pt1 pt2 block1 block2 blockScale anchor1 startPoint endPoint
-                           anchor2 posStart posEnd
-                          ) 
-
-  (setvar "OSMODE" 1)
-  (fl:layer:on "__ELEMENT_UCHWYT")
-
-  ; pobranie pierwszego uchwytu
-  (setq ee T)
-  (while ee 
-    (setq pt1 (getpoint "Wybierz uchwyt poprzedniego elementu"))
-    (setq block1 (car (nth 3 (nentselp pt1))))
-    (if (fl:block:is block1) 
-      (setq ee nil)
-    )
-  )
-
-  ; pobranie pierwszego uchwytu
-  (setq ee T)
-  (while ee 
-    (setq pt2 (getpoint "Wybierz uchwyt nastepnego elementu"))
-    (setq block2 (car (nth 3 (nentselp pt2))))
-    (if (fl:block:is block2) 
-      (setq ee nil)
-    )
-  )
-
-  (fl:layer:off "__ELEMENT_UCHWYT")
-
-  (setq blockScale (fl:block:scale:get block1))
-
-  (setq anchor1 (fl:element:locateConnect 
-                  (fl:block:position:get block1)
-                  pt1
-                  blockScale
-                )
-  )
-  (setq anchor2 (fl:element:locateConnect 
-                  (fl:block:position:get block2)
-                  pt2
-                  blockScale
-                )
-  )
-
-  (setq startPoint (fl:element:calculateOffset block1 anchor1))
-  (setq endPoint (fl:element:calculateOffset block2 anchor2))
-
-  (setq posStart (substr anchor1 1 1))
-  (setq posEnd (substr anchor2 1 1))
-
-  (if (= posStart "L") 
-    (progn 
-      (if (= posEnd "R") (fl:polyline2H startPoint endPoint))
-      (if (= posEnd "U") (fl:polyline1H startPoint endPoint))
-      (if (= posEnd "D") (fl:polyline1h startPoint endPoint))
-    )
-  )
-
-  (if (= posStart "R") 
-    (progn 
-      (if (= posEnd "L") (fl:polyline2H startPoint endPoint))
-      (if (= posEnd "U") (fl:polyline1H startPoint endPoint))
-      (if (= posEnd "D") (fl:polyline1H startPoint endPoint))
-    )
-  )
-
-  (if (= posStart "U") 
-    (progn 
-      (if (= posEnd "L") (fl:polyline1V startPoint endPoint))
-      (if (= posEnd "R") (fl:polyline1V startPoint endPoint))
-      (if (= posEnd "D") (fl:polyline2V startPoint endPoint))
-    )
-  )
-
-  (if (= posStart "D") 
-    (progn 
-      (if (= posEnd "L") (fl:polyline1V startPoint endPoint))
-      (if (= posEnd "R") (fl:polyline1V startPoint endPoint))
-      (if (= posEnd "U") (fl:polyline2V startPoint endPoint))
-    )
-  )
-)
-
-
-(defun fl:element:calculateOffset (entityName location / point) 
-  (setq blockPoint (fl:block:position:get entityName))
-  (setq blockScale (fl:block:scale:get entityName))
-
-  (if (= location "LU") 
-    (setq point (list 
-                  (+ (car blockPoint) (* -200 blockScale))
-                  (+ (cadr blockPoint) (* 50 blockScale))
-                )
-    )
-  )
-
-  (if (= location "LM") 
-    (setq point (list 
-                  (+ (car blockPoint) (* -200 blockScale))
-                  (+ (cadr blockPoint) (* 0 blockScale))
-                )
-    )
-  )
-
-  (if (= location "LD") 
-    (setq point (list 
-                  (+ (car blockPoint) (* -200 blockScale))
-                  (+ (cadr blockPoint) (* -50 blockScale))
-                )
-    )
-  )
-
-  (if (= location "RU") 
-    (setq point (list 
-                  (+ (car blockPoint) (* 200 blockScale))
-                  (+ (cadr blockPoint) (* 50 blockScale))
-                )
-    )
-  )
-
-  (if (= location "RM") 
-    (setq point (list 
-                  (+ (car blockPoint) (* 200 blockScale))
-                  (+ (cadr blockPoint) (* 0 blockScale))
-                )
-    )
-  )
-
-  (if (= location "RD") 
-    (setq point (list 
-                  (+ (car blockPoint) (* 200 blockScale))
-                  (+ (cadr blockPoint) (* -50 blockScale))
-                )
-    )
-  )
-
-  (if (= location "UL") 
-    (setq point (list 
-                  (+ (car blockPoint) (* -50 blockScale))
-                  (+ (cadr blockPoint) (* 200 blockScale))
-                )
-    )
-  )
-
-  (if (= location "UC") 
-    (setq point (list 
-                  (+ (car blockPoint) (* 0 blockScale))
-                  (+ (cadr blockPoint) (* 200 blockScale))
-                )
-    )
-  )
-
-  (if (= location "UR") 
-    (setq point (list 
-                  (+ (car blockPoint) (* 50 blockScale))
-                  (+ (cadr blockPoint) (* 200 blockScale))
-                )
-    )
-  )
-
-  (if (= location "DL") 
-    (setq point (list 
-                  (+ (car blockPoint) (* -50 blockScale))
-                  (+ (cadr blockPoint) (* -200 blockScale))
-                )
-    )
-  )
-
-  (if (= location "DC") 
-    (setq point (list 
-                  (+ (car blockPoint) (* 0 blockScale))
-                  (+ (cadr blockPoint) (* -200 blockScale))
-                )
-    )
-  )
-
-  (if (= location "DR") 
-    (setq point (list 
-                  (+ (car blockPoint) (* 50 blockScale))
-                  (+ (cadr blockPoint) (* -200 blockScale))
-                )
-    )
-  )
-
-  point
-)
-
-
-(defun fl:Polylinia1 (x1 y1 x3 y3 / osval) 
-  (setq osval (getvar "OSMODE"))
-  (setvar "OSMODE" 0)
-
-  (setq p1 (list x1 y1))
-  (setq p3 (list x3 y3))
-
-  (setq x2 x3)
-  (setq y2 y1)
-
-  (setq p2 (list x2 y2))
-
-  (command "_pline" p1 p2 p3 "")
-
-  (setvar "OSMODE" osval)
-)
-
-
-(defun fl:Polylinia2 (x1 y1 x4 y4 / osval) 
-  (setq osval (getvar "OSMODE"))
-  (setvar "OSMODE" 0)
-
-  (setq p1 (list x1 y1))
-  (setq p4 (list x4 y4))
-
-  (setq x2 (+ x1 (/ (- x4 x1) 2)))
-  (setq y2 y1)
-  (setq x3 x2)
-  (setq y3 (cadr p4))
-
-  (setq p2 (list x2 y2))
-  (setq p3 (list x3 y3))
-
-  (command "_pline" p1 p2 p3 p4 "")
-
-  (setvar "OSMODE" osval)
-)
-(defun fl:element:connect4 (startEntity endEntity) 
-  (setq startX (car (fl:block:position:get startEntity)))
-  (setq startY (cadr (fl:block:position:get startEntity)))
-  (setq endX (car (fl:block:position:get endEntity)))
-  (setq endY (cadr (fl:block:position:get endEntity)))
-  (setq blockScale (fl:block:scale:get startEntity))
-
-  (setq startX (+ startX (* blockScale 200)))
-  (setq endY (+ endY (* blockScale 200)))
-
-  (fl:Polylinia1 startX startY endX endY)
-)
-(defun fl:element:locateAnchor () 
-  (setq anchor (getpoint))
-)
-(defun fl:element:connect2 () 
-  (setq activeSS (cadr (ssgetfirst)))
-  (if activeSS 
-    (progn 
-      (if (= (sslength activeSS) 2) 
-        (progn 
-          (print "niby dwa")
-          (fl:layer:on "__ELEMENT_UCHWYT")
-          (setq ptS getpoint)
-          (setq ptE getpoint)
-
-          (fl:layer:off "__ELEMENT_UCHWYT")
-        )
-        (progn 
-          (print "Zle wybrano")
-        )
-      )
-    )
-    (progn 
-      (print "Nic nie wybrano")
-      (setq activeSS nil)
-    )
-  )
-)
-
-
-(defun fl:element:align:horizontal:ss (/ osval activeSS baseBlock blockToAlign baseY 
+(defun fl:element:align:horizontal:SS (/ osval activeSS baseBlock blockToAlign baseY 
                                        blockX blockY
                                       ) 
 
@@ -335,7 +35,9 @@
 
   (setvar "OSMODE" osval)
 )
-(defun fl:element:align:vertical:ss (/ osval activeSS baseBlock blockToAlign baseX 
+
+
+(defun fl:element:align:vertical:SS (/ osval activeSS baseBlock blockToAlign baseX 
                                      blockX blockY
                                     ) 
 
@@ -370,6 +72,8 @@
 
   (setvar "OSMODE" osval)
 )
+
+
 (defun fl:element:pair:vertical:SS (/ ActiveSel) 
   (setq ActiveSel (cadr (ssgetfirst)))
   (if (and ActiveSel (= (sslength ActiveSel) 2)) 
@@ -399,6 +103,8 @@
     (print "Nic nie wybrano albo wybrano za zle")
   )
 )
+
+
 (defun fl:element:pair:horizontal:SS (/ ActiveSel) 
   (setq ActiveSel (cadr (ssgetfirst)))
   (if (and ActiveSel (= (sslength ActiveSel) 2)) 

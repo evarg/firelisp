@@ -4,6 +4,11 @@
 
 
 (defun fl:loop:new (loopName loopNumber panelFID / position panelNumber) 
+  (fl:layout:setActive LAYOUT_FIRE_NAME)
+
+  (fl:layer:new LAYOUT_FIRE_NAME)
+  (fl:layer:setActive LAYOUT_FIRE_NAME)
+
   (setq panelNumber (fl:panel:number:get (fl:block:searchByFID panelFID)))
 
   (setq position (list (+ 37 (* (- panelNumber 1) 40)) 
@@ -32,7 +37,9 @@
 (defun fl:loop:new:dlg (/ dclID entityName panelName panelFID loopName loopNumber 
                         returnDialog
                        ) 
-
+  (fl:layout:setActive LAYOUT_FIRE_NAME)
+  (fl:layer:setActive LAYOUT_FIRE_NAME)
+  
   (setq panelFID "brak")
   (setq panelName "brak")
   (setq loopName "brak")
