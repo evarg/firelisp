@@ -51,6 +51,22 @@
   )
 )
 
+(defun fl:attrib:font:size:set (entityName attribName textHeight)
+  (fl:attrib:parametr:set entityName attribName 40 textHeight)
+)
+
+(defun fl:attrib:global:font:size (attribName textHeight / i ssAllBlocks) 
+  (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
+
+  (setq i 0)
+  (repeat (sslength ssAllBlocks) 
+    (progn 
+      (fl:attrib:font:size:set (ssname ssAllBlocks i) attribName textHeight)
+      (setq i (+ i 1))
+    )
+  )
+)
+
 (defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
                                entityDXFpopr
                               ) 
