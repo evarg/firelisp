@@ -35,7 +35,7 @@
   (fl:attrib:parametr:set entityName attribName 1 value)
 )
 
-(defun fl:attrib:visibility (entityName attribName visibility) 
+(defun fl:attrib:visibility (entityName attribName visibility)
   (fl:attrib:parametr:set entityName attribName 70 visibility)
 )
 
@@ -51,7 +51,7 @@
   )
 )
 
-(defun fl:attrib:font:size:set (entityName attribName textHeight)
+(defun fl:attrib:font:size:set (entityName attribName textHeight) 
   (fl:attrib:parametr:set entityName attribName 40 textHeight)
 )
 
@@ -70,6 +70,31 @@
 (defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
                                entityDXFpopr
                               ) 
+  (setq end T)
+
+  (while end 
+    (if (null entityName) 
+      (progn 
+        (setq end NIL)
+      )
+      (progn 
+        (if 
+          (= 
+            (cdr 
+              (assoc 2 (entget entityName))
+            )
+            attribName
+          )
+          (setq entityName (entnext entityName))
+        )
+      )
+    )
+  ) ;defun
+)
+
+(defun orgfl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
+                                  entityDXFpopr
+                                 ) 
   (while 
     (and 
       (null end)
@@ -92,6 +117,8 @@
 ) ;defun
 
 
+
+
   ;
   ; entityName - musi byc: (car (entsel))
   ;
@@ -99,7 +126,6 @@
   (fl:attrib:parametr:set entityName attribName 72 horizontal)
   (fl:attrib:parametr:set entityName attribName 74 vertical)
 ) ;defun
-
 (defun fl:attrib:position:set (entityName attribName diffX diffY / enx blockPosition 
                                blockScale attribPosition
                               ) 
@@ -119,7 +145,6 @@
     attribPosition
   )
 ) ;defun
-
 (defun fl:attrib:location:setSS (location / block ActiveSel i) 
   (setq ActiveSel (cadr (ssgetfirst)))
   (setq i 0)
