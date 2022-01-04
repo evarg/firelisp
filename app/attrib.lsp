@@ -67,7 +67,7 @@
   )
 )
 
-(defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
+(defun newfl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
                                entityDXFpopr
                               ) 
   (setq end T)
@@ -92,7 +92,7 @@
   ) ;defun
 )
 
-(defun orgfl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
+(defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
                                   entityDXFpopr
                                  ) 
   (while 
