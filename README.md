@@ -2,6 +2,15 @@
 ![logo](https://user-images.githubusercontent.com/15337292/112994033-1af8b580-916a-11eb-8f68-e1457cb30e47.jpg)
 # Zestaw funkcji do uproszczenia pracy podczas projektowania sytemów p.poż.
 
+## 2022-01-05
+  *Funkcja:*
+####	`(fl:app:dlg_defaultOptions)`
+Funkcja wyświetla okno dialogowe do ustawienia domyślnych wartości.
+
+  *Funkcja:*
+####	`(fl:app:dlg_attribVisibility)`
+Funkcja wyświetla okno dialogowe do włączania/wyłączania widoczności atrybutów.
+
 ## 2021-12-10
   *Funkcja:*
 ####	`(fl:attrib:global:visibility attribName visibility)`
