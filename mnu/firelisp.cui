@@ -125,6 +125,7 @@
         <Macro>
           <Name>Widocznosc atrybutow</Name>
           <Command>(fl:app:dlg_attribVisibility)</Command>
+<<<<<<< HEAD
           <HelpString/>
         </Macro>
       </MenuMacro>
@@ -132,6 +133,8 @@
         <Macro>
           <Name>Edycja atrybutu w lini polecen</Name>
           <Command>(fl:app:edit_attribContent)</Command>
+=======
+>>>>>>> 483013f783cb9bedecab91a61a0153dabaa9e46c
           <HelpString></HelpString>
         </Macro>
       </MenuMacro>
@@ -1649,5 +1652,8 @@
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 483013f783cb9bedecab91a61a0153dabaa9e46c
 </CustSection>
