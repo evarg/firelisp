@@ -110,7 +110,7 @@
       <MenuMacro UID="wczytaj_2">
         <Macro>
           <Name>Wczytaj</Name>
-          <Command></Command>
+          <Command/>
           <HelpString/>
         </Macro>
       </MenuMacro>
@@ -118,6 +118,13 @@
         <Macro>
           <Name>Wczytaj</Name>
           <Command>(LOAD "D:/Skrypty/Helper/Helper.lsp")</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="widocznoscatrybutow">
+        <Macro>
+          <Name>Widocznosc atrybutow</Name>
+          <Command>(fl:app:dlg_attribVisibility)</Command>
           <HelpString></HelpString>
         </Macro>
       </MenuMacro>
@@ -941,23 +948,14 @@
             </MenuItem>
           </PopMenuItem>
           <PopMenuItem IsSeparator="true"/>
+          <PopMenuRef pUID="mnSystempozarowy"/>
+          <PopMenuItem IsSeparator="true"/>
           <PopMenuItem>
-            <NameRef>Nowy system pożarowy</NameRef>
+            <NameRef>&amp;Widocznosc atrybutow</NameRef>
             <MenuItem>
-              <MacroRef MenuMacroID="utwórzsystempożarowy"/>
-            </MenuItem>
-          </PopMenuItem><PopMenuItem>
-            <NameRef>&amp;Nowa centrala</NameRef>
-            <MenuItem>
-              <MacroRef MenuMacroID="nowacentrala"/>
-            </MenuItem>
-          </PopMenuItem><PopMenuItem>
-            <NameRef>&amp;Nowa petla</NameRef>
-            <MenuItem>
-              <MacroRef MenuMacroID="nowapetla"/>
+              <MacroRef MenuMacroID="widocznoscatrybutow"/>
             </MenuItem>
           </PopMenuItem>
-          <PopMenuItem IsSeparator="true"/>
           <PopMenuItem>
             <NameRef>&amp;Wartości domyślne</NameRef>
             <MenuItem>
@@ -1017,11 +1015,29 @@
             </MenuItem>
           </PopMenuItem>
         </PopMenu>
+        <PopMenu UID="mnSystempozarowy">
+          <Name>&amp;System pozarowy</Name>
+          <PopMenuItem>
+            <NameRef>Nowy system pożarowy</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="utwórzsystempożarowy"/>
+            </MenuItem>
+          </PopMenuItem><PopMenuItem>
+            <NameRef>&amp;Nowa centrala</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="nowacentrala"/>
+            </MenuItem>
+          </PopMenuItem><PopMenuItem>
+            <NameRef>&amp;Nowa petla</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="nowapetla"/>
+            </MenuItem>
+          </PopMenuItem></PopMenu>
       </PopMenuRoot>
       <RibbonRoot>
         <RibbonTabSourceCollection/>
         <RibbonPanelSourceCollection/>
-      </RibbonRoot>
+        <RibbonTabSelectors/></RibbonRoot>
       <MouseButtonRoot>
         <ButtonGroup>
           <Alias>AUX1</Alias>
@@ -1524,8 +1540,12 @@
           </ToolbarButton>
         </Toolbar>
       </ToolbarRoot>
+      <QuadRoot>
+        <QuadTabs/>
+      </QuadRoot>
     </MenuRoot>
   </MenuGroup>
+
 
 
 
