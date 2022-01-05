@@ -4,6 +4,10 @@
 
 ## 2022-01-05
   *Funkcja:*
+####	`(fl:app:edit_attribContent)`
+Funkcja w petli nakazuje wybrac obiekt, wyswietla w linii polecen biezaca wartosc, prosi o podanie nowej, w przypadku nie podania zadnej wartosci pozostaje wartosc stara. 
+
+*Funkcja:*
 ####	`(fl:app:dlg_defaultOptions)`
 Funkcja wyświetla okno dialogowe do ustawienia domyślnych wartości.
 
