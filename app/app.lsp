@@ -27,12 +27,50 @@
 ; | Atrybuty      |                                                                                           |
 ; |============================================================================================================
 ; | Przeznaczenie | Funkcja wyświetla okno dialogowe dedykowane ustawieniu domyslnych wartosci dla niektorych |
-; |               | operacji. Na tą chwilę można ustawić tylko domyślną skalę dla wstawianego bloku           |                                                    |
+; |               | operacji.                                                                                 |
 ; =============================================================================================================
 
 (defun fl:app:dlg_defaultOptions (/ dclID) 
   (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\defaultOptions.dcl")))
   (new_dialog "DCLdefaultOptions" dclID)
+
+  (set_tile "eBlockScale" (rtos CONF_SCALE_DEFAULT))
+  (set_tile "eAttribName" CONF_ATTRIB_OPERATION)
+
+  (action_tile "accept" 
+               "
+               (setq CONF_SCALE_DEFAULT (atof (get_tile \"eBlockScale\")))
+				       (setq CONF_ATTRIB_OPERATION (get_tile \"eAttribName\"))
+               (done_dialog 0)
+			"
+  )
+
+  (action_tile "bDefaultPLAN" 
+               "
+               (set_tile \"eAttribName\" \"PLAN\")
+			"
+  )
+
+  (action_tile "bDefaultCENTRALA" 
+               "
+               (set_tile \"eAttribName\" \"CENTRALA\")
+			"
+  )
+
+  (action_tile "bDefaultRAW" 
+               "
+               (set_tile \"eAttribName\" \"RAW\")
+			"
+  )
+
+  (start_dialog)
+  (unload_dialog dclID)
+)
+
+
+(defun fl:app:dlg_attribVisibility () 
+  (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\attribVisibility.dcl")))
+  (new_dialog "DCLattribVisibility" dclID)
 
   (set_tile "eBlockScale" (rtos CONF_SCALE_DEFAULT))
 
@@ -42,10 +80,33 @@
 			"
   )
 
-  (action_tile "accept" 
+  (action_tile "bDefaultPLAN" 
                "
-               (setq CONF_SCALE_DEFAULT (atof (get_tile \"eBlockScale\")))
-				       (done_dialog 0)
+               (set_tile \"eAttribName\" \"PLAN\")
+			"
+  )
+
+  (action_tile "bDefaultCENTRALA" 
+               "
+               (set_tile \"eAttribName\" \"CENTRALA\")
+			"
+  )
+
+  (action_tile "bDefaultRAW" 
+               "
+               (set_tile \"eAttribName\" \"RAW\")
+			"
+  )
+
+  (action_tile "bAttribON" 
+               "
+               (fl:attrib:global:visibility (get_tile \"eAttribName\") VIS_ON)
+			"
+  )
+
+  (action_tile "bAttribOFF" 
+               "
+               (fl:attrib:global:visibility (get_tile \"eAttribName\") VIS_OFF)
 			"
   )
 

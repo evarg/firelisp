@@ -91,13 +91,14 @@ DCLfireNew : dialog {
         fixed_width = true;
         			
       }
- 			: button {
-				label = "Anuluj"; 
-				key = "bCancel";	
-				alignment = centered; 
-				width = 12;
-        fixed_width = true;
-			}
+      :button {
+        key="canselobj";
+        label="&Anuluj";
+        is_default=true;
+        is_cancel=true;
+        fixed_width=true;
+        alignment=centered;
+      }
 		}
  
 	}

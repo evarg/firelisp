@@ -126,6 +126,8 @@
   (fl:attrib:parametr:set entityName attribName 72 horizontal)
   (fl:attrib:parametr:set entityName attribName 74 vertical)
 ) ;defun
+
+
 (defun fl:attrib:position:set (entityName attribName diffX diffY / enx blockPosition 
                                blockScale attribPosition
                               ) 
@@ -145,6 +147,8 @@
     attribPosition
   )
 ) ;defun
+
+
 (defun fl:attrib:location:setSS (location / block ActiveSel i) 
   (setq ActiveSel (cadr (ssgetfirst)))
   (setq i 0)

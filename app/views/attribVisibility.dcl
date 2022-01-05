@@ -1,19 +1,7 @@
-DCLdefaultOptions : dialog {
+DCLattribVisibility : dialog {
   key = "Title";
-  label = "Opcje domyslne";
+  label = "Widocznosc atrybutow";
   spacer;
-
-  : boxed_row {
-    label = "Skala dla wstawianego bloku";
-    width = 30;
-    : edit_box {
-      key = "eBlockScale";
-      value = "";
-      edit_limit = 20;
-      edit_width = 10;
-      fixed_width = true;
-    }
-  }
 
   : boxed_row {
     label = "Domyslne atrybuty";
@@ -37,9 +25,9 @@ DCLdefaultOptions : dialog {
       width = 12;
     }  
   }
-
+  
   : boxed_row {
-    label = "Atrybut dla operacji";
+    label = "Nazwa atrybutu";
     width = 30;
     : edit_box {
       key = "eAttribName";
@@ -50,6 +38,30 @@ DCLdefaultOptions : dialog {
     }
   }
 
+  : boxed_row {
+    label = "Operacja";
+    width = 30;
+    : button {
+      label = "On"; 
+      key = "bAttribON";	
+      alignment = centered; 
+      width = 12;
+    }  
+    : button {
+      label = "Off"; 
+      key = "bAttribOFF";	
+      alignment = centered; 
+      width = 12;
+    }  
+  }
+
   spacer;
-  ok_cancel;
+  :button {
+    key="canselobj";
+    label="&Anuluj";
+    is_default=true;
+    is_cancel=true;
+    fixed_width=true;
+    alignment=centered;
+  }
 }//MyPickButton
