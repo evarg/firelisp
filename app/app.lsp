@@ -113,3 +113,22 @@
   (start_dialog)
   (unload_dialog dclID)
 )
+
+(defun fl:app:edit_attribContent () 
+  (while T 
+    (progn 
+      (setq element (car (entsel)))
+      (if element 
+        (progn 
+          (setq attribContent (fl:attrib:content:get element CONF_ATTRIB_OPERATION))
+          (if (null attribContent) (setq attribContent ""))
+          (print (strcat "Aktualna wartosc: " attribContent " Nowa wartosc: "))
+          (setq attribContent (getstring))
+          (if (/= attribContent "")
+            (fl:attrib:content:set element CONF_ATTRIB_OPERATION attribContent)
+          )
+        )
+      )
+    )
+  )
+)
