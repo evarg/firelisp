@@ -98,6 +98,10 @@
                      )
                )
       )
+
+      (fl:attrib:location:set (ssname ActiveSel 0) "CENTRALA" "UC")
+      (fl:attrib:location:set (ssname ActiveSel 1) "CENTRALA" "DC")
+
       (setvar "OSMODE" osval)
     )
     (print "Nic nie wybrano albo wybrano za zle")
@@ -130,6 +134,8 @@
                  0
                )
       )
+      (fl:attrib:location:set (ssname ActiveSel 0) "CENTRALA" "MLW")
+      (fl:attrib:location:set (ssname ActiveSel 1) "CENTRALA" "MR")
       (setvar "OSMODE" osval)
     )
     (print "Nic nie wybrano albo wybrano za zle")

@@ -125,6 +125,13 @@
         <Macro>
           <Name>Widocznosc atrybutow</Name>
           <Command>(fl:app:dlg_attribVisibility)</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="szybkaedycjaatrybutow">
+        <Macro>
+          <Name>Szybka edycja atrybutow</Name>
+          <Command>(fl:app:edit_attribContent)</Command>
           <HelpString></HelpString>
         </Macro>
       </MenuMacro>
@@ -961,6 +968,11 @@
             <MenuItem>
               <MacroRef MenuMacroID="wartościdomyślne"/>
             </MenuItem>
+          </PopMenuItem><PopMenuItem>
+            <NameRef>&amp;Szybka edycja atrybutow</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="szybkaedycjaatrybutow"/>
+            </MenuItem>
           </PopMenuItem>
           <PopMenuItem IsSeparator="true"/>
           <PopMenuItem>
@@ -1545,6 +1557,7 @@
       </QuadRoot>
     </MenuRoot>
   </MenuGroup>
+
 
 
 
