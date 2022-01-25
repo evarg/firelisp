@@ -117,8 +117,6 @@
 ) ;defun
 
 
-
-
   ;
   ; entityName - musi byc: (car (entsel))
   ;

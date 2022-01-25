@@ -125,8 +125,6 @@
         <Macro>
           <Name>Widocznosc atrybutow</Name>
           <Command>(fl:app:dlg_attribVisibility)</Command>
-<<<<<<< HEAD
-<<<<<<< HEAD
           <HelpString/>
         </Macro>
       </MenuMacro>
@@ -134,17 +132,13 @@
         <Macro>
           <Name>Edycja atrybutu w lini polecen</Name>
           <Command>(fl:app:edit_attribContent)</Command>
-=======
->>>>>>> 483013f783cb9bedecab91a61a0153dabaa9e46c
-=======
           <HelpString/>
         </Macro>
       </MenuMacro>
-      <MenuMacro UID="szybkaedycjaatrybutow">
+      <MenuMacro UID="ustawienia">
         <Macro>
-          <Name>Szybka edycja atrybutow</Name>
-          <Command>(fl:app:edit_attribContent)</Command>
->>>>>>> 23376bacca81c323cfc2b81ec8e724ab717daab0
+          <Name>Ustawienia</Name>
+          <Command>(fl:fire:dlg_options)</Command>
           <HelpString></HelpString>
         </Macro>
       </MenuMacro>
@@ -981,11 +975,6 @@
             <MenuItem>
               <MacroRef MenuMacroID="wartościdomyślne"/>
             </MenuItem>
-          </PopMenuItem><PopMenuItem>
-            <NameRef>&amp;Szybka edycja atrybutow</NameRef>
-            <MenuItem>
-              <MacroRef MenuMacroID="szybkaedycjaatrybutow"/>
-            </MenuItem>
           </PopMenuItem>
           <PopMenuItem>
             <NameRef>&amp;Edycja atrybutu w lini polecen</NameRef>
@@ -1063,7 +1052,13 @@
             <MenuItem>
               <MacroRef MenuMacroID="nowapetla"/>
             </MenuItem>
-          </PopMenuItem></PopMenu>
+          </PopMenuItem><PopMenuItem>
+            <NameRef>&amp;Ustawienia</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="ustawienia"/>
+            </MenuItem>
+          </PopMenuItem>
+        </PopMenu>
       </PopMenuRoot>
       <RibbonRoot>
         <RibbonTabSourceCollection/>
@@ -1577,102 +1572,4 @@
     </MenuRoot>
   </MenuGroup>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 483013f783cb9bedecab91a61a0153dabaa9e46c
-=======
-
->>>>>>> 23376bacca81c323cfc2b81ec8e724ab717daab0
 </CustSection>
