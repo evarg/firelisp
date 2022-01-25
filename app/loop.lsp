@@ -20,6 +20,26 @@
 )
 
 
+(defun fl:loop:layer:calculate (panelName loopNumberView) 
+  (setq panelName "")
+  (if CONF_PANEL_ADD 
+    (setq panelName (strcat "_" (itoa panelNumber)))
+  )
+  (setq layerName (strcat "__SAP" panelName "_" loopNumberView ""))
+  layerName
+)
+
+
+(defun fl:loop:layer:get (loopFID) 
+  (fl:attrib:content:get (fl:block:searchByFID loopFID) "WARSTWA")
+)
+
+
+(defun fl:loop:layer:set (loopFID value) 
+  (fl:attrib:content:set (fl:block:searchByFID loopFID) "WARSTWA" value)
+)
+
+
 (defun fl:loop:name:get (loopFID) 
   (fl:attrib:content:get (fl:block:searchByFID loopFID) "NAZWA")
 )
@@ -60,7 +80,7 @@
 )
 
 
-(defun fl:loop:new (loopName loopNumber loopNumberView panelFID / position 
+(defun fl:loop:new (loopName loopNumber loopNumberView panelFID layerName/ position 
                     panelNumber
                    ) 
   (fl:layout:setActive LAYOUT_FIRE_NAME)
@@ -98,15 +118,32 @@
   )
   (fl:polyline1V startPoint (fl:element:calculateOffset (entlast) "LM"))
 
+  (fl:loop:layers:create layerName)
+)
+
+
+(defun fl:loop:layers:create (layerName) 
+  ;utworzenie warstw dla petli
+  (fl:layer:new (strcat layerName "_DETEKCJA"))
+  (fl:layer:new (strcat layerName "_PETLA"))
+  (fl:layer:new (strcat layerName "_STEROWANIE"))
+
+  (fl:layer:color:set (strcat layerName "_DETEKCJA") 1)
+  (fl:layer:color:set (strcat layerName "_PETLA") 3)
+  (fl:layer:color:set (strcat layerName "_STEROWANIE") 5)
+)
+
+
+(defun fl:loop:layers:modify (oldLoopNumberView panelName loopNumberView) 
   ;utworzenie warstw dla petli
   (setq panelName "")
   (if CONF_PANEL_ADD 
     (setq panelName (strcat "_" (itoa panelNumber)))
   )
 
-  (fl:layer:new (strcat "__SAP" panelName "_" loopNumberView "_DETEKCJA"))
-  (fl:layer:new (strcat "__SAP" panelName "_" loopNumberView "_PETLA"))
-  (fl:layer:new (strcat "__SAP" panelName "_" loopNumberView "_STEROWANIE"))
+  (fl:layer:name:set (strcat "__SAP" panelName "_" loopNumberView "_DETEKCJA"))
+  (fl:layer:name:set (strcat "__SAP" panelName "_" loopNumberView "_PETLA"))
+  (fl:layer:name:set (strcat "__SAP" panelName "_" loopNumberView "_STEROWANIE"))
 )
 
 
@@ -127,8 +164,6 @@
   (while (> returnDialog 1) 
     (progn 
       (new_dialog "DCLloopNew" dclID)
-
-      (set_tile "Text1" "asdasd")
 
       (set_tile "TpanelFID" panelFID)
       (set_tile "TpanelName" panelName)
@@ -178,7 +213,8 @@
       ; wcisniety klawisz OK
       (if (= returnDialog 1) 
         (progn 
-          (fl:loop:new loopName (atoi loopNumber) loopNumberView panelFID)
+          (setq layerName (fl:loop:layer:calculate panelName loopNumberView))
+          (fl:loop:new loopName (atoi loopNumber) loopNumberView panelFID layerName)
         )
       )
     )
@@ -244,7 +280,8 @@
         (progn 
           (fl:loop:name:set loopFID loopName)
           (fl:loop:numberView:set loopFID loopNumberView)
-          (fl:loop:nameView:set loopFID
+          (fl:loop:nameView:set 
+            loopFID
             (fl:loop:nameView:calculate 
               (atoi loopNumber)
               loopName
