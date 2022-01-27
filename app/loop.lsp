@@ -80,7 +80,7 @@
 )
 
 
-(defun fl:loop:new (loopName loopNumber loopNumberView panelFID layerName/ position 
+(defun fl:loop:new (loopName loopNumber loopNumberView panelFID layerName / position 
                     panelNumber
                    ) 
   (fl:layout:setActive LAYOUT_FIRE_NAME)
@@ -107,6 +107,7 @@
   (fl:attrib:content:set (entlast) "NUMER_KOLEJNY" (itoa loopNumber))
   (fl:attrib:content:set (entlast) "NUMER_WYSWIETLANY" loopNumberView)
   (fl:attrib:content:set (entlast) "NAZWA_WYSWIETLANA" loopNameView)
+  (fl:attrib:content:set (entlast) "WARSTWA" layerName)
 
   (fl:attrib:location:set (entlast) "NAZWA_WYSWIETLANA" "MR")
 
@@ -214,6 +215,7 @@
       (if (= returnDialog 1) 
         (progn 
           (setq layerName (fl:loop:layer:calculate panelName loopNumberView))
+(print layerName)          
           (fl:loop:new loopName (atoi loopNumber) loopNumberView panelFID layerName)
         )
       )
@@ -223,6 +225,7 @@
 
   (print returnDialog)
 )
+
 
 (defun fl:loop:change:dlg (/ dclID entityName panelName panelFID loopName loopNumber 
                            returnDialog
@@ -296,7 +299,6 @@
 
   (print returnDialog)
 )
-
 
 
 (defun fl:fire:dlg_options (/ dclID) 
