@@ -114,6 +114,54 @@
   (unload_dialog dclID)
 )
 
+
+(defun fl:app:dlg_attribFontSize () 
+  (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\attribFontSize.dcl")))
+  (new_dialog "DCLattribFontSize" dclID)
+
+  (set_tile "eBlockScale" (rtos CONF_SCALE_DEFAULT))
+
+  (action_tile "cancel" 
+               "
+				(done_dialog 1)
+			"
+  )
+
+  (action_tile "bDefaultPLAN" 
+               "
+               (set_tile \"eAttribName\" \"PLAN\")
+			"
+  )
+
+  (action_tile "bDefaultCENTRALA" 
+               "
+               (set_tile \"eAttribName\" \"CENTRALA\")
+			"
+  )
+
+  (action_tile "bDefaultRAW" 
+               "
+               (set_tile \"eAttribName\" \"RAW\")
+			"
+  )
+
+  (action_tile "bAttribON" 
+               "
+               (fl:attrib:global:visibility (get_tile \"eAttribName\") VIS_ON)
+			"
+  )
+
+  (action_tile "bAttribOFF" 
+               "
+               (fl:attrib:global:visibility (get_tile \"eAttribName\") VIS_OFF)
+			"
+  )
+
+  (start_dialog)
+  (unload_dialog dclID)
+)
+
+
 (defun fl:app:edit_attribContent () 
   (while T 
     (progn 
