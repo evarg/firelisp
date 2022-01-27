@@ -1,6 +1,6 @@
 DCLattribFontSize : dialog {
   key = "Title";
-  label = "Wysokosc czcionki atrybutow";
+  label = "Parametry czcionki atrybutow";
   spacer;
 
   : boxed_row {
@@ -36,12 +36,32 @@ DCLattribFontSize : dialog {
       edit_width = 20;
       fixed_width = true;
     }
+  }
+  : boxed_row {
+    label = "Parametry czcionki";
+    width = 30;
     : edit_box {
       key = "eFontSize";
-      label = "Wysokosc";
+      label = "wysokosc";
       value = "";
       edit_limit = 20;
-      edit_width = 10;
+      edit_width = 5;
+      fixed_width = true;
+    }
+    : edit_box {
+      key = "eFontWeight";
+      label = "wspolczynnik";
+      value = "";
+      edit_limit = 20;
+      edit_width = 5;
+      fixed_width = true;
+    }
+    : edit_box {
+      key = "eFontAngle";
+      label = "kat nachylenia";
+      value = "";
+      edit_limit = 20;
+      edit_width = 5;
       fixed_width = true;
     }
   }
