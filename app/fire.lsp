@@ -28,6 +28,11 @@
 )
 
 
+(defun fl:fire:getAllLoops (panelFID) 
+  (fl:block:searchByOwnerFID panelFID)
+)
+
+
 (defun fl:fire:new (systemName listObjectS listObjectA / fileName osval position) 
   (setq osval (getvar "OSMODE"))
   (setvar "OSMODE" 0)
@@ -37,9 +42,6 @@
   (fl:layout:new LAYOUT_FIRE_NAME)
   (fl:layout:setActive LAYOUT_FIRE_NAME)
 
-  (fl:layer:new LAYOUT_FIRE_NAME)
-  (fl:layer:setActive LAYOUT_FIRE_NAME)  
-    
   ; usuniecie rzutni z layoutu
   (entdel (ssname (ssget "_X" '((0 . "VIEWPORT") (410 . "SP"))) 0))
 
@@ -183,5 +185,72 @@
 
   (start_dialog)
   ;)
+  (unload_dialog dclID)
+)
+
+
+(defun fl:fire:search () 
+  (setq ssAllBlocks (ssget "_X" '((0 . "INSERT") (410 . "SP"))))
+
+  (if ssAllBlocks 
+    (progn 
+      (setq i 0)
+      (repeat (sslength ssAllBlocks) 
+        (progn 
+          (setq blockName (fl:block:name:get (ssname ssAllBlocks i)))
+          (if (= blockName "SYSTEM_POZAROWY") 
+            (setq fireFID (fl:block:FID:get (ssname ssAllBlocks i)))
+          )
+          (setq i (+ 1 i))
+        )
+      )
+    )
+    (progn 
+      (setq fireFID nil)
+    )
+  )
+  fireFID
+)
+
+
+(defun fl:fire:dlg_options (/ dclID) 
+  (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\fireOptions.dcl")))
+  (new_dialog "DCLfireOptions" dclID)
+
+  (set_tile "tPanelNumber" "0")
+  (if CONF_PANEL_ADD 
+    (set_tile "tPanelNumber" "1")
+  )
+
+  (action_tile "accept" 
+               "
+                (setq CONF_PANEL_ADD nil) 
+                (if (= (get_tile \"tPanelNumber\") \"1\" )
+                  (setq CONF_PANEL_ADD T)
+                )
+              
+               (done_dialog 0)
+			"
+  )
+
+  (action_tile "bDefaultPLAN" 
+               "
+               (set_tile \"eAttribName\" \"PLAN\")
+			"
+  )
+
+  (action_tile "bDefaultCENTRALA" 
+               "
+               (set_tile \"eAttribName\" \"CENTRALA\")
+			"
+  )
+
+  (action_tile "bDefaultRAW" 
+               "
+               (set_tile \"eAttribName\" \"RAW\")
+			"
+  )
+
+  (start_dialog)
   (unload_dialog dclID)
 )
