@@ -1,6 +1,6 @@
-DCLloopNew : dialog {
+DCLloopChange : dialog {
   key = "Title";
-  label = "Nowa petla";
+  label = "Zmien ustawienia petli";
   spacer;
   : boxed_column {
     label = "Petla";
@@ -36,13 +36,13 @@ DCLloopNew : dialog {
   }
   
   : boxed_row {
-    label = "Centrala";
+    label = "Petla";
     width = 60;
     fixed_width = true;
     : row {
       : button {
         label = "Wybierz"; 
-        key = "BselectPanel";	
+        key = "BselectLoop";	
         alignment = centered; 
         width = 12;
         is_default = true;
@@ -51,16 +51,9 @@ DCLloopNew : dialog {
     }
     : row {
       : paragraph {
-        label = "Nazwa centrali:";
+        label = "FID petli:";
         : text_part {
-          key = "TpanelName";
-          label = "";
-        }
-      }
-      : paragraph {
-        label = "FID centrali:";
-        : text_part {
-          key = "TpanelFID";
+          key = "tLoopFID";
           label = "";
           width = 30;
         }

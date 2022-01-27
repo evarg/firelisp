@@ -13,6 +13,9 @@
 ; lista elemtow systemu adresowalnych
 (setq FIRE_LIST_OBJECT_A "")
 
+; jesli jest T to dla warstwy tworzonej dla petli dodawany jest numer centrali
+(setq CONF_PANEL_ADD nil)
+
 ; stale do pozycjonowania
 (defconstant J_LEFT 0)
 (defconstant J_CENTER 1)
