@@ -1,4 +1,4 @@
-(defun fl:block:FID:get (entityName / rv)
+(defun fl:block:FID:get (entityName / rv) 
   (setq rv nil)
   (setq rv (fl:attrib:content:get entityName "FID"))
   rv
@@ -132,4 +132,45 @@
     )
   )
   (setvar "OSMODE" osval)
+)
+
+
+(defun fl:block:xchange (blockNameS blockGroupD blockNameD scale diffX diffY attribS 
+                         attribD attribPositionD
+                        ) 
+  (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
+  (setq countBlocks (sslength ssAllBlocks))
+
+  (setq i 0)
+  (repeat countBlocks 
+    (progn 
+      (setq blockS (ssname ssAllBlocks i))
+
+      (if (= (fl:block:name:get blockS) blockNameS) 
+        (progn 
+          (setq positionD (list (+ (car (fl:block:position:get blockS)) diffX) 
+                                (+ (car (cdr (fl:block:position:get blockS))) 
+                                   diffY
+                                )
+                          )
+          )
+
+          (fl:block:insert blockGroupD blockNameD positionD scale 0)
+
+          (if (or (= attribS "") (= attribD "")) 
+            (print "Brak kopiowania atrybutow")
+            (progn 
+              (setq attribContentS (fl:attrib:content:get blockS attribS))
+              (if (= attribContentS NIL) 
+                (setq attribContentS "BRAK")
+              )
+              (fl:attrib:content:set (entlast) attribD attribContentS)
+              (fl:attrib:location:set (entlast) attribD attribPositionD)
+            )
+          )
+        )
+      )
+      (setq i (+ i 1))
+    )
+  )
 )

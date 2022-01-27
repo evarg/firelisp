@@ -67,6 +67,21 @@
   )
 )
 
+
+(defun fl:attrib:global:parametr:set (attribName parametrNumber value)
+  (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
+
+  (setq i 0)
+  (repeat (sslength ssAllBlocks) 
+    (progn 
+      (fl:attrib:parametr:set (ssname ssAllBlocks i) attribName parametrNumber value)
+      (setq i (+ i 1))
+    )
+  )
+)
+
+
+
 (defun newfl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
                                entityDXFpopr
                               ) 
@@ -115,6 +130,28 @@
   ) ;while
   (entmod entityDXFpopr)
 ) ;defun
+
+
+(defun fl:attrib:parametr:get (entityName attribName parametrNumber / enx exitValue) 
+  (if (entnext entityName) 
+    (while 
+      (and 
+        (null end)
+        (= "ATTRIB" 
+           (cdr 
+             (assoc 0 (setq enx (entget (setq entityName (entnext entityName)))))
+           )
+        )
+      ) ;and
+
+      (if (= (strcase attribName) (strcase (cdr (assoc 2 enx)))) 
+        (setq exitValue (cdr (assoc parametrNumber enx)))
+      ) ;if
+    ) ;while
+    (setq exitValue nil)
+  )
+  exitValue
+)
 
 
   ;

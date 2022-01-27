@@ -139,6 +139,20 @@
         <Macro>
           <Name>Ustawienia</Name>
           <Command>(fl:fire:dlg_options)</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="podmianablokow">
+        <Macro>
+          <Name>Podmiana blokow</Name>
+          <Command>(fl:app:dlg_blockXChange)</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="parametryczcionkiatrybutow">
+        <Macro>
+          <Name>Parametry czcionki atrybutow</Name>
+          <Command>(fl:app:dlg_attribFontSize)</Command>
           <HelpString></HelpString>
         </Macro>
       </MenuMacro>
@@ -977,9 +991,22 @@
             </MenuItem>
           </PopMenuItem>
           <PopMenuItem>
+            <NameRef>&amp;Parametry czcionki atrybutow</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="parametryczcionkiatrybutow"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
             <NameRef>&amp;Edycja atrybutu w lini polecen</NameRef>
             <MenuItem>
               <MacroRef MenuMacroID="edycjaatrybutuwlinipolecen"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem IsSeparator="true"/>
+          <PopMenuItem>
+            <NameRef>&amp;Podmiana blokow</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="podmianablokow"/>
             </MenuItem>
           </PopMenuItem>
           <PopMenuItem IsSeparator="true"/>
@@ -1571,5 +1598,7 @@
       </QuadRoot>
     </MenuRoot>
   </MenuGroup>
+
+
 
 </CustSection>
