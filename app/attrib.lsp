@@ -35,7 +35,7 @@
   (fl:attrib:parametr:set entityName attribName 1 value)
 )
 
-(defun fl:attrib:visibility (entityName attribName visibility)
+(defun fl:attrib:visibility (entityName attribName visibility) 
   (fl:attrib:parametr:set entityName attribName 70 visibility)
 )
 
@@ -68,48 +68,32 @@
 )
 
 
-(defun fl:attrib:global:parametr:set (attribName parametrNumber value)
+(defun fl:attrib:global:parametr:set (attribName parametrNumber value) 
   (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
 
-  (setq i 0)
-  (repeat (sslength ssAllBlocks) 
+  (if ssAllBlocks 
     (progn 
-      (fl:attrib:parametr:set (ssname ssAllBlocks i) attribName parametrNumber value)
-      (setq i (+ i 1))
+      (setq i 0)
+      (repeat (sslength ssAllBlocks) 
+        (progn 
+          (fl:attrib:parametr:set 
+            (ssname ssAllBlocks i)
+            attribName
+            parametrNumber
+            value
+          )
+          (setq i (+ i 1))
+        )
+      )
     )
   )
 )
 
 
-
-(defun newfl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
+(defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
                                entityDXFpopr
                               ) 
-  (setq end T)
-
-  (while end 
-    (if (null entityName) 
-      (progn 
-        (setq end NIL)
-      )
-      (progn 
-        (if 
-          (= 
-            (cdr 
-              (assoc 2 (entget entityName))
-            )
-            attribName
-          )
-          (setq entityName (entnext entityName))
-        )
-      )
-    )
-  ) ;defun
-)
-
-(defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
-                                  entityDXFpopr
-                                 ) 
+  (print entityName)
   (while 
     (and 
       (null end)
