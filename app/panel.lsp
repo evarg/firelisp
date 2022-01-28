@@ -9,6 +9,11 @@
 )
 
 
+(defun fl:panel:name:set (panelFID value) 
+  (fl:attrib:content:set (fl:block:searchByFID panelFID) "CENTRALA" value)
+)
+
+
 (defun fl:panel:FID:get (entityName / rv) 
   (setq rv nil)
   (setq rv (fl:attrib:content:get entityName "FID"))
@@ -125,6 +130,69 @@
       (if (= returnDialog 1) 
         (progn 
           (fl:panel:new panelName (atoi panelNumber) fireFID)
+        )
+      )
+    )
+  )
+  (unload_dialog dclID)
+
+  (print returnDialog)
+)
+
+
+(defun fl:panel:change:dlg (/ dclID entityName panelName panelFID loopName loopNumber 
+                           returnDialog
+                          ) 
+  (fl:layout:setActive LAYOUT_FIRE_NAME)
+  (fl:layer:setActive LAYOUT_FIRE_NAME)
+
+  (setq returnDialog 999)
+  (setq panelName "brak")
+  (setq panelNumber "brak")
+  (setq panelFID "brak")
+
+  (setq returnDialog 2)
+  (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\panelChange.dcl")))
+
+  (while (> returnDialog 1) 
+    (progn 
+      (new_dialog "DCLpanelChange" dclID)
+
+      (set_tile "tLoopFID" panelFID)
+      (set_tile "ePanelName" panelName)
+      (set_tile "ePanelNumber" panelNumber)
+
+      (action_tile "BselectPanel" "(done_dialog 101)")
+      (action_tile "accept" 
+                   "
+                   (setq loopFID (get_tile \"tLoopFID\"))
+                   (setq loopName (get_tile \"eLoopName\"))
+                   (setq loopNumber (get_tile \"eLoopNumber\"))
+                   (setq loopNumberView (get_tile \"eLoopNumberView\"))
+                   (done_dialog 1)
+        "
+      )
+
+      (setq returnDialog (start_dialog))
+
+      (if (= 101 returnDialog) 
+        (progn 
+          (setq entityName (car (entsel)))
+          (if (fl:panel:is entityName) 
+            (progn 
+              (setq panelFID (fl:block:FID:get entityName))
+              (setq panelName (fl:panel:name:get entityName))
+              (setq panelNumber (fl:panel:number:get entityName))
+            )
+          )
+        )
+      )
+
+      ; wcisniety klawisz OK
+      (if (= returnDialog 1) 
+        (progn 
+          (fl:panel:name:set loopFID panelName)
+          (fl:panel:number:set loopFID panelNumber)
         )
       )
     )

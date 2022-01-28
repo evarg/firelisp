@@ -153,6 +153,20 @@
         <Macro>
           <Name>Parametry czcionki atrybutow</Name>
           <Command>(fl:app:dlg_attribFontSize)</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="edycjapetli">
+        <Macro>
+          <Name>Edycja petli</Name>
+          <Command>(fl:loop:change:dlg)</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="edycjacentrali">
+        <Macro>
+          <Name>Edycja centrali</Name>
+          <Command>(fl:panel:change:dlg)</Command>
           <HelpString></HelpString>
         </Macro>
       </MenuMacro>
@@ -1075,9 +1089,20 @@
               <MacroRef MenuMacroID="nowacentrala"/>
             </MenuItem>
           </PopMenuItem><PopMenuItem>
+            <NameRef>&amp;Edycja centrali</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="edycjacentrali"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
             <NameRef>&amp;Nowa petla</NameRef>
             <MenuItem>
               <MacroRef MenuMacroID="nowapetla"/>
+            </MenuItem>
+          </PopMenuItem><PopMenuItem>
+            <NameRef>&amp;Edycja petli</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="edycjapetli"/>
             </MenuItem>
           </PopMenuItem><PopMenuItem>
             <NameRef>&amp;Ustawienia</NameRef>
@@ -1085,6 +1110,7 @@
               <MacroRef MenuMacroID="ustawienia"/>
             </MenuItem>
           </PopMenuItem>
+          
         </PopMenu>
       </PopMenuRoot>
       <RibbonRoot>
@@ -1598,6 +1624,8 @@
       </QuadRoot>
     </MenuRoot>
   </MenuGroup>
+
+
 
 
 
