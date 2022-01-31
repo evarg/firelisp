@@ -22,6 +22,14 @@ DCLpanelChange : dialog {
         edit_width = 3;
         fixed_width = true;
       }
+      : edit_box {
+        label = "Numer wyswietlany";
+        key = "ePanelNumberView";
+        value = "";
+        edit_limit = 20;
+        edit_width = 3;
+        fixed_width = true;
+      }
     }
   }
   
@@ -50,6 +58,7 @@ DCLpanelChange : dialog {
       }
     }
   }
+  
   spacer;
   ok_cancel;
 }

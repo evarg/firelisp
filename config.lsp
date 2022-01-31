@@ -1,6 +1,13 @@
 (setq PATH_BLOCK (strcat PATH_SCRIPT "block\\"))
 (setq PATH_SYSTEM (strcat PATH_SCRIPT "systems\\"))
 
+
+
+; nazwy blokow dla systemu pozarowego
+(setq CONF_BLOCK_FIRE "SYSTEM_POZAROWY")
+(setq CONF_BLOCK_PANEL "SYSTEM_POZAROWY_CENTRALA")
+(setq CONF_BLOCK_LOOP "SYSTEM_POZAROWY_PETLA")
+
 ; nazwa arkusza dla fire
 (setq LAYOUT_FIRE_NAME "SP")
 

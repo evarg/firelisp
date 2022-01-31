@@ -10,13 +10,13 @@
 )
 
 
-(defun fl:panel:Number:get (entityName / rv) 
+(defun fl:panel:number:get (entityName / rv) 
   (setq rv (fl:attrib:content:get entityName "NUMER_KOLEJNY"))
   rv
 )
 
 
-(defun fl:panel:NumberView:get (entityName / rv) 
+(defun fl:panel:numberView:get (entityName / rv) 
   (setq rv (fl:attrib:content:get entityName "NUMER_WYSWIETLANY"))
   rv
 )
@@ -53,10 +53,15 @@
 
 
 (defun fl:panel:is (entityName / rv) 
-  (if (= (fl:block:name:get entityName) "SYSTEM_POZAROWY_CENTRALA") 
+  (if (= (fl:block:name:get entityName) CONF_BLOCK_PANEL) 
     (progn 
       (setq rv T)
     )
   )
   rv
+)
+
+
+(defun fl:panel:getAllLoops (fireFID) 
+  (fl:block:searchByOwnerFID fireFID)
 )

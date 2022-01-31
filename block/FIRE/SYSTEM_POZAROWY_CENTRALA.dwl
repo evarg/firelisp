@@ -1,3 +1,3 @@
 BartoszGrabski-Devpa
 DELL-STACJONARN
-pi¹tek, styczeñ 28, 2022 14:21:41
+poniedzia³ek, styczeñ 31, 2022 14:29:24
