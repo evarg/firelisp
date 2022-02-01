@@ -31,13 +31,16 @@
   exitValue
 )
 
+
 (defun fl:attrib:content:set (entityName attribName value) 
   (fl:attrib:parametr:set entityName attribName 1 value)
 )
 
+
 (defun fl:attrib:visibility (entityName attribName visibility) 
   (fl:attrib:parametr:set entityName attribName 70 visibility)
 )
+
 
 (defun fl:attrib:global:visibility (attribName visibility / i ssAllBlocks) 
   (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
@@ -51,9 +54,11 @@
   )
 )
 
+
 (defun fl:attrib:font:size:set (entityName attribName textHeight) 
   (fl:attrib:parametr:set entityName attribName 40 textHeight)
 )
+
 
 (defun fl:attrib:global:font:size (attribName textHeight / i ssAllBlocks) 
   (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))

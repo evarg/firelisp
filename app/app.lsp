@@ -176,7 +176,6 @@
   (mapcar 'add_list '("Gora" "Lewo" "Prawo" "Dol" "Lewo + WZ"))
   (end_list)
 
-
   (action_tile "cancel" "(done_dialog 1)")
 
   (setq returnDialog (start_dialog))
