@@ -1,3 +1,6 @@
+;$M=$(if,$(and,$(>,$(getvar,OPMSTATE),0)),^c^c_propertiesclose,^c^c_properties)
+
+
 (defun fl:panel:new:dlg (/ dclID entityName panelNumber panelName fireFID fireName 
                          returnDialog
                         ) 
