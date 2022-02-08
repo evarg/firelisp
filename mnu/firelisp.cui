@@ -167,6 +167,13 @@
         <Macro>
           <Name>Edycja centrali</Name>
           <Command>(fl:panel:change:dlg)</Command>
+          <HelpString/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="właściwości">
+        <Macro>
+          <Name>Właściwości</Name>
+          <Command>;$M=$(if,$(and,$(&gt;,$(getvar,OPMSTATE),0)),^c^c_propertiesclose,^c^c_properties)</Command>
           <HelpString></HelpString>
         </Macro>
       </MenuMacro>
@@ -1033,6 +1040,13 @@
           <PopMenuRef pUID="mnNumerowanie"/>
           
           <PopMenuRef pUID="mnHelper"/>
+          <PopMenuItem IsSeparator="true"/>
+          <PopMenuItem>
+            <NameRef>&amp;Właściwości</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="właściwości"/>
+            </MenuItem>
+          </PopMenuItem>
         </PopMenu>
         <PopMenu UID="cmblok">
           <Name>blok</Name>
@@ -1624,6 +1638,7 @@
       </QuadRoot>
     </MenuRoot>
   </MenuGroup>
+
 
 
 

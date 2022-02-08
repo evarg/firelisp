@@ -8,6 +8,9 @@
 (setq CONF_BLOCK_PANEL "SYSTEM_POZAROWY_CENTRALA")
 (setq CONF_BLOCK_LOOP "SYSTEM_POZAROWY_PETLA")
 
+; nazwa arkusza dla ramek z arkuszy wydruku
+(setq LAYOUT_BORDER_NAME "WYDRUK")
+
 ; nazwa arkusza dla fire
 (setq LAYOUT_FIRE_NAME "SP")
 

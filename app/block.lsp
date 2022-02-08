@@ -95,6 +95,10 @@
   (cdr (assoc 10 (entget entityName)))
 )
 
+(defun fl:block:layer:get (entityName) 
+  (cdr (assoc 410 (entget entityName)))
+)
+
 
 (defun fl:block:position:set (entityName position / osval) 
   (setq osval (getvar "OSMODE"))
