@@ -286,7 +286,7 @@
 )
 
 
-(defun fl:border:new (ownerFID layoutName borderName) 
+(defun fl:border:new (ownerFID layoutName borderName / osval borderFID) 
   (setq osval (getvar "OSMODE"))
   (setvar "OSMODE" 0)
 
