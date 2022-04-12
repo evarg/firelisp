@@ -174,7 +174,7 @@
         <Macro>
           <Name>Właściwości</Name>
           <Command>;$M=$(if,$(and,$(&gt;,$(getvar,OPMSTATE),0)),^c^c_propertiesclose,^c^c_properties)</Command>
-          <HelpString></HelpString>
+          <HelpString/>
         </Macro>
       </MenuMacro>
     </MacroGroup>
@@ -458,7 +458,7 @@
       <MenuMacro UID="czujkadymu_2">
         <Macro>
           <Name>Czujka dymu</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_DOR")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_DOR")</Command>
           <HelpString/>
           
           <SmallImage Name="C:\FireLisp\mnu\icons\czujka_opt (16).png"/>
@@ -468,7 +468,7 @@
       <MenuMacro UID="czujkaciepła_2">
         <Macro>
           <Name>Czujka ciepła</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_TUN")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_TUN")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\czujka_term (16).png"/>
         </Macro>
@@ -476,14 +476,14 @@
       <MenuMacro UID="czujkadymuiciepła_2">
         <Macro>
           <Name>Czujka dymu i ciepła</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_DOT")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_DOT")</Command>
           <HelpString/>
           
           <Image ID="c:\firelisp\mnu\icons\czujka_mul (16).png"/></Macro>
       </MenuMacro><MenuMacro UID="ręcznyostrzegaczpożarowy_2">
         <Macro>
           <Name>Ręczny ostrzegacz pożarowy</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_ROP")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_ROP")</Command>
           <HelpString/>
           
           <Image ID="c:\firelisp\mnu\icons\rop (16).png"/></Macro>
@@ -492,7 +492,7 @@
       <MenuMacro UID="czujkadymuuniwersalna">
         <Macro>
           <Name>Czujka dymu uniwersalna</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_DUR")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_DUR")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\polon_dur (16).png"/>
         </Macro>
@@ -500,7 +500,7 @@
       <MenuMacro UID="czujkadymujonizacyjna">
         <Macro>
           <Name>Czujka dymu jonizacyjna</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_DIO")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_DIO")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\polon_dio (16).png"/>
         </Macro>
@@ -508,7 +508,7 @@
       <MenuMacro UID="adapterczujekradiowych">
         <Macro>
           <Name>Adapter czujek radiowych</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_ACR")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_ACR")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\polon_acr (16).png"/>
         </Macro>
@@ -516,7 +516,7 @@
       <MenuMacro UID="eks">
         <Macro>
           <Name>EKS</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_EKS")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_EKS")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\polon_eks (16).png"/>
         </Macro>
@@ -524,7 +524,7 @@
       <MenuMacro UID="ewk">
         <Macro>
           <Name>EWK</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_EWK")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_EWK")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\polon_ewk (16).png"/>
         </Macro>
@@ -532,7 +532,7 @@
       <MenuMacro UID="ews">
         <Macro>
           <Name>EWS</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_EWS")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_EWS")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\polon_ews (16).png"/>
         </Macro>
@@ -540,7 +540,7 @@
       <MenuMacro UID="ucs">
         <Macro>
           <Name>UCS</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_UCS")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_UCS")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\polon_ucs (16).png"/>
         </Macro>
@@ -549,7 +549,7 @@
       <MenuMacro UID="sygnalizator">
         <Macro>
           <Name>Sygnalizator</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_SAL")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_SAL")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\polon_sal (16).png"/>
         </Macro>
@@ -557,7 +557,7 @@
       <MenuMacro UID="czujkaradiowa">
         <Macro>
           <Name>Czujka radiowa</Name>
-          <Command>(pl:WstawElement "POLON4000" "POLON4000_RADIO")</Command>
+          <Command>(fl:element:insert "POLON6000" "POLON6000_RADIO")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\polon_radio (16).png"/>
         </Macro>
@@ -1312,7 +1312,7 @@
         </Toolbar>
         <Toolbar ToolbarOrient="floating" ToolbarVisible="hide" UID="tbPOLON" rows="1">
           <Alias>TB_POLON</Alias>
-          <Name>POLON4000</Name>
+          <Name>POLON6000</Name>
           <ToolbarButton>
             <Name>Czujka dymu</Name>
             <MenuItem>

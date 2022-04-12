@@ -141,3 +141,9 @@
     (print "Nic nie wybrano albo wybrano za zle")
   )
 )
+
+
+
+(defun fl:element:insert (blockGroup blockName) 
+  (fl:block:insert blockGroup blockName NIL CONF_SCALE_DEFAULT 0)
+)
