@@ -1,104 +1,35 @@
-(setq VIS_ON 0)
-(setq VIS_OFF 1)
+; =================================================================================================
+; | Start informations                                                                            |
+; =================================================================================================
 
-; =============================================================================================================
-; | Funkcja       | fl:attrib:content:get                                                                     |
-; |============================================================================================================
-; | Atrybuty      | entityName - nazwa                                                                                           |
-; |               |                                                                                           |
-; |============================================================================================================
-; | Przeznaczenie | Funkcja wyświetla okno dialogowe About                                                    |
-; =============================================================================================================
+(print "Load: attrib\\setters")
 
-(defun fl:attrib:content:get (entityName attribName / enx exitValue) 
-  (if (entnext entityName) 
-    (while 
-      (and 
-        (null end)
-        (= "ATTRIB" 
-           (cdr 
-             (assoc 0 (setq enx (entget (setq entityName (entnext entityName)))))
-           )
-        )
-      ) ;and
 
-      (if (= (strcase attribName) (strcase (cdr (assoc 2 enx)))) 
-        (setq exitValue (cdr (assoc 1 enx)))
-      ) ;if
-    ) ;while
-    (setq exitValue nil)
-  )
-  exitValue
-)
-
+; =================================================================================================
+; | Functions                                                                                     |
+; =================================================================================================
 
 (defun fl:attrib:content:set (entityName attribName value) 
   (fl:attrib:parametr:set entityName attribName 1 value)
 )
 
+; -------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:visibility (entityName attribName visibility) 
   (fl:attrib:parametr:set entityName attribName 70 visibility)
 )
 
-
-(defun fl:attrib:global:visibility (attribName visibility / i ssAllBlocks) 
-  (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
-
-  (setq i 0)
-  (repeat (sslength ssAllBlocks) 
-    (progn 
-      (fl:attrib:visibility (ssname ssAllBlocks i) attribName visibility)
-      (setq i (+ i 1))
-    )
-  )
-)
-
+; -------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:font:size:set (entityName attribName textHeight) 
   (fl:attrib:parametr:set entityName attribName 40 textHeight)
 )
 
-
-(defun fl:attrib:global:font:size (attribName textHeight / i ssAllBlocks) 
-  (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
-
-  (setq i 0)
-  (repeat (sslength ssAllBlocks) 
-    (progn 
-      (fl:attrib:font:size:set (ssname ssAllBlocks i) attribName textHeight)
-      (setq i (+ i 1))
-    )
-  )
-)
-
-
-(defun fl:attrib:global:parametr:set (attribName parametrNumber value) 
-  (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
-
-  (if ssAllBlocks 
-    (progn 
-      (setq i 0)
-      (repeat (sslength ssAllBlocks) 
-        (progn 
-          (fl:attrib:parametr:set 
-            (ssname ssAllBlocks i)
-            attribName
-            parametrNumber
-            value
-          )
-          (setq i (+ i 1))
-        )
-      )
-    )
-  )
-)
-
+; -------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
                                entityDXFpopr
                               ) 
-  (print entityName)
   (while 
     (and 
       (null end)
@@ -107,7 +38,7 @@
            (assoc 0 (setq enx (entget (setq entityName (entnext entityName)))))
          )
       )
-    ) ;and
+    )
 
     (if (= (strcase attribName) (strcase (cdr (assoc 2 enx)))) 
       (setq entityDXFpopr (subst (cons parametrNumber value) 
@@ -115,42 +46,19 @@
                                  enx
                           )
       )
-    ) ;if
-  ) ;while
-  (entmod entityDXFpopr)
-) ;defun
-
-
-(defun fl:attrib:parametr:get (entityName attribName parametrNumber / enx exitValue) 
-  (if (entnext entityName) 
-    (while 
-      (and 
-        (null end)
-        (= "ATTRIB" 
-           (cdr 
-             (assoc 0 (setq enx (entget (setq entityName (entnext entityName)))))
-           )
-        )
-      ) ;and
-
-      (if (= (strcase attribName) (strcase (cdr (assoc 2 enx)))) 
-        (setq exitValue (cdr (assoc parametrNumber enx)))
-      ) ;if
-    ) ;while
-    (setq exitValue nil)
+    )
   )
-  exitValue
+  (entmod entityDXFpopr)
 )
 
+; -------------------------------------------------------------------------------------------------
 
-  ;
-  ; entityName - musi byc: (car (entsel))
-  ;
 (defun fl:attrib:justify:set (entityName attribName horizontal vertical) 
   (fl:attrib:parametr:set entityName attribName 72 horizontal)
   (fl:attrib:parametr:set entityName attribName 74 vertical)
-) ;defun
+)
 
+; -------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:position:set (entityName attribName diffX diffY / enx blockPosition 
                                blockScale attribPosition
@@ -170,8 +78,9 @@
     11
     attribPosition
   )
-) ;defun
+)
 
+; -------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:location:setSS (location / block ActiveSel i) 
   (setq ActiveSel (cadr (ssgetfirst)))
@@ -182,7 +91,6 @@
         (setq block (ssname ActiveSel i))
         (if (fl:block:is block) 
           (progn 
-            (setq skalaBloku (fl:block:scale:get block))
             (fl:attrib:location:set 
               block
               CONF_ATTRIB_OPERATION
@@ -197,13 +105,9 @@
   )
 )
 
-  ;
-  ; pozycjonowanie atrybutu
-  ; location: UL UC UR ML MC MR DL DC DR MLW
-  ;
-(defun fl:attrib:location:set (entityName attribName location / blockScale) 
-  (setq blockScale (fl:block:scale:get entityName))
+; -------------------------------------------------------------------------------------------------
 
+(defun old:fl:attrib:location:set (entityName attribName location) 
   (if (= location "UL") 
     (progn 
       (fl:attrib:justify:set entityName attribName J_RIGHT J_DOWN)
@@ -324,3 +228,109 @@
     )
   )
 )
+
+; -------------------------------------------------------------------------------------------------
+
+(defun fl:attrib:location:set (entityName attribName location / justifyHorizontal 
+                               justifyVertical positionHorizontal positionVertical
+                              ) 
+
+  (cond 
+    ((= location "UL")
+     (setq justifyHorizontal  J_RIGHT
+           justifyVertical    J_DOWN
+           positionHorizontal CONF_ATTRIB_POSITION_L
+           positionVertical   CONF_ATTRIB_POSITION_U
+     )
+    )
+
+    ((= location "UC")
+     (setq justifyHorizontal  J_CENTER
+           justifyVertical    J_DOWN
+           positionHorizontal 0
+           positionVertical   CONF_ATTRIB_POSITION_U
+     )
+    )
+
+    ((= location "UR")
+     (setq justifyHorizontal  J_LEFT
+           justifyVertical    J_DOWN
+           positionHorizontal CONF_ATTRIB_POSITION_R
+           positionVertical   CONF_ATTRIB_POSITION_U
+     )
+    )
+
+    ((= location "ML")
+     (setq justifyHorizontal  J_RIGHT
+           justifyVertical    J_MIDDLE
+           positionHorizontal CONF_ATTRIB_POSITION_L
+           positionVertical   0
+     )
+    )
+
+    ((= location "MLW")
+     (setq justifyHorizontal  J_RIGHT
+           justifyVertical    J_MIDDLE
+           positionHorizontal (+ CONF_ATTRIB_POSITION_L CONF_ATTRIB_POSITION_WZ)
+           positionVertical   0
+     )
+    )
+
+    ((= location "MC")
+     (setq justifyHorizontal  J_CENTER
+           justifyVertical    J_MIDDLE
+           positionHorizontal 0
+           positionVertical   0
+     )
+    )
+
+    ((= location "MR")
+     (setq justifyHorizontal  J_LEFT
+           justifyVertical    J_MIDDLE
+           positionHorizontal CONF_ATTRIB_POSITION_R
+           positionVertical   0
+     )
+    )
+
+    ((= location "DL")
+     (setq justifyHorizontal  J_RIGHT
+           justifyVertical    J_UP
+           positionHorizontal CONF_ATTRIB_POSITION_L
+           positionVertical   CONF_ATTRIB_POSITION_D
+     )
+    )
+
+    ((= location "DC")
+     (setq justifyHorizontal  J_CENTER
+           justifyVertical    J_UP
+           positionHorizontal 0
+           positionVertical   CONF_ATTRIB_POSITION_D
+     )
+    )
+
+    ((= location "DR")
+     (setq justifyHorizontal  J_LEFT
+           justifyVertical    J_UP
+           positionHorizontal CONF_ATTRIB_POSITION_R
+           positionVertical   CONF_ATTRIB_POSITION_D
+     )
+    )
+
+    (t
+     (setq justifyHorizontal  J_CENTRER
+           justifyVertical    J_UP
+           positionHorizontal 0
+           positionVertical   CONF_ATTRIB_POSITION_D
+     )
+    )
+  )
+
+  (fl:attrib:justify:set entityName attribName justifyHorizontal justifyVertical)
+  (fl:attrib:position:set 
+    entityName
+    attribName
+    positionHorizontal
+    positionVertical
+  )
+)
+

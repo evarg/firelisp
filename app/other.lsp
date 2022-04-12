@@ -9,18 +9,31 @@
 )
 
 
-(defun fl:list2string (lst separator / str) 
+(defun fl:list2string (lst separator / str itm) 
   (setq str (car lst))
   (foreach itm (cdr lst) (setq str (strcat str separator itm)))
   str
 )
 
 
-(defun fl:uuid (/ auuid) 
+(defun fl:uuid.old (/ auuid) 
   (setq aauid (substr (rtos (fl:random) 2 6) 3 4))
   (setq aauid (strcat aauid "-" (substr (rtos (fl:random) 2 6) 3 6)))
   (setq aauid (strcat aauid "-" (substr (rtos (fl:random) 2 6) 3 4)))
   aauid
+)
+
+
+(defun fl:uuid (/ rv) 
+  (setq rv (strcat 
+             (substr (rtos (fl:random) 2 6) 3 4)
+             "-"
+             (substr (rtos (fl:random) 2 6) 3 6)
+             "-"
+             (substr (rtos (fl:random) 2 6) 3 4)
+           )
+  )
+  rv
 )
 
 
