@@ -1,5 +1,6 @@
-;$M=$(if,$(and,$(>,$(getvar,OPMSTATE),0)),^c^c_propertiesclose,^c^c_properties)
-
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
 
 (defun fl:panel:new:dlg (/ dclID entityName panelNumber panelName fireFID fireName 
                          returnDialog
@@ -79,6 +80,7 @@
   (print returnDialog)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:panel:change:dlg (/ dclID entityName panelName panelFID loopName loopNumber 
                             returnDialog

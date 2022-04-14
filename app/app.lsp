@@ -1,3 +1,7 @@
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
+
 ; =============================================================================================================
 ; | Funkcja       | fl:app:dlg_about                                                                          |
 ; |============================================================================================================
@@ -21,9 +25,9 @@
 )
 
 
-; =============================================================================================================
-; | Funkcja       | fl:app:dlg_defaultOptions                                                                 |
-; |============================================================================================================
+; =========================================================================================================
+; | Funkcja       | fl:app:dlg_defaultOptions                                                             |
+; |========================================================================================================
 ; | Atrybuty      |                                                                                           |
 ; |============================================================================================================
 ; | Przeznaczenie | Funkcja wyświetla okno dialogowe dedykowane ustawieniu domyslnych wartosci dla niektorych |
@@ -67,6 +71,7 @@
   (unload_dialog dclID)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:app:dlg_attribVisibility () 
   (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\attribVisibility.dcl")))
@@ -114,6 +119,7 @@
   (unload_dialog dclID)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:app:edit_attribContent () 
   (while T 
@@ -134,6 +140,7 @@
   )
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:app:dlg_blockXChange () 
   (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\blockXChange.dcl")))
@@ -211,12 +218,15 @@
   )
 )
 
+; --------------------------------------------------------------------------------------------------------
 
-(defun fl:app:dlg_attribFontSize (/ returnDialog fontSize attribName dclID) 
+(defun fl:app:dlg_attribFontSize (/ returnDialog fontSize fontWeight fontAngle 
+                                  attribName dclID
+                                 ) 
   (setq returnDialog 999)
-  (setq fontSize 0)
-  (setq fontWeight 0)
-  (setq fontAngle 0)
+  (setq fontSize "")
+  (setq fontWeight "")
+  (setq fontAngle "")
   (setq attribName "")
 
   (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\attribFontSize.dcl")))
@@ -230,23 +240,27 @@
       (action_tile "bDefaultCENTRALA" "(set_tile \"eAttribName\" \"CENTRALA\")")
       (action_tile "bDefaultRAW" "(set_tile \"eAttribName\" \"RAW\")")
       (action_tile "cancel" "(done_dialog 1)")
+
       (action_tile "bAttribGet" 
                    "
         (setq attribName (get_tile \"eAttribName\"))
-        (done_dialog 101)"
-      )
-      (action_tile "bAttribSet" 
+        (done_dialog 101)
                    "
-                   (setq fontSize (atof (get_tile \"eFontSize\")))
-                   (setq fontWeight (atof (get_tile \"eFontWeight\")))
-                   (setq fontAngle (atof (get_tile \"eFontAngle\")))
-                  
-        (done_dialog 102)"
       )
 
-      (if fontSize (set_tile "eFontSize" (rtos fontSize)))
-      (if fontWeight (set_tile "eFontWeight" (rtos fontWeight)))
-      (if fontAngle (set_tile "eFontAngle" (rtos fontAngle)))
+      (action_tile "bAttribSet" 
+                   "
+        (setq attribName (get_tile \"eAttribName\"))
+        (setq fontSize (get_tile \"eFontSize\"))
+        (setq fontWeight (get_tile \"eFontWeight\"))
+        (setq fontAngle (get_tile \"eFontAngle\"))
+        (done_dialog 102)
+                   "
+      )
+
+      (if fontSize (set_tile "eFontSize" fontSize))
+      (if fontWeight (set_tile "eFontWeight" fontWeight))
+      (if fontAngle (set_tile "eFontAngle" fontAngle))
 
       (set_tile "eAttribName" attribName)
       (set_tile "eFontSize" fontSize)
@@ -255,27 +269,65 @@
 
       (setq returnDialog (start_dialog))
 
-(print returnDialog)      
-      
       (if (= 101 returnDialog) 
         (progn 
-          (setq entityName (car (entsel)))
-          (if (fl:block:is entityName) 
-            (progn 
-              (setq fontSize (fl:attrib:parametr:get entityName attribName 40))
-              (setq fontWeight (fl:attrib:parametr:get entityName attribName 41))
-              (setq fontAngle (fl:attrib:parametr:get entityName attribName 51))
-              (print fontWeight)
+          (cond 
+            ((= attribName "") (print "Nie podano nazwy parametru"))
+            (t
+             (progn 
+               (setq entityName (car (entsel)))
+               (if (fl:block:is entityName) 
+                 (progn 
+                   (setq fontSize (fl:attrib:parametr:get entityName attribName 40))
+                   (setq fontWeight (fl:attrib:parametr:get 
+                                      entityName
+                                      attribName
+                                      41
+                                    )
+                   )
+                   (setq fontAngle (fl:attrib:parametr:get 
+                                     entityName
+                                     attribName
+                                     51
+                                   )
+                   )
+                 )
+               )
+             )
             )
           )
         )
       )
+
       (if (= 102 returnDialog) 
         (progn 
-          (fl:attrib:global:parametr:set attribName 40 fontSize)
-          (fl:attrib:global:parametr:set attribName 41 fontWeight)
-          (fl:attrib:global:parametr:set attribName 51 fontAngle)
-          (print attribName)
+          (cond 
+            ((= attribName "") (print "Nie podano nazwy parametru"))
+
+            ((= fontSize "") (print "Nie podano rozmiaru czcionki"))
+            ((null (numberp (read fontSize)))
+             (print "Nieprawidlowa wartosc rozmiaru czcionki")
+            )
+
+            ((= fontWeight "") (print "Nie podano wspolczynnika dla czcionki"))
+            ((null (numberp (read fontWeight)))
+             (print "Nieprawidlowa wartosc wspolczynnika czcionki")
+            )
+
+            ((= fontAngle "") (print "Nie podano kata dla czcionki"))
+            ((null (numberp (read fontAngle)))
+             (print "Nieprawidlowa wartosc kata dla czcionki")
+            )
+
+            (t
+             (progn 
+               (print "TRUE")
+               (fl:attrib:global:parametr:set attribName 40 (atof fontSize))
+               (fl:attrib:global:parametr:set attribName 41 (atof fontWeight))
+               (fl:attrib:global:parametr:set attribName 51 (atof fontAngle))
+             )
+            )
+          )
         )
       )
     )
@@ -283,5 +335,3 @@
 
   (unload_dialog dclID)
 )
-
-

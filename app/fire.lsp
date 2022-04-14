@@ -1,9 +1,14 @@
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
+
 (defun fl:fire:name:get (entityName / rv) 
   (setq rv nil)
   (setq rv (fl:attrib:content:get entityName "CENTRALA"))
   rv
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:fire:FID:get (entityName / rv) 
   (setq rv nil)
@@ -11,6 +16,7 @@
   rv
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:fire:is (entityName / rv) 
   (setq rv nil)
@@ -22,16 +28,19 @@
   rv
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:fire:getAllPanels (fireFID) 
   (fl:block:searchByOwnerFID fireFID)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:fire:getAllLoops (panelFID) 
   (fl:block:searchByOwnerFID panelFID)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:fire:new (systemName listObjectS listObjectA / fileName osval position) 
   (setq osval (getvar "OSMODE"))
@@ -61,6 +70,7 @@
   (setvar "OSMODE" osval)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:fire:dlg_new (/ dclID) 
   (setq dclID (load_dialog 
@@ -137,6 +147,7 @@
   (unload_dialog dclID)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fg:fire:dlg_new2 (/ dclID nastepny blokSP cur_ss) 
   (setq dclID (load_dialog (strcat PATH_SCRIPT "App\\Views\\fireNew.dcl")))
@@ -188,6 +199,7 @@
   (unload_dialog dclID)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:fire:search () 
   (setq ssAllBlocks (ssget "_X" '((0 . "INSERT") (410 . "SP"))))
@@ -212,6 +224,7 @@
   fireFID
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:fire:dlg_options (/ dclID) 
   (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\fireOptions.dcl")))

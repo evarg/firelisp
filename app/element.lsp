@@ -1,4 +1,6 @@
-
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
 
 (defun fl:element:align:horizontal:SS (/ osval activeSS baseBlock blockToAlign baseY 
                                        blockX blockY
@@ -36,6 +38,7 @@
   (setvar "OSMODE" osval)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:element:align:vertical:SS (/ osval activeSS baseBlock blockToAlign baseX 
                                      blockX blockY
@@ -73,8 +76,9 @@
   (setvar "OSMODE" osval)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
-(defun fl:element:pair:vertical:SS (/ ActiveSel) 
+(defun fl:element:pair:vertical:SS (/ osval ActiveSel) 
   (setq ActiveSel (cadr (ssgetfirst)))
   (if (and ActiveSel (= (sslength ActiveSel) 2)) 
     (progn 
@@ -108,8 +112,9 @@
   )
 )
 
+; --------------------------------------------------------------------------------------------------------
 
-(defun fl:element:pair:horizontal:SS (/ ActiveSel) 
+(defun fl:element:pair:horizontal:SS (/ osval ActiveSel) 
   (setq ActiveSel (cadr (ssgetfirst)))
   (if (and ActiveSel (= (sslength ActiveSel) 2)) 
     (progn 
@@ -142,7 +147,7 @@
   )
 )
 
-
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:element:insert (blockGroup blockName) 
   (fl:block:insert blockGroup blockName NIL CONF_SCALE_DEFAULT 0)

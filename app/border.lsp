@@ -1,3 +1,7 @@
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
+
 (defun fl:border:is (entityName / rv) 
   (setq rv nil)
   (if (= (substr (fl:block:name:get entityName) 1 9) "FL_RAMKA_") 
@@ -7,6 +11,8 @@
   )
   rv
 )
+
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:print:is (entityName / rv) 
   (setq rv nil)
@@ -18,45 +24,56 @@
   rv
 )
 
+; --------------------------------------------------------------------------------------------------------
+
 (defun fl:border:getByFID (borderFID paramName) 
   (fl:attrib:content:get (fl:block:searchByFID borderFID) paramName)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:border:setByFID (borderFID paramName value) 
   (fl:attrib:content:set (fl:block:searchByFID borderFID) paramName value)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:border:icon:getByFID (borderFID paramName) 
   (fl:attrib:content:get (fl:block:searchByFID borderFID) paramName)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:border:icon:setByFID (borderFID paramName value) 
   (fl:attrib:content:set (fl:block:searchByFID borderFID) paramName value)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:print:getByFID (printFID paramName) 
   (fl:attrib:content:get (fl:block:searchByFID printFID) paramName)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:print:setByFID (printFID paramName value) 
   (fl:attrib:content:set (fl:block:searchByFID printFID) paramName value)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:border:FID:get (entityName / rv) 
   (setq rv (fl:attrib:content:get entityName "FID"))
   rv
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:border:layout:getByFID (borderFID) 
   (fl:block:layer:get (fl:block:searchByFID borderFID))
 )
+
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:print:new:dlg (/ dclID returnDialog printFID dlcProjekt1 dlcProjekt2 
                          dlcProjekt3 dlcProjekt4 dlcOpracowanie1 dlcProjektowal1 
@@ -177,6 +194,7 @@
   (print returnDialog)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:print:new () 
   (setq osval (getvar "OSMODE"))
@@ -199,6 +217,7 @@
   printFID
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:border:new:dlg (/ dclID returnDialog borderFID) 
   (progn 
@@ -266,6 +285,7 @@
   (print returnDialog)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:border:icon:new (printFID) 
   (setq osval (getvar "OSMODE"))
@@ -285,6 +305,7 @@
   borderFID
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:border:new (ownerFID layoutName borderName / osval borderFID) 
   (setq osval (getvar "OSMODE"))
@@ -303,6 +324,7 @@
   borderFID
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:print:borders:position:set () 
   (setq printFID (fl:print:exists))
@@ -315,16 +337,11 @@
   (print borderList)
 )
 
-;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+; --------------------------------------------------------------------------------------------------------
 
 (defun ZERUJLinie () 
   (setq suma 0)
   (setq i 0)
-;  (setq all (ssget "_X" '((0 . "LINE") (8 . "__DP_SAP_01_petla"))))
-;  (setq all (ssget "_X" '((0 . "LINE") (8 . "__DP_SAP_02_petla"))))
-;  (setq all (ssget "_X" '((0 . "LINE") (8 . "__DP_SAP_03_petla"))))
-;  (setq all (ssget "_X" '((0 . "LINE") (8 . "__DP_SAP_sygn_linia"))))
-;  (setq all (ssget "_X" '((0 . "LINE") (8 . "__DP_SAP_ster_yntksy"))))
   (setq all (ssget "_X" '((0 . "LINE") (8 . "__DP_SAP_STER_HDGS"))))
 
   (repeat (sslength all) 
@@ -352,6 +369,8 @@
   )
 )
 
+; --------------------------------------------------------------------------------------------------------
+
 (defun listaLini () 
   (setq suma 0)
   (setq i 0)
@@ -369,7 +388,7 @@
   )
 )
 
-
+; --------------------------------------------------------------------------------------------------------
 
 (defun liczlinie (warstwa) 
   (setq suma 0)
@@ -387,12 +406,15 @@
   (print (strcat "SUMA: " (rtos suma)))
 )
 
+; --------------------------------------------------------------------------------------------------------
+
 (defun lineLength (entityName) 
   (distance (cdr (assoc 10 (entget entityName))) 
             (cdr (assoc 11 (entget entityName)))
   )
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun liczbloki2 (/ i all) 
   (setq i 0)
@@ -410,6 +432,7 @@
   (print (strcat "LINII: " (rtos i)))
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun liczbloki (/ i all) 
   (setq i 0)
@@ -427,6 +450,8 @@
   (print (strcat "LINII: " (rtos i)))
 )
 
+; --------------------------------------------------------------------------------------------------------
+
 (defun getblockname (blk / res) 
   (if blk 
     (progn 
@@ -442,6 +467,7 @@
   ) ;_ end of if
 ) ;_ end of defun
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun LM:al-effectivename (ent / blk rep) 
   (if (wcmatch (setq blk (cdr (assoc 2 (entget ent)))) "`**") 

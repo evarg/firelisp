@@ -1,7 +1,8 @@
+(setq APP_VERSION "v.1.1")
+(setq APP_DATE "2022-04-14")
+
 (setq PATH_BLOCK (strcat PATH_SCRIPT "block\\"))
 (setq PATH_SYSTEM (strcat PATH_SCRIPT "systems\\"))
-
-
 
 ; nazwy blokow dla systemu pozarowego
 (setq CONF_BLOCK_FIRE "SYSTEM_POZAROWY")

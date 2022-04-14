@@ -1,3 +1,7 @@
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
+
 (defun fl:element:connect (/ ee pt1 pt2 block1 block2 blockScale anchor1 startPoint 
                            endPoint anchor2 posStart posEnd
                           ) 
@@ -81,6 +85,7 @@
   )
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:element:locateConnect (blockPoint connectPoint blockScale / location diffX 
                                  diffY
@@ -112,6 +117,7 @@
   location
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:element:calculateOffset (entityName location / point) 
   (setq blockPoint (fl:block:position:get entityName))

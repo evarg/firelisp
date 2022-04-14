@@ -1,3 +1,7 @@
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
+
 (defun fl:loop:is (entityName / rv) 
   (setq rv nil)
   (if (= (fl:block:name:get entityName) "SYSTEM_POZAROWY_PETLA") 
@@ -6,6 +10,7 @@
   rv
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:nameView:calculate (loopNumber loopName loopNumberView) 
   (setq loopNameView (strcat (itoa loopNumber) 
@@ -19,6 +24,7 @@
   loopNameView
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:layer:calculate (panelName loopNumberView) 
   (setq panelName "")
@@ -29,56 +35,67 @@
   layerName
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:layer:get (loopFID) 
   (fl:attrib:content:get (fl:block:searchByFID loopFID) "WARSTWA")
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:layer:set (loopFID value) 
   (fl:attrib:content:set (fl:block:searchByFID loopFID) "WARSTWA" value)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:name:get (loopFID) 
   (fl:attrib:content:get (fl:block:searchByFID loopFID) "NAZWA")
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:name:set (loopFID value) 
   (fl:attrib:content:set (fl:block:searchByFID loopFID) "NAZWA" value)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:nameView:get (loopFID) 
   (fl:attrib:content:get (fl:block:searchByFID loopFID) "NAZWA_WYSWIETLANA")
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:nameView:set (loopFID value) 
   (fl:attrib:content:set (fl:block:searchByFID loopFID) "NAZWA_WYSWIETLANA" value)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:number:get (loopFID) 
   (fl:attrib:content:get (fl:block:searchByFID loopFID) "NUMER_KOLEJNY")
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:number:set (loopFID value) 
   (fl:attrib:content:set (fl:block:searchByFID loopFID) "NUMER_KOLEJNY" value)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:numberView:get (loopFID) 
   (fl:attrib:content:get (fl:block:searchByFID loopFID) "NUMER_WYSWIETLANY")
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:numberView:set (loopFID value) 
   (fl:attrib:content:set (fl:block:searchByFID loopFID) "NUMER_WYSWIETLANY" value)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:new (loopName loopNumber loopNumberView panelFID layerName / position 
                     panelNumber
@@ -122,6 +139,7 @@
   (fl:loop:layers:create layerName)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:layers:create (layerName) 
   ;utworzenie warstw dla petli
@@ -134,6 +152,7 @@
   (fl:layer:color:set (strcat layerName "_STEROWANIE") 5)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:loop:layers:modify (oldLoopNumberView panelName loopNumberView) 
   ;utworzenie warstw dla petli
@@ -147,8 +166,7 @@
   (fl:layer:name:set (strcat "__SAP" panelName "_" loopNumberView "_STEROWANIE"))
 )
 
-
-
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:fire:dlg_options (/ dclID) 
   (setq dclID (load_dialog (strcat PATH_SCRIPT "app\\views\\fireOptions.dcl")))

@@ -177,6 +177,14 @@
           <HelpString/>
         </Macro>
       </MenuMacro>
+      <MenuMacro UID="wskaznikzadzialania">
+        <Macro>
+          <Name>Wskaznik zadzialania</Name>
+          <Command>(fl:element:insert "SSP" "WZ")</Command>
+          <HelpString></HelpString>
+          <Image ID="2dcontext"/>
+        </Macro>
+      </MenuMacro>
     </MacroGroup>
     <MacroGroup Name="FireLisp">
       
@@ -1391,6 +1399,12 @@
               <MacroRef MenuMacroID="sygnalizator"/>
             </MenuItem>
           </ToolbarButton>
+          <ToolbarButton>
+            <Name>Wskaznik zadzialania</Name>
+            <MenuItem>
+              <MacroRef MenuMacroID="wskaznikzadzialania"/>
+            </MenuItem>
+          </ToolbarButton>
         </Toolbar>
         <Toolbar ToolbarOrient="floating" ToolbarVisible="hide" UID="tbFP2000" rows="1">
           <Alias>TB_FP2000</Alias>
@@ -1638,6 +1652,7 @@
       </QuadRoot>
     </MenuRoot>
   </MenuGroup>
+
 
 
 

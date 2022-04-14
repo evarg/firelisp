@@ -1,35 +1,58 @@
-; =================================================================================================
-; | Start informations                                                                            |
-; =================================================================================================
-
-(print "Load: attrib\\setters")
-
-
-; =================================================================================================
-; | Functions                                                                                     |
-; =================================================================================================
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
 
 (defun fl:attrib:content:set (entityName attribName value) 
   (fl:attrib:parametr:set entityName attribName 1 value)
 )
 
-; -------------------------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:visibility (entityName attribName visibility) 
   (fl:attrib:parametr:set entityName attribName 70 visibility)
 )
 
-; -------------------------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:font:size:set (entityName attribName textHeight) 
   (fl:attrib:parametr:set entityName attribName 40 textHeight)
 )
 
-; -------------------------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
-                               entityDXFpopr
-                              ) 
+                                   entityDXFpopr
+                                  ) 
+  (print (fl:entity:type:get entityName))
+
+  (while 
+    (and 
+      (entnext entityName)
+      (= "ATTRIB" 
+         (cdr 
+           (assoc 0 (setq enx (entget (setq entityName (entnext entityName)))))
+         )
+      )
+    )
+
+    (if (= (strcase attribName) (strcase (cdr (assoc 2 enx)))) 
+      (setq entityDXFpopr (subst (cons parametrNumber value) 
+                                 (assoc parametrNumber enx)
+                                 enx
+                          )
+      )
+    )
+  )
+  (entmod entityDXFpopr)
+)
+
+; --------------------------------------------------------------------------------------------------------
+
+(defun fl_org:attrib:parametr:set (entityName attribName parametrNumber value / enx 
+                                   entityDXFpopr
+                                  ) 
+  (print entityName)
+
   (while 
     (and 
       (null end)
@@ -51,14 +74,14 @@
   (entmod entityDXFpopr)
 )
 
-; -------------------------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:justify:set (entityName attribName horizontal vertical) 
   (fl:attrib:parametr:set entityName attribName 72 horizontal)
   (fl:attrib:parametr:set entityName attribName 74 vertical)
 )
 
-; -------------------------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:position:set (entityName attribName diffX diffY / enx blockPosition 
                                blockScale attribPosition
@@ -80,7 +103,7 @@
   )
 )
 
-; -------------------------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:location:setSS (location / block ActiveSel i) 
   (setq ActiveSel (cadr (ssgetfirst)))
@@ -105,7 +128,7 @@
   )
 )
 
-; -------------------------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------------------------------
 
 (defun old:fl:attrib:location:set (entityName attribName location) 
   (if (= location "UL") 
@@ -229,7 +252,7 @@
   )
 )
 
-; -------------------------------------------------------------------------------------------------
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:location:set (entityName attribName location / justifyHorizontal 
                                justifyVertical positionHorizontal positionVertical
