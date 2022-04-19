@@ -20,11 +20,11 @@
 (load (strcat PATH_SCRIPT "app\\layer.lsp"))
 (load (strcat PATH_SCRIPT "app\\polyline\\polyline.lsp"))
 (load (strcat PATH_SCRIPT "app\\border.lsp"))
+(load (strcat PATH_SCRIPT "app\\numbering\\numbering.lsp"))
+(load (strcat PATH_SCRIPT "app\\logger.lsp"))
 
 
-(setq welcomeText (strcat "* FireLisp version: " APP_VERSION "@" APP_DATE))
 (print)
-
 (princ "  88888888b dP  888888ba   88888888b    dP        dP .d88888b   888888ba   ")
 (print)
 (princ " 88        88  88    `8b  88           88        88 88.    \"'  88    `8b  ")

@@ -211,18 +211,14 @@
         ((= attribPositionD "4") (setq attribPositionD "MLW"))
       )
 
-      (fl:block:xchange G_blockNameS G_blockGroupD G_blockNameD G_scale G_diffX 
-                        G_diffY G_attribS G_attribd attribPositionD
-      )
+      (fl:block:xchange G_blockNameS G_blockGroupD G_blockNameD G_scale G_diffX G_diffY G_attribS G_attribd attribPositionD)
     )
   )
 )
 
 ; --------------------------------------------------------------------------------------------------------
 
-(defun fl:app:dlg_attribFontSize (/ returnDialog fontSize fontWeight fontAngle 
-                                  attribName dclID
-                                 ) 
+(defun fl:app:dlg_attribFontSize (/ returnDialog fontSize fontWeight fontAngle attribName dclID) 
   (setq returnDialog 999)
   (setq fontSize "")
   (setq fontWeight "")

@@ -23,8 +23,6 @@
 (defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
                                    entityDXFpopr
                                   ) 
-  (print (fl:entity:type:get entityName))
-
   (while 
     (and 
       (entnext entityName)

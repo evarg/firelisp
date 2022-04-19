@@ -123,3 +123,6 @@
                                 "POLON4000_SAL" "POLON4000_TUN" "POLON4000_UCS"
                                )
 )
+
+; szerokosc gwiazdek od logowania
+(setq LOG_WIDTH 100)
