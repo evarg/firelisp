@@ -1,11 +1,4 @@
 ; =============================================================================
-; | Start informations                                                        |
-; =============================================================================
-
-(print "Load: attrib\\globals")
-
-
-; =============================================================================
 ; | Functions                                                                 |
 ; =============================================================================
 
@@ -21,6 +14,7 @@
   )
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:global:font:size (attribName textHeight / i ssAllBlocks) 
   (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
@@ -34,10 +28,10 @@
   )
 )
 
+; --------------------------------------------------------------------------------------------------------
 
-(defun fl:attrib:global:parametr:set (attribName parametrNumber value) 
+(defun fl:attrib:global:parametr:set (attribName parametrNumber value / i ssAllBlocks) 
   (setq ssAllBlocks (ssget "_X" '((0 . "INSERT"))))
-
   (if ssAllBlocks 
     (progn 
       (setq i 0)
@@ -56,6 +50,7 @@
   )
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:attrib:parametr:get (entityName attribName parametrNumber / enx exitValue) 
   (if (entnext entityName) 

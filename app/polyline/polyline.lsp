@@ -1,3 +1,7 @@
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
+
 (defun fl:polyline1V (startPoint endPoint / osval midPoint1) 
   (setq osval (getvar "OSMODE"))
   (setvar "OSMODE" 0)
@@ -13,6 +17,7 @@
   (setvar "OSMODE" osval)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:polyline1H (startPoint endPoint / osval midPoint1) 
   (setq osval (getvar "OSMODE"))
@@ -29,6 +34,7 @@
   (setvar "OSMODE" osval)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:polyline2H (startPoint endPoint / osval midPoint1 midPoint2 x) 
   (setq osval (getvar "OSMODE"))
@@ -53,6 +59,7 @@
   (setvar "OSMODE" osval)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:polyline2V (startPoint endPoint / osval midPoint1 midPoint2 y) 
   (setq osval (getvar "OSMODE"))

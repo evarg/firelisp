@@ -177,6 +177,21 @@
           <HelpString/>
         </Macro>
       </MenuMacro>
+      <MenuMacro UID="wskaznikzadzialania">
+        <Macro>
+          <Name>Wskaznik zadzialania</Name>
+          <Command>(fl:element:insert "SSP" "WZ")</Command>
+          <HelpString/>
+          <Image ID="2dcontext"/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="numerowanie_1">
+        <Macro>
+          <Name>Numerowanie</Name>
+          <Command>(fl:app:dlg_numberingSetup)</Command>
+          <HelpString></HelpString>
+        </Macro>
+      </MenuMacro>
     </MacroGroup>
     <MacroGroup Name="FireLisp">
       
@@ -1037,7 +1052,7 @@
               <MacroRef MenuMacroID="about"/>
             </MenuItem>
           </PopMenuItem>
-          <PopMenuRef pUID="mnNumerowanie"/>
+          
           
           <PopMenuRef pUID="mnHelper"/>
           <PopMenuItem IsSeparator="true"/>
@@ -1045,6 +1060,12 @@
             <NameRef>&amp;Właściwości</NameRef>
             <MenuItem>
               <MacroRef MenuMacroID="właściwości"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Numerowanie</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="numerowanie_1"/>
             </MenuItem>
           </PopMenuItem>
         </PopMenu>
@@ -1060,27 +1081,7 @@
           <PopMenuItem IsSeparator="true"/></PopMenu>
         
         
-        <PopMenu UID="mnNumerowanie">
-          <Name>&amp;Numerowanie</Name>
-          <PopMenuItem>
-            <NameRef>&amp;Wczytaj</NameRef>
-            <MenuItem>
-              <MacroRef MenuMacroID="wczytaj_1"/>
-            </MenuItem>
-          </PopMenuItem>
-          <PopMenuItem>
-            <NameRef>&amp;Setup</NameRef>
-            <MenuItem>
-              <MacroRef MenuMacroID="setup"/>
-            </MenuItem>
-          </PopMenuItem>
-          <PopMenuItem>
-            <NameRef>&amp;Numerowanie</NameRef>
-            <MenuItem>
-              <MacroRef MenuMacroID="numerowanie"/>
-            </MenuItem>
-          </PopMenuItem>
-        </PopMenu>
+        
         <PopMenu UID="mnHelper">
           <Name>&amp;Helper</Name>
           <PopMenuItem>
@@ -1391,6 +1392,12 @@
               <MacroRef MenuMacroID="sygnalizator"/>
             </MenuItem>
           </ToolbarButton>
+          <ToolbarButton>
+            <Name>Wskaznik zadzialania</Name>
+            <MenuItem>
+              <MacroRef MenuMacroID="wskaznikzadzialania"/>
+            </MenuItem>
+          </ToolbarButton>
         </Toolbar>
         <Toolbar ToolbarOrient="floating" ToolbarVisible="hide" UID="tbFP2000" rows="1">
           <Alias>TB_FP2000</Alias>
@@ -1638,6 +1645,8 @@
       </QuadRoot>
     </MenuRoot>
   </MenuGroup>
+
+
 
 
 

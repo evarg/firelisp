@@ -1,7 +1,14 @@
+; ========================================================================================================
+; | Includes                                                                                            |
+; ========================================================================================================
+
 (load (strcat PATH_SCRIPT "app\\panel\\getters.lsp"))
 (load (strcat PATH_SCRIPT "app\\panel\\setters.lsp"))
 (load (strcat PATH_SCRIPT "app\\panel\\dialogs.lsp"))
 
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
 
 (defun fl:panel:new (panelName panelNumber panelNumberView fireFID / position 
                      entityName
@@ -30,6 +37,7 @@
   (fl:polyline1H (list 20 180) (fl:element:calculateOffset entityName "UC"))
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:panel:nameView:calculate (panelNumber panelName panelNumberView / panelNameView) 
   (setq panelNameView (strcat (itoa panelNumber) 

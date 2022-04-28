@@ -1,9 +1,14 @@
+; ========================================================================================================
+; | Functions                                                                                            |
+; ========================================================================================================
+
 (defun fl:block:FID:get (entityName / rv) 
   (setq rv nil)
   (setq rv (fl:attrib:content:get entityName "FID"))
   rv
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:block:is (entityName / rv) 
   (setq rv nil)
@@ -17,6 +22,7 @@
   rv
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:block:name:get (entityName / rv) 
   (setq rv nil)
@@ -28,6 +34,7 @@
   rv
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:block:searchByFID (fid / ssBlocks i blockFID returnValue) 
   (setq ssBlocks (ssget "_X" '((0 . "INSERT"))))
@@ -48,6 +55,7 @@
   returnValue
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:block:searchByOwnerFID (fid / ssBlocks i blockFID blockOwnerFID returnValue 
                                   entityName
@@ -74,6 +82,7 @@
   returnValue
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:block:generateFID:ss (/ entityName ssActive i) 
   (setq ssActive (cadr (ssgetfirst)))
@@ -90,15 +99,19 @@
   )
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:block:position:get (entityName) 
   (cdr (assoc 10 (entget entityName)))
 )
 
+; --------------------------------------------------------------------------------------------------------
+
 (defun fl:block:layer:get (entityName) 
   (cdr (assoc 410 (entget entityName)))
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:block:position:set (entityName position / osval) 
   (setq osval (getvar "OSMODE"))
@@ -109,11 +122,13 @@
   (setvar "OSMODE" osval)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:block:scale:get (entityName) 
   (cdr (assoc 41 (entget entityName)))
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:block:insert (blockGroup blockName position scale rotate / fileName osval) 
   (setq osval (getvar "OSMODE"))
@@ -138,6 +153,7 @@
   (setvar "OSMODE" osval)
 )
 
+; --------------------------------------------------------------------------------------------------------
 
 (defun fl:block:xchange (blockNameS blockGroupD blockNameD scale diffX diffY attribS 
                          attribD attribPositionD
