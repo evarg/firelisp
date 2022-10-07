@@ -189,7 +189,7 @@
         <Macro>
           <Name>Numerowanie</Name>
           <Command>(fl:app:dlg_numberingSetup)</Command>
-          <HelpString></HelpString>
+          <HelpString/>
         </Macro>
       </MenuMacro>
     </MacroGroup>
@@ -381,7 +381,7 @@
       <MenuMacro UID="czujkadymu_1">
         <Macro>
           <Name>Czujka dymu</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_PS")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_PS")</Command>
           <HelpString/>
           
           <SmallImage Name="C:\FireLisp\mnu\icons\czujka_opt (16).png"/>
@@ -391,7 +391,7 @@
       <MenuMacro UID="czujkaciepła_1">
         <Macro>
           <Name>Czujka ciepła</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_H")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_H")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\czujka_term (16).png"/>
         </Macro>
@@ -399,7 +399,7 @@
       <MenuMacro UID="czujkadymuiciepła_1">
         <Macro>
           <Name>Czujka dymu i ciepła</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_PHS")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_PHS")</Command>
           <HelpString/>
           
           <Image ID="c:\firelisp\mnu\icons\czujka_mul (16).png"/></Macro>
@@ -407,7 +407,7 @@
       <MenuMacro UID="ręcznyostrzegaczpożarowy_1">
         <Macro>
           <Name>Ręczny ostrzegacz pożarowy</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_271")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_271")</Command>
           <HelpString/>
           
           <Image ID="c:\firelisp\mnu\icons\rop (16).png"/></Macro>
@@ -415,7 +415,7 @@
       <MenuMacro UID="modułcr">
         <Macro>
           <Name>Moduł CR</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_CR")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_CR")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\est3_cr (16).png"/>
         </Macro>
@@ -423,7 +423,7 @@
       <MenuMacro UID="modułct1">
         <Macro>
           <Name>Moduł CT1</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_CT1")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_CT1")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\est3_ct1 (16).png"/>
         </Macro>
@@ -431,7 +431,7 @@
       <MenuMacro UID="modułct2">
         <Macro>
           <Name>Moduł CT2</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_CT2")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_CT2")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\est3_ct2 (16).png"/>
         </Macro>
@@ -439,7 +439,7 @@
       <MenuMacro UID="izolatorzwarć">
         <Macro>
           <Name>Izolator zwarć</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_IZ")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_IZ")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\est3_iz (16).png"/>
         </Macro>
@@ -447,7 +447,7 @@
       <MenuMacro UID="modułio">
         <Macro>
           <Name>Moduł IO</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_IO")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_IO")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\est3_io (16).png"/>
         </Macro>
@@ -455,7 +455,7 @@
       <MenuMacro UID="modułcc1">
         <Macro>
           <Name>Moduł CC1</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_CC1")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_CC1")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\est3_cc1 (16).png"/>
         </Macro>
@@ -463,7 +463,7 @@
       <MenuMacro UID="modułcc2">
         <Macro>
           <Name>Moduł CC2</Name>
-          <Command>(pl:WstawElement "EST3" "EST3_CC2")</Command>
+          <Command>(fl:element:insert "EST3" "EST3_CC2")</Command>
           <HelpString/>
           <Image ID="c:\firelisp\mnu\icons\est3_cc2 (16).png"/>
         </Macro>
@@ -1248,7 +1248,7 @@
             <MenuItem>
               <MacroRef MenuMacroID="czujkadymu_1"/>
             </MenuItem>
-          </ToolbarButton>
+            <State></State></ToolbarButton>
           <ToolbarButton>
             <Name>Czujka ciepła</Name>
             <MenuItem>
