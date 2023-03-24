@@ -1,0 +1,3 @@
+Bartek
+DESKTOP-J2BAVQG
+wtorek, luty 07, 2023 15:07:13

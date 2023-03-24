@@ -32,3 +32,13 @@
   )
   exitValue
 )
+
+(defun fl:copy:text:to:block ( / exitValue) 
+  (while T 
+    (progn
+      (setq text (cdr (assoc 1 (entget(car (entsel "Wybierz TEXT --->"))))))
+
+      (fl:attrib:content:set (car (entsel "Wstaw text do BLOKU <---")) "centrala" text)
+    )
+  )
+)
