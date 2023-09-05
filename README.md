@@ -2,6 +2,16 @@
 ![logo](https://user-images.githubusercontent.com/15337292/112994033-1af8b580-916a-11eb-8f68-e1457cb30e47.jpg)
 # Zestaw funkcji do uproszczenia pracy podczas projektowania sytemów p.poż.
 
+## 2023-04-20
+
+*Funkcja:*
+####	`(fl:deleteNoConfirm)`
+Usuwa encje po kliknięciu w nią
+
+*Funkcja:*
+####	`(fl:deleteNoConfirmLoop)`
+Usuwa encje po kliknięciu w nią w pętli
+
 ## 2022-10-14
 Aktywacja prawego klawisza myszy
 SHORTCUTMENU = 7

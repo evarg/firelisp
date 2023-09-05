@@ -152,3 +152,9 @@
 (defun fl:element:insert (blockGroup blockName) 
   (fl:block:insert blockGroup blockName NIL CONF_SCALE_DEFAULT 0)
 )
+
+(defun fl:element:rotate (entityName angle)
+  (setq currentAngle (fl:block:angle:get entityName))
+  (setq newAngle (+ currentAngle angle))
+  (fl:block:angle:set entityName newAngle)
+)

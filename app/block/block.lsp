@@ -137,16 +137,16 @@
   (if (tblsearch "BLOCK" blockName) 
     (progn 
       (if position 
-        (command "_insert" blockName "S" scale "O" rotate position)
-        (command "_insert" blockName "S" scale "O" rotate)
+        (command "_insert" blockName position scale scale rotate)
+        (command "_insert" blockName pause scale scale rotate)
       )
     )
     (progn 
       (setq fileName (strcat PATH_BLOCK blockGroup "\\" blockName ".dwg"))
       (print (strcat "Wczytanie z dysku: " fileName))
       (if position 
-        (command "_insert" fileName "S" scale "O" rotate position)
-        (command "_insert" fileName "S" scale "O" rotate)
+        (command "_insert" fileName position scale scale rotate)
+        (command "_insert" fileName pause scale scale rotate)
       )
     )
   )
@@ -193,4 +193,55 @@
       (setq i (+ i 1))
     )
   )
+)
+
+; --------------------------------------------------------------------------------------------------------
+
+(defun fl:block:angle:get (entityName) 
+  (atof (angtos (cdr (assoc 50 (entget entityName)))))
+)
+
+(defun fl:block:angle:set (entityName angle) 
+  (setq entityDXFpopr (subst (cons 50 angle) 
+                             (assoc 50 (entget entityName))
+                             (entget entityName)
+                      )
+  )
+  (entmod entityDXFpopr)
+)
+
+(defun c:myfunc ( / p1 p2 )
+    (setq e (entget (car (entsel))))
+    (if
+        (and
+            (setq p1 (cdr (assoc 10 e)))
+            (setq p2 (getpoint "\nPick second POINT on the screen:" p1))
+        )
+        (command "_.rotate" e "" "_non" p2 90)
+    )
+    (princ)
+)
+
+(defun c:rotate-block ( / obj sel pt angle rad mat)
+  (setq obj (vlax-ename->vla-object (car (entsel "\nSelect block to rotate: "))))
+  (setq sel (vlax-ename->vla-object (car (entsel "\nSelect rotation point: "))))
+  (setq pt (vlax-get sel 'InsertionPoint))
+  (setq angle (getangle "\nRotation angle: "))
+  (setq rad (* angle (/ pi 180.0))) ; przeliczenie na radiany
+  (vla-rotate obj 45)
+  (entmod (entget (vlax-vla-object->ename obj)))
+  (princ))
+
+
+(defun c:move-my-block ()
+  (setq blockname "MyBlock")
+  (setq shift-vector (vlax-3d-point 2.0 3.0 0.0))
+  (setq block (vlax-ename->vla-object (car (entsel (strcat "\nWybierz blok " blockname ": ")))) )
+  (setq insert-point (vlax-get-property block 'insertionpoint))
+  (setq new-point (vlax-3d-point (+ (vlax-get x insert-point) (vlax-get x shift-vector))
+                                   (+ (vlax-get y insert-point) (vlax-get y shift-vector))
+                                   (+ (vlax-get z insert-point) (vlax-get z shift-vector))))
+  (vlax-put-property block 'insertionpoint new-point)
+  (entmod (vlax-vla-object->ename block))
+  (princ)
 )

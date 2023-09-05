@@ -20,9 +20,7 @@
 
 ; --------------------------------------------------------------------------------------------------------
 
-(defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx 
-                                   entityDXFpopr
-                                  ) 
+(defun fl:attrib:parametr:set (entityName attribName parametrNumber value / enx) 
   (while 
     (and 
       (entnext entityName)
@@ -34,14 +32,14 @@
     )
 
     (if (= (strcase attribName) (strcase (cdr (assoc 2 enx)))) 
-      (setq entityDXFpopr (subst (cons parametrNumber value) 
-                                 (assoc parametrNumber enx)
-                                 enx
-                          )
+      (entmod 
+        (subst (cons parametrNumber value) 
+               (assoc parametrNumber enx)
+               enx
+        )
       )
     )
   )
-  (entmod entityDXFpopr)
 )
 
 ; --------------------------------------------------------------------------------------------------------
