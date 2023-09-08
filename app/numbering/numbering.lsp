@@ -25,7 +25,7 @@
 
   (while entity 
     (setq value (fl:numbering:generate))
-    (fl:attrib:content:set entity "centrala" value)
+    (fl:attrib:content:set entity CONF_ATTRIB_OPERATION value)
 
     (setq globalNumberingNextValue (+ globalNumberingNextValue globalNumberingStep))
 

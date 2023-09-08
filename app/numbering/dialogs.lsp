@@ -18,6 +18,7 @@
 
     (action_tile "bSave" 
                  "
+        (setq actualValue (get_tile \"eActualValue\"))
         (setq zero (get_tile \"eZero\"))
         (setq step (get_tile \"eStep\"))
         (setq matrix (get_tile \"eMatrix\"))
@@ -61,6 +62,10 @@
 
     (if (= 101 returnDialog) 
       (cond 
+        ((= actualValue "") (fl:log:error "Nie podano wartosci aktualnej"))
+        ((null (numberp (read actualValue))) (fl:log:error "Nieprawidlowa wartosc aktualna"))
+        ((< (atoi actualValue) 0) (fl:log:error "Licznik nie moze byc ujemny"))
+
         ((= zero "") (fl:log:error "Nie podano liczby zer wiodacych"))
         ((null (numberp (read zero))) (fl:log:error "Nieprawidlowa wartosc liczby zer wiodacych"))
         ((< (atoi zero) 0) (fl:log:error "Liczba zer wiodacych nie moze byc mniejsza od zera"))
@@ -72,6 +77,7 @@
 
         (t
          (progn 
+           (setq globalNumberingNextValue (atoi actualValue))
            (setq globalNumberingZero (atoi zero))
            (setq globalNumberingStep (atoi step))
            (setq globalNumberingMatrix matrix)
