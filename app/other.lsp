@@ -115,14 +115,19 @@
 )
 
 (defun fl:duw:insert (blok pa ln da plan raw) 
-  (setq x (* 80 da))
-  (setq y (+ (* 1000 pa) (* 100 ln)))
+  (setq width 2.0)
+  (setq scale (/ width 400))
+
+  (setq x (* (* 2 width) da))
+  (setq y (+ (* 1000 pa) (* (* 3 width) ln)))
 
   (setq position (list x y))
 
-  (fl:block:insert "DUW" blok position 0.1 0)
+  (print scale)
+
+  (fl:block:insert "DUW" blok position scale 0)
   (fl:attrib:content:set (entlast) "centrala" plan)
-  (fl:attrib:content:set (entlast) "raw" raw)
+  ;;(fl:attrib:content:set (entlast) "raw" raw)
 )
 
 (defun fl:duw:insert:circle (blok pa ln da plan raw) 
@@ -131,7 +136,7 @@
 
   (setq position (list x y))
 
-  (fl:block:insert "DUW" blok position 0.1 0)
+  (fl:block:insert "DUW" blok position scale 0)
   (fl:attrib:content:set (entlast) "centrala" plan)
   (fl:attrib:content:set (entlast) "raw" raw)
 )
@@ -589,14 +594,15 @@
 )
 
 (defun c:blokowy (layersList) 
-
   (setq layerName "___BLOKOWY___")
 
   (fl:layout:new layerName)
   (fl:layout:setActive layerName)
 
   ; usuniecie rzutni z layoutu
-  (entdel (ssname (ssget "_X" '((0 . "VIEWPORT") (410 . "___BLOKOWY___"))) 0))
+  (entdel 
+    (ssname (ssget "_X" (list (cons 0 "VIEWPORT") (cons 410 "___BLOKOWY___"))) 0)
+  )
 
   (setq ss (fl:ss:layer:list layersList))
 
@@ -620,7 +626,8 @@
 
         (print (length values))
 
-        (setq elementPanel (atoi (nth 0 values)))
+        ;; (setq elementPanel (atoi (nth 0 values)))
+        (setq elementPanel 0)
         (setq elementLoop (atoi (nth 1 values)))
         (setq elementDevice (atoi (nth 2 values)))
 
