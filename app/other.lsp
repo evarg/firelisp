@@ -2,6 +2,15 @@
 ; | Functions                                                                                            |
 ; ========================================================================================================
 
+(defun deg2rad (angle) 
+  (setq rad (* angle (/ pi 180.0)))
+)
+
+(defun rad2deg (angle) 
+  (setq deg (/ (* angle 180) pi))
+)
+
+
 (defun fl:string2list (str separator / pos len lst) 
   (setq len (1+ (strlen separator)))
   (while (setq pos (vl-string-search separator str)) 
@@ -106,6 +115,17 @@
 )
 
 (defun fl:duw:insert (blok pa ln da plan raw) 
+  (setq x (* 80 da))
+  (setq y (+ (* 1000 pa) (* 100 ln)))
+
+  (setq position (list x y))
+
+  (fl:block:insert "DUW" blok position 0.1 0)
+  (fl:attrib:content:set (entlast) "centrala" plan)
+  (fl:attrib:content:set (entlast) "raw" raw)
+)
+
+(defun fl:duw:insert:circle (blok pa ln da plan raw) 
   (setq x (* 150 da))
   (setq y (+ (* 1000 pa) (* 100 ln)))
 
@@ -115,6 +135,9 @@
   (fl:attrib:content:set (entlast) "centrala" plan)
   (fl:attrib:content:set (entlast) "raw" raw)
 )
+
+
+
 
 (defun fl:duw:mtext2text (/ blok pa ln da plan raw) 
   (setq e (entget (car (entsel))))
@@ -565,4 +588,52 @@
   )
 )
 
+(defun c:blokowy (layersList) 
 
+  (setq layerName "___BLOKOWY___")
+
+  (fl:layout:new layerName)
+  (fl:layout:setActive layerName)
+
+  ; usuniecie rzutni z layoutu
+  (entdel (ssname (ssget "_X" '((0 . "VIEWPORT") (410 . "___BLOKOWY___"))) 0))
+
+  (setq ss (fl:ss:layer:list layersList))
+
+  (repeat (setq i (sslength ss)) 
+    (setq ent (ssname ss (setq i (1- i))))
+
+    (if (= (cdr (assoc 0 (entget ent))) "INSERT") 
+      (progn 
+        (setq centrala (fl:attrib:content:get ent "centrala"))
+        (if (null centrala) 
+          (setq centrala "0:0:0")
+        )
+
+        (setq plan (fl:attrib:content:get ent "plan"))
+        (if (null plan) 
+          (setq plan "")
+        )
+
+        (setq values (fl:string2list centrala ":"))
+        (setq elementName (cdr (assoc 2 (entget ent))))
+
+        (print (length values))
+
+        (setq elementPanel (atoi (nth 0 values)))
+        (setq elementLoop (atoi (nth 1 values)))
+        (setq elementDevice (atoi (nth 2 values)))
+
+        (print elementPanel)
+        (fl:duw:insert 
+          elementName
+          elementPanel
+          elementLoop
+          elementDevice
+          (itoa elementDevice)
+          ""
+        )
+      )
+    )
+  )
+)

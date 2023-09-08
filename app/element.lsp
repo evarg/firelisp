@@ -149,11 +149,68 @@
 
 ; --------------------------------------------------------------------------------------------------------
 
+(defun fl:element:insert:wz (/ osval ActiveSel block) 
+  (setq osval (getvar "OSMODE"))
+  (setvar "OSMODE" 0)
+
+  (setq ActiveSel (ssget))
+  (setq i 0)
+
+  (if ActiveSel 
+    (progn 
+      (repeat (sslength ActiveSel) 
+        (setq block (ssname ActiveSel i))
+        (if (fl:block:is block) 
+          (progn 
+            (setq entity (entget block))
+
+            (setq blockX     (nth 1 (assoc 10 entity))
+                  blockY     (nth 2 (assoc 10 entity))
+                  blockScale (cdr (assoc 41 entity))
+                  blockAngle (cdr (assoc 50 entity))
+                  blockLayer (cdr (assoc 8 entity))
+            )
+
+            (setq wzPosition (list blockX blockY))
+
+            (fl:block:insert 
+              "DUW"
+              "SSP_WZ_SUFIT"
+              wzPosition
+              blockScale
+              (rad2deg blockAngle)
+            )
+
+            (setq wzEntityName (entlast))
+            (setq wz (entget wzEntityName))
+
+            (entmod 
+              (subst (cons 8 blockLayer) 
+                     (assoc 8 wz)
+                     wz
+              )
+            )
+            
+            (setq blockCentrala (fl:attrib:content:get block "CENTRALA"))
+            (fl:attrib:content:set wzEntityName "CENTRALA" blockCentrala)
+            (print blockCentrala)
+          )
+        )
+        (setq i (+ i 1))
+      )
+    )
+    (print "Nic nie wybrano")
+  )
+  (print)
+)
+
+; --------------------------------------------------------------------------------------------------------
+
 (defun fl:element:insert (blockGroup blockName) 
   (fl:block:insert blockGroup blockName NIL CONF_SCALE_DEFAULT 0)
 )
 
-(defun fl:element:rotate (entityName angle)
+(defun fl:element:rotate (entityName angle) 
   (setq currentAngle (fl:block:angle:get entityName))
   (setq newAngle (+ currentAngle angle))
   (fl:block:angle:set entityName newAngle)
