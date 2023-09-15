@@ -115,19 +115,18 @@
 )
 
 (defun fl:duw:insert (blok pa ln da plan raw) 
-  (setq width 2.0)
+  ; liczba musi być real, z kropką
+  (setq width 4.0)
   (setq scale (/ width 400))
 
-  (setq x (* (* 2 width) da))
+  (setq x (* (* -2 width) da))
   (setq y (+ (* 1000 pa) (* (* 3 width) ln)))
 
   (setq position (list x y))
 
-  (print scale)
-
   (fl:block:insert "DUW" blok position scale 0)
   (fl:attrib:content:set (entlast) "centrala" plan)
-  ;;(fl:attrib:content:set (entlast) "raw" raw)
+  (fl:attrib:content:set (entlast) "raw" raw)
 )
 
 (defun fl:duw:insert:circle (blok pa ln da plan raw) 
@@ -141,7 +140,7 @@
   (fl:attrib:content:set (entlast) "raw" raw)
 )
 
-
+; haslo bosch fasjkhg8734gt;nsv
 
 
 (defun fl:duw:mtext2text (/ blok pa ln da plan raw) 
@@ -618,29 +617,36 @@
 
         (setq plan (fl:attrib:content:get ent "plan"))
         (if (null plan) 
-          (setq plan "")
+          (setq plan "0:0:0")
         )
 
         (setq values (fl:string2list centrala ":"))
         (setq elementName (cdr (assoc 2 (entget ent))))
 
-        (print (length values))
-
-        ;; (setq elementPanel (atoi (nth 0 values)))
-        (setq elementPanel 0)
-        (setq elementLoop (atoi (nth 1 values)))
-        (setq elementDevice (atoi (nth 2 values)))
-
-        (print elementPanel)
-        (fl:duw:insert 
-          elementName
-          elementPanel
-          elementLoop
-          elementDevice
-          (itoa elementDevice)
-          ""
+        (if (= 3 (length values)) 
+          (progn 
+            (setq elementPanel 0)
+            (setq elementLoop (atoi (nth 1 values)))
+            (setq elementDevice (atoi (nth 2 values)))
+            (fl:duw:insert 
+              elementName
+              elementPanel
+              elementLoop
+              elementDevice
+              (itoa elementDevice)
+              centrala
+            )
+          )
         )
       )
     )
   )
 )
+
+;; (fl.addLayer "nazwa warstwy")
+;; (fl.setLayerName "stara_nazwa" "nowa_nazwa")
+;; (fl.setActiveLayer "nazwa_warstwy")
+;; (fl.getCurrentLayer)
+;; (fl.alignElementsHorizontal)
+;; (fl.alignElementsVertical)
+;; (fl.getEntityName entity)
